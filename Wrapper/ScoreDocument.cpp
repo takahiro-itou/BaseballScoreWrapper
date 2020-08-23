@@ -314,7 +314,7 @@ ScoreDocument::lastRecordDate::set(
 
 //----------------------------------------------------------------
 
-LeagueInfo^
+Common::LeagueInfo^
 ScoreDocument::leagueInfo::get(
         int  idxLeague)
 {
@@ -349,7 +349,7 @@ ScoreDocument::leagueInfo::set(
 
 //----------------------------------------------------------------
 
-TeamInfo^
+Common::TeamInfo^
 ScoreDocument::teamInfo::get(
         int  idxTeam)
 {
