@@ -149,7 +149,7 @@ public:
     **
     **  @return     アンマネージド型の参照。
     **/
-    Score4Core::Common::ScoreDocument  &
+    Score4Core::Document::ScoreDocument  &
     toNativeInstance();
 
     //----------------------------------------------------------------
@@ -157,7 +157,7 @@ public:
     **
     **  @return     アンマネージド型の参照。
     **/
-    Score4Core::Common::ScoreDocument  *
+    Score4Core::Document::ScoreDocument  *
     toNativePointer();
 
     //----------------------------------------------------------------
@@ -259,7 +259,7 @@ public:
 //
 private:
 
-    typedef     Score4Core::Common::ScoreDocument       WrapTarget;
+    typedef     Score4Core::Document::ScoreDocument     WrapTarget;
 
     typedef     std::vector<Score4Core::Common::CountedScores>
     WrapCountedScoreList;

@@ -45,7 +45,7 @@ namespace  Common  {
 //
 
 DocumentFile::DocumentFile()
-    : m_ptrObj { new Score4Core::Common::DocumentFile() }
+    : m_ptrObj { new WrapTarget() }
 {
 }
 
@@ -106,7 +106,7 @@ DocumentFile::computeImageSize(
         ScoreDocument^      objDoc,
         BlockSizeInfo^      bsInfo)
 {
-    Score4Core::Common::DocumentFile::BlockSizeInfo     natvBsInfo;
+    WrapTarget::BlockSizeInfo       natvBsInfo;
     FileLength  retVal  = WrapTarget::computeImageSize(
                                 objDoc->toNativeInstance(),
                                 &natvBsInfo);
@@ -123,7 +123,7 @@ DocumentFile::readFromBinaryFile(
         System::String^     fileName,
         ScoreDocument^      ptrDoc)
 {
-    const   Score4Core::Common::ErrCode
+    const   Score4Core::ErrCode
         retVal = WrapTarget::readFromBinaryFile(
                     marshal_as<std::string>(fileName),
                     ptrDoc->toNativePointer());
@@ -139,7 +139,7 @@ DocumentFile::saveToBinaryFile(
         ScoreDocument^      objDoc,
         System::String^     fileName)
 {
-    const   Score4Core::Common::ErrCode
+    const   Score4Core::ErrCode
         retVal = WrapTarget::saveToBinaryFile(
                     objDoc->toNativeInstance(),
                     marshal_as<std::string>(fileName));

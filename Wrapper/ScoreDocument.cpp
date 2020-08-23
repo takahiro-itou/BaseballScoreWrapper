@@ -3,8 +3,12 @@
 **                                                                      **
 **                  ---  Score4 Wrapper  Library.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2018, Takahiro Itou                     **
+**          Copyright (C), 2017-2020, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
+**                                                                      **
+**          License: (See COPYING and LICENSE files)                    **
+**          GNU General Public License (GPL) version 3,                 **
+**          or (at your option) any later version.                      **
 **                                                                      **
 *************************************************************************/
 
@@ -67,7 +71,7 @@ getDateSerial(
 //
 
 ScoreDocument::ScoreDocument()
-    : m_ptrObj { new Score4Core::Common::ScoreDocument() },
+    : m_ptrObj { new WrapTarget() },
       m_ptrBuf { new WrapCountedScoreList() },
       m_trgDate(0)
 {
@@ -160,7 +164,7 @@ ErrCode
 ScoreDocument::countScores(
         System::DateTime^   trgLastDate)
 {
-    Score4Core::Common::ErrCode  retVal;
+    Score4Core::ErrCode  retVal;
 
     DateSerial  dsLast  = getDateSerial(trgLastDate);
 
@@ -196,7 +200,7 @@ ScoreDocument::countScores(
 //    ネイティブのインスタンスを取得する。
 //
 
-Score4Core::Common::ScoreDocument  &
+Score4Core::Document::ScoreDocument  &
 ScoreDocument::toNativeInstance()
 {
     return ( *(this->m_ptrObj) );
@@ -206,7 +210,7 @@ ScoreDocument::toNativeInstance()
 //    ネイティブのインスタンスを取得する。
 //
 
-Score4Core::Common::ScoreDocument  *
+Score4Core::Document::ScoreDocument  *
 ScoreDocument::toNativePointer()
 {
     return ( (this->m_ptrObj) );
