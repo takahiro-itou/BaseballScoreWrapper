@@ -27,7 +27,7 @@
 
 
 namespace  Score4Wrapper  {
-namespace  Common  {
+namespace  Document  {
 
 //========================================================================
 //
@@ -186,5 +186,5 @@ private:
 
 };
 
-}   //  End of namespace  Common
+}   //  End of namespace  Document
 }   //  End of namespace  Score4Wrapper

@@ -26,7 +26,7 @@
 #include    "ScoreInterface.h"
 
 namespace  Score4Wrapper  {
-namespace  Common  {
+namespace  Document  {
 
 //========================================================================
 //
@@ -42,8 +42,20 @@ public ref  class  ScoreDocument
 //
 private:
 
+    typedef     Common::CountedScores       CountedScores;
+
+    typedef     Common::GameCountTable      GameCountTable;
+
 public:
 
+    /**   リーグ情報。  **/
+    typedef     Common::LeagueInfo      LeagueInfo;
+
+    /**   チーム情報。  **/
+    typedef     Common::TeamInfo        TeamInfo;
+
+    /**   ゲーム結果のレコード。    **/
+    typedef     Common::GameResult      GameResult;
 
 //========================================================================
 //
@@ -273,5 +285,5 @@ private:
     cli::array<CountedScores^>^     m_csiBuf;
 };
 
-}   //  End of namespace  Common
+}   //  End of namespace  Document
 }   //  End of namespace  Score4Wrapper
