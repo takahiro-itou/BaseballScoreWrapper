@@ -24,7 +24,6 @@
 
 
 namespace  Score4Wrapper  {
-namespace  Common  {
 
 public enum  class  ErrCode
 {
@@ -83,5 +82,4 @@ typedef     Score4Core::RecordIndex     RecordIndex;
 typedef     Score4Core::ScoreValue      ScoreValue;
 typedef     Score4Core::FileLength      FileLength;
 
-}   //  End of namespace  Common
 }   //  End of namespace  Score4Wrapper
