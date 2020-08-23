@@ -3,8 +3,12 @@
 **                                                                      **
 **                  ---  Score4 Wrapper  Library.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2018, Takahiro Itou                     **
+**          Copyright (C), 2017-2020, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
+**                                                                      **
+**          License: (See COPYING and LICENSE files)                    **
+**          GNU General Public License (GPL) version 3,                 **
+**          or (at your option) any later version.                      **
 **                                                                      **
 *************************************************************************/
 
@@ -16,7 +20,7 @@
 
 #pragma     once
 
-#include    "Score4Core/Common/ScoreDocument.h"
+#include    "Score4Core/Document/ScoreDocument.h"
 
 #include    "Score4Types.h"
 
