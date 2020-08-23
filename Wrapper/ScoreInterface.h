@@ -189,6 +189,9 @@ public:
 
 typedef     cli::array<CountedScores^, 1>   CountedScoreList;
 
+}   //  End of namespace  Common
+
+
 //========================================================================
 //
 //    Support Functions.
@@ -255,5 +258,5 @@ copyToManageType(
         const  Score4Core::Common::CountedScores  & csSrc,
         Score4Wrapper::Common::CountedScores      ^ csTrg);
 
-}   //  End of namespace  Common
+
 }   //  End of namespace  Score4Wrapper
