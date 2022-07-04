@@ -3,8 +3,12 @@
 **                                                                      **
 **                  ---  Score4 Wrapper  Library.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2018, Takahiro Itou                     **
+**          Copyright (C), 2017-2020, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
+**                                                                      **
+**          License: (See COPYING and LICENSE files)                    **
+**          GNU General Public License (GPL) version 3,                 **
+**          or (at your option) any later version.                      **
 **                                                                      **
 *************************************************************************/
 
@@ -16,13 +20,13 @@
 
 #pragma     once
 
-#include    "Score4Core/Common/ScoreDocument.h"
+#include    "Score4Core/Document/ScoreDocument.h"
 
 #include    "Score4Types.h"
 #include    "ScoreInterface.h"
 
 namespace  Score4Wrapper  {
-namespace  Common  {
+namespace  Document  {
 
 //========================================================================
 //
@@ -38,8 +42,20 @@ public ref  class  ScoreDocument
 //
 private:
 
+    typedef     Common::CountedScores       CountedScores;
+
+    typedef     Common::GameCountTable      GameCountTable;
+
 public:
 
+    /**   リーグ情報。  **/
+    typedef     Common::LeagueInfo      LeagueInfo;
+
+    /**   チーム情報。  **/
+    typedef     Common::TeamInfo        TeamInfo;
+
+    /**   ゲーム結果のレコード。    **/
+    typedef     Common::GameResult      GameResult;
 
 //========================================================================
 //
@@ -145,7 +161,7 @@ public:
     **
     **  @return     アンマネージド型の参照。
     **/
-    Score4Core::Common::ScoreDocument  &
+    Score4Core::Document::ScoreDocument  &
     toNativeInstance();
 
     //----------------------------------------------------------------
@@ -153,7 +169,7 @@ public:
     **
     **  @return     アンマネージド型の参照。
     **/
-    Score4Core::Common::ScoreDocument  *
+    Score4Core::Document::ScoreDocument  *
     toNativePointer();
 
     //----------------------------------------------------------------
@@ -255,7 +271,7 @@ public:
 //
 private:
 
-    typedef     Score4Core::Common::ScoreDocument       WrapTarget;
+    typedef     Score4Core::Document::ScoreDocument     WrapTarget;
 
     typedef     std::vector<Score4Core::Common::CountedScores>
     WrapCountedScoreList;
@@ -269,5 +285,5 @@ private:
     cli::array<CountedScores^>^     m_csiBuf;
 };
 
-}   //  End of namespace  Common
+}   //  End of namespace  Document
 }   //  End of namespace  Score4Wrapper

@@ -3,8 +3,12 @@
 **                                                                      **
 **                  ---  Score4 Wrapper  Library.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2018, Takahiro Itou                     **
+**          Copyright (C), 2017-2020, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
+**                                                                      **
+**          License: (See COPYING and LICENSE files)                    **
+**          GNU General Public License (GPL) version 3,                 **
+**          or (at your option) any later version.                      **
 **                                                                      **
 *************************************************************************/
 
@@ -16,7 +20,7 @@
 
 #pragma     once
 
-#include    "Score4Core/Common/ScoreDocument.h"
+#include    "Score4Core/Document/ScoreDocument.h"
 
 #include    "Score4Types.h"
 
@@ -185,6 +189,9 @@ public:
 
 typedef     cli::array<CountedScores^, 1>   CountedScoreList;
 
+}   //  End of namespace  Common
+
+
 //========================================================================
 //
 //    Support Functions.
@@ -251,5 +258,5 @@ copyToManageType(
         const  Score4Core::Common::CountedScores  & csSrc,
         Score4Wrapper::Common::CountedScores      ^ csTrg);
 
-}   //  End of namespace  Common
+
 }   //  End of namespace  Score4Wrapper

@@ -1,10 +1,14 @@
-﻿//  -*-  coding: utf-8; mode: c++  -*-  //
+﻿//  -*-  coding: utf-8-with-signature;  mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
 **                  ---  Score4 Wrapper  Library.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2018, Takahiro Itou                     **
+**          Copyright (C), 2017-2020, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
+**                                                                      **
+**          License: (See COPYING and LICENSE files)                    **
+**          GNU General Public License (GPL) version 3,                 **
+**          or (at your option) any later version.                      **
 **                                                                      **
 *************************************************************************/
 
@@ -23,7 +27,7 @@ using       namespace   msclr::interop;
 
 
 namespace  Score4Wrapper  {
-namespace  Common  {
+namespace  Document  {
 
 //========================================================================
 //
@@ -41,7 +45,7 @@ namespace  Common  {
 //
 
 DocumentFile::DocumentFile()
-    : m_ptrObj { new Score4Core::Common::DocumentFile() }
+    : m_ptrObj { new WrapTarget() }
 {
 }
 
@@ -102,7 +106,7 @@ DocumentFile::computeImageSize(
         ScoreDocument^      objDoc,
         BlockSizeInfo^      bsInfo)
 {
-    Score4Core::Common::DocumentFile::BlockSizeInfo     natvBsInfo;
+    WrapTarget::BlockSizeInfo       natvBsInfo;
     FileLength  retVal  = WrapTarget::computeImageSize(
                                 objDoc->toNativeInstance(),
                                 &natvBsInfo);
@@ -119,7 +123,7 @@ DocumentFile::readFromBinaryFile(
         System::String^     fileName,
         ScoreDocument^      ptrDoc)
 {
-    const   Score4Core::Common::ErrCode
+    const   Score4Core::ErrCode
         retVal = WrapTarget::readFromBinaryFile(
                     marshal_as<std::string>(fileName),
                     ptrDoc->toNativePointer());
@@ -135,7 +139,7 @@ DocumentFile::saveToBinaryFile(
         ScoreDocument^      objDoc,
         System::String^     fileName)
 {
-    const   Score4Core::Common::ErrCode
+    const   Score4Core::ErrCode
         retVal = WrapTarget::saveToBinaryFile(
                     objDoc->toNativeInstance(),
                     marshal_as<std::string>(fileName));
@@ -157,5 +161,5 @@ DocumentFile::saveToBinaryFile(
 //    For Internal Use Only.
 //
 
-}   //  End of namespace  Common
+}   //  End of namespace  Document
 }   //  End of namespace  Score4Wrapper
