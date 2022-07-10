@@ -56,7 +56,7 @@ public enum  class  RecordFlag
 **    ゲームフィルタフラグ。
 **/
 
-enum  GameFilter
+public enum  class  GameFilter
 {
     FILTER_HOME_GAMES   = Score4Core::FILTER_HOME_GAMES,
     FILTER_AWAY_GAMES   = Score4Core::FILTER_AWAY_GAMES,
