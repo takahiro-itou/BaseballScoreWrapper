@@ -208,7 +208,7 @@ copyArrayToManage(
         const  std::array<T, N>  &  arySrc)
 {
     cli::array<T, 1>^   aryDest = gcnew cli::array<T, 1>(N);
-    for ( size_t i = 0; i < N; ++ i ) {
+    for ( int i = 0; i < N; ++ i ) {
         aryDest[i]  = arySrc[i];
     }
 
@@ -220,11 +220,11 @@ cli::array<T, 2>^
 copyTableToManage(
         const  std::vector< std::array<T, N> >  & tblSrc)
 {
-    const   size_t  num = tblSrc.size();
+    const  int  num = static_cast<int>(tblSrc.size());
 
     cli::array<T, 2>^   tblDest = gcnew cli::array<T, 2>(num, N);
-    for ( size_t i = 0; i < num; ++ i ) {
-        for ( size_t j = 0; j < N; ++ j ) {
+    for ( int i = 0; i < num; ++ i ) {
+        for ( int j = 0; j < N; ++ j ) {
             tblDest[i, j]   = tblSrc[i][j];
         }
     }
@@ -238,10 +238,10 @@ copyVectorToManage(
         const  std::vector<T> & vecSrc,
         cli::array<T, 1>      ^ vecDest)
 {
-    const   size_t  num = vecSrc.size();
+    const  int  num = static_cast<int>(vecSrc.size());
 
     // cli::array<T, 1>^   vecDest = gcnew cli::array<T, 1>(num);
-    for ( size_t i = 0; i < num; ++ i ) {
+    for ( int i = 0; i < num; ++ i ) {
         vecDest[i]  = vecSrc[i];
     }
 
