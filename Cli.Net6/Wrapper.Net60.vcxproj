@@ -21,9 +21,9 @@
   </ItemGroup>
 
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1FD21E47-2268-4ECA-8E53-668640B0A7B9}</ProjectGuid>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <Keyword>ManagedCProj</Keyword>
+    <Keyword>NetCoreCProj</Keyword>
+    <ProjectGuid>{2A260C3B-9DC2-4233-B5BE-DA48F8222253}</ProjectGuid>
+    <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>Wrapper</RootNamespace>
   </PropertyGroup>
 
@@ -31,8 +31,8 @@
 
   <PropertyGroup Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
-    <CLRSupport>true</CLRSupport>
+    <PlatformToolset>v143</PlatformToolset>
+    <CLRSupport>NetCore</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
