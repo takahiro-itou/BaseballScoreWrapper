@@ -1,9 +1,9 @@
-﻿//  -*-  coding: utf-8-with-signature;  mode: c++  -*-  //
+﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
 **                  ---  Score4 Wrapper  Library.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2020, Takahiro Itou                     **
+**          Copyright (C), 2017-2022, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -240,7 +240,21 @@ copyVectorToManage(
 {
     const  int  num = static_cast<int>(vecSrc.size());
 
-    // cli::array<T, 1>^   vecDest = gcnew cli::array<T, 1>(num);
+    for ( int i = 0; i < num; ++ i ) {
+        vecDest[i]  = vecSrc[i];
+    }
+
+    return ( vecDest );
+}
+
+template <typename T>
+cli::array<T, 1>^
+copyVectorToManage(
+        const  std::vector<T> & vecSrc)
+{
+    const  int  num = static_cast<int>(vecSrc.size());
+
+    cli::array<T, 1>^   vecDest = gcnew cli::array<T, 1>(num);
     for ( int i = 0; i < num; ++ i ) {
         vecDest[i]  = vecSrc[i];
     }
