@@ -1,9 +1,9 @@
-﻿//  -*-  coding: utf-8-with-signature;  mode: c++  -*-  //
+﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
 **                  ---  Score4 Wrapper  Library.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2020, Takahiro Itou                     **
+**          Copyright (C), 2017-2022, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -56,13 +56,15 @@ copyToManageType(
 
     csTrg->currentRank  = csSrc.currentRank;
 
-    csTrg->totalGotScores
-            = copyArrayToManage(csSrc.totalGotScores);
-    csTrg->totalLostScores
-            = copyArrayToManage(csSrc.totalLostScores);
-    csTrg->vsGotScores  = copyTableToManage(csSrc.vsGotScores);
-    csTrg->vsLostScores = copyTableToManage
-            (csSrc.vsLostScores);
+    csTrg->beatProbability  = copyVectorToManage(csSrc.beatProbability);
+    csTrg->vsMagic          = copyVectorToManage(csSrc.vsMagic);
+    csTrg->numWinsForMatch  = copyVectorToManage(csSrc.numWinsForMatch);
+    csTrg->numRestForMatch  = copyVectorToManage(csSrc.numRestForMatch);
+
+    csTrg->totalGotScores   = copyArrayToManage(csSrc.totalGotScores);
+    csTrg->totalLostScores  = copyArrayToManage(csSrc.totalLostScores);
+    csTrg->vsGotScores      = copyTableToManage(csSrc.vsGotScores);
+    csTrg->vsLostScores     = copyTableToManage(csSrc.vsLostScores);
 
     return ( ErrCode::ERR_SUCCESS );
 }
