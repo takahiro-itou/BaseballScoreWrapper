@@ -81,8 +81,6 @@ copyToManageType(
     csTrg->currentRank      = csSrc.currentRank;
     csTrg->beatProbability  = copyVectorToManage(csSrc.beatProbability);
     csTrg->vsMagic          = copyVectorToManage(csSrc.vsMagic);
-    csTrg->numWinsForMatch  = copyVectorToManage(csSrc.numWinsForMatch);
-    csTrg->numRestForMatch  = copyVectorToManage(csSrc.numRestForMatch);
     csTrg->numWinsForBeat   = copyToManageType(csSrc.numWinsForBeat);
 
     csTrg->totalGotScores   = copyArrayToManage(csSrc.totalGotScores);

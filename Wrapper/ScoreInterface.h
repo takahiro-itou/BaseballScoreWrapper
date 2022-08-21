@@ -196,8 +196,6 @@ public:
 
     property    GameCountList^      beatProbability;
     property    GameCountList^      vsMagic;
-    property    GameCountList^      numWinsForMatch;
-    property    GameCountList^      numRestForMatch;
 
     property    WinsForBeatList^    numWinsForBeat;
 
