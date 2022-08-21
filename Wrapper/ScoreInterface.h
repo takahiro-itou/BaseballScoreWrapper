@@ -195,7 +195,6 @@ public:
     property    TeamIndex           currentRank;
 
     property    GameCountList^      beatProbability;
-    property    GameCountList^      vsMagic;
 
     property    WinsForBeatList^    numWinsForBeat;
 
