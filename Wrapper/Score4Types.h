@@ -73,6 +73,18 @@ public enum  class  GameFilter
     FILTER_SCDL_END     = Score4Core::FILTER_SCDL_END
 };
 
+//----------------------------------------------------------------
+/**
+**    マジック等の状態を示すフィルタフラグ。
+**/
+
+public enum  class  MagicFilter
+{
+    MF_ON_MAGIC             = Score4Core::MF_ON_MAGIC,
+    MF_BEAT_IF_WIN_DIRECT   = Score4Core::MF_BEAT_IF_WIN_DIRECT,
+    MF_CANNOT_BEAT_BY_SELF  = Score4Core::MF_CANNOT_BEAT_BY_SELF,
+    MF_NEVER_BEAT           = Score4Core::MF_NEVER_BEAT
+};
 
 typedef     Score4Core::DateSerial      DateSerial;
 typedef     Score4Core::TeamIndex       TeamIndex;
