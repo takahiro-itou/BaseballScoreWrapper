@@ -33,6 +33,30 @@ namespace  Common  {
 //    アンマネージ型をマネージ型に変換する。
 //
 
+Score4Wrapper::Common::WinsForBeatList^
+copyToManageType(
+        const  Score4Core::Common::WinsForBeatList &wbSrc)
+{
+    const  int  num = static_cast<int>(wbSrc.size());
+
+    Score4Wrapper::Common::WinsForBeatList^
+            wbDest  = gcnew Score4Wrapper::Common::WinsForBeatList(num);
+
+    for ( int i = 0; i < num; ++ i ) {
+        wbDest[i]   = gcnew Score4Wrapper::Common::NumWinsForBeat;
+        wbDest[i]->filterType   =
+                static_cast<Score4Wrapper::MagicFilter>(wbSrc[i].filterType);
+        wbDest[i]->numNeedWins  = wbSrc[i].numNeedWins;
+        wbDest[i]->numRestGame  = wbSrc[i].numRestGame;
+    }
+
+    return ( wbDest );
+}
+
+//----------------------------------------------------------------
+//    アンマネージ型をマネージ型に変換する。
+//
+
 ErrCode
 copyToManageType(
         const  Score4Core::Common::CountedScores  & csSrc,
@@ -54,12 +78,12 @@ copyToManageType(
     csTrg->numTotalRestGames
             = copyArrayToManage(csSrc.numTotalRestGames);
 
-    csTrg->currentRank  = csSrc.currentRank;
-
+    csTrg->currentRank      = csSrc.currentRank;
     csTrg->beatProbability  = copyVectorToManage(csSrc.beatProbability);
     csTrg->vsMagic          = copyVectorToManage(csSrc.vsMagic);
     csTrg->numWinsForMatch  = copyVectorToManage(csSrc.numWinsForMatch);
     csTrg->numRestForMatch  = copyVectorToManage(csSrc.numRestForMatch);
+    csTrg->numWinsForBeat   = copyToManageType(csSrc.numWinsForBeat);
 
     csTrg->totalGotScores   = copyArrayToManage(csSrc.totalGotScores);
     csTrg->totalLostScores  = copyArrayToManage(csSrc.totalLostScores);

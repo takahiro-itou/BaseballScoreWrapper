@@ -121,6 +121,8 @@ public:
     property    GamesCount      numRestGame;
 };
 
+typedef     cli::array<NumWinsForBeat^, 1>  WinsForBeatList;
+
 //----------------------------------------------------------------
 /**
 **    マジックまたは自力での優勝／プレーオフ進出の可能性。
@@ -196,6 +198,8 @@ public:
     property    GameCountList^      vsMagic;
     property    GameCountList^      numWinsForMatch;
     property    GameCountList^      numRestForMatch;
+
+    property    WinsForBeatList^    numWinsForBeat;
 
     /**   総得点。  **/
     property    ScoreArray^         totalGotScores;
@@ -284,6 +288,16 @@ copyVectorToManage(
 
     return ( vecDest );
 }
+
+//----------------------------------------------------------------
+/**   アンマネージ型をマネージ型に変換する。
+**
+**/
+
+ErrCode
+copyToManageType(
+        const  Score4Core::Common::WinsForBeatList &csSrc,
+        Score4Wrapper::Common::WinsForBeatList     ^csTrg);
 
 //----------------------------------------------------------------
 /**   アンマネージ型をマネージ型に変換する。
