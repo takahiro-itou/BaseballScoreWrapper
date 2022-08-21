@@ -119,6 +119,17 @@ public:
     **    残り試合数。ただし、マジックが点灯している時は、直接対決を除く。
     **/
     property    GamesCount      numRestGame;
+
+    /**
+    **    対象チームを自力で上回るのに必要な勝利数。
+    **/
+    property    GamesCount      numWinsSelf;
+
+    /**
+    **    対象チームを自力で上回る可能性ギリギリのラインとのゲーム差。
+    **/
+    property    GamesCount      numWinsDiff;
+
 };
 
 typedef     cli::array<NumWinsForBeat^, 1>  WinsForBeatList;

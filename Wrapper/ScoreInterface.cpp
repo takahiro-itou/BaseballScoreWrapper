@@ -48,6 +48,8 @@ copyToManageType(
                 static_cast<Score4Wrapper::MagicFilter>(wbSrc[i].filterType);
         wbDest[i]->numNeedWins  = wbSrc[i].numNeedWins;
         wbDest[i]->numRestGame  = wbSrc[i].numRestGame;
+        wbDest[i]->numWinsSelf  = wbSrc[i].numWinsSelf;
+        wbDest[i]->numWinsDiff  = wbSrc[i].numWinsDiff;
     }
 
     return ( wbDest );
