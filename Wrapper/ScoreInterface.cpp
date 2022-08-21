@@ -1,9 +1,9 @@
-﻿//  -*-  coding: utf-8-with-signature;  mode: c++  -*-  //
+﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
 **                  ---  Score4 Wrapper  Library.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2020, Takahiro Itou                     **
+**          Copyright (C), 2017-2022, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -33,6 +33,32 @@ namespace  Common  {
 //    アンマネージ型をマネージ型に変換する。
 //
 
+Score4Wrapper::Common::WinsForBeatList^
+copyToManageType(
+        const  Score4Core::Common::WinsForBeatList &wbSrc)
+{
+    const  int  num = static_cast<int>(wbSrc.size());
+
+    Score4Wrapper::Common::WinsForBeatList^
+            wbDest  = gcnew Score4Wrapper::Common::WinsForBeatList(num);
+
+    for ( int i = 0; i < num; ++ i ) {
+        wbDest[i]   = gcnew Score4Wrapper::Common::NumWinsForBeat;
+        wbDest[i]->filterType   =
+                static_cast<Score4Wrapper::MagicFilter>(wbSrc[i].filterType);
+        wbDest[i]->numNeedWins  = wbSrc[i].numNeedWins;
+        wbDest[i]->numRestGame  = wbSrc[i].numRestGame;
+        wbDest[i]->numWinsSelf  = wbSrc[i].numWinsSelf;
+        wbDest[i]->numWinsDiff  = wbSrc[i].numWinsDiff;
+    }
+
+    return ( wbDest );
+}
+
+//----------------------------------------------------------------
+//    アンマネージ型をマネージ型に変換する。
+//
+
 ErrCode
 copyToManageType(
         const  Score4Core::Common::CountedScores  & csSrc,
@@ -54,15 +80,14 @@ copyToManageType(
     csTrg->numTotalRestGames
             = copyArrayToManage(csSrc.numTotalRestGames);
 
-    csTrg->currentRank  = csSrc.currentRank;
+    csTrg->currentRank      = csSrc.currentRank;
+    csTrg->beatProbability  = copyVectorToManage(csSrc.beatProbability);
+    csTrg->numWinsForBeat   = copyToManageType(csSrc.numWinsForBeat);
 
-    csTrg->totalGotScores
-            = copyArrayToManage(csSrc.totalGotScores);
-    csTrg->totalLostScores
-            = copyArrayToManage(csSrc.totalLostScores);
-    csTrg->vsGotScores  = copyTableToManage(csSrc.vsGotScores);
-    csTrg->vsLostScores = copyTableToManage
-            (csSrc.vsLostScores);
+    csTrg->totalGotScores   = copyArrayToManage(csSrc.totalGotScores);
+    csTrg->totalLostScores  = copyArrayToManage(csSrc.totalLostScores);
+    csTrg->vsGotScores      = copyTableToManage(csSrc.vsGotScores);
+    csTrg->vsLostScores     = copyTableToManage(csSrc.vsLostScores);
 
     return ( ErrCode::ERR_SUCCESS );
 }

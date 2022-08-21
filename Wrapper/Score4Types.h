@@ -1,9 +1,9 @@
-﻿//  -*-  coding: utf-8-with-signature;  mode: c++  -*-  //
+﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
 **                  ---  Score4 Wrapper  Library.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2020, Takahiro Itou                     **
+**          Copyright (C), 2017-2022, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -73,6 +73,20 @@ public enum  class  GameFilter
     FILTER_SCDL_END     = Score4Core::FILTER_SCDL_END
 };
 
+//----------------------------------------------------------------
+/**
+**    マジック等の状態を示すフィルタフラグ。
+**/
+
+public enum  class  MagicFilter
+{
+    MF_DIFFERENT_LEAGUE     = Score4Core::MF_DIFFERENT_LEAGUE,
+    MF_ON_MAGIC             = Score4Core::MF_ON_MAGIC,
+    MF_MAGIC_IF_RIVAL_LOSE  = Score4Core::MF_MAGIC_IF_RIVAL_LOSE,
+    MF_BEAT_IF_WIN_DIRECT   = Score4Core::MF_BEAT_IF_WIN_DIRECT,
+    MF_CANNOT_BEAT_BY_SELF  = Score4Core::MF_CANNOT_BEAT_BY_SELF,
+    MF_NEVER_BEAT           = Score4Core::MF_NEVER_BEAT
+};
 
 typedef     Score4Core::DateSerial      DateSerial;
 typedef     Score4Core::TeamIndex       TeamIndex;

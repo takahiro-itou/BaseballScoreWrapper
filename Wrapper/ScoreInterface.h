@@ -1,9 +1,9 @@
-﻿//  -*-  coding: utf-8-with-signature;  mode: c++  -*-  //
+﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
 **                  ---  Score4 Wrapper  Library.  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2020, Takahiro Itou                     **
+**          Copyright (C), 2017-2022, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
 **          License: (See COPYING and LICENSE files)                    **
@@ -100,6 +100,42 @@ public:
 
 //----------------------------------------------------------------
 /**
+**
+**/
+
+public ref  class   NumWinsForBeat
+{
+public:
+
+    /**   必要勝利数が示している情報の種類。    **/
+    property    MagicFilter     filterType;
+
+    /**
+    **    対象チームを上回るのに必要な勝利数。
+    **/
+    property    GamesCount      numNeedWins;
+
+    /**
+    **    残り試合数。ただし、マジックが点灯している時は、直接対決を除く。
+    **/
+    property    GamesCount      numRestGame;
+
+    /**
+    **    対象チームを自力で上回るのに必要な勝利数。
+    **/
+    property    GamesCount      numWinsSelf;
+
+    /**
+    **    対象チームを自力で上回る可能性ギリギリのラインとのゲーム差。
+    **/
+    property    GamesCount      numWinsDiff;
+
+};
+
+typedef     cli::array<NumWinsForBeat^, 1>  WinsForBeatList;
+
+//----------------------------------------------------------------
+/**
 **    マジックまたは自力での優勝／プレーオフ進出の可能性。
 **/
 
@@ -170,9 +206,8 @@ public:
     property    TeamIndex           currentRank;
 
     property    GameCountList^      beatProbability;
-    property    GameCountList^      vsMagic;
-    property    GameCountList^      numWinsForMatch;
-    property    GameCountList^      numRestForMatch;
+
+    property    WinsForBeatList^    numWinsForBeat;
 
     /**   総得点。  **/
     property    ScoreArray^         totalGotScores;
@@ -240,13 +275,37 @@ copyVectorToManage(
 {
     const  int  num = static_cast<int>(vecSrc.size());
 
-    // cli::array<T, 1>^   vecDest = gcnew cli::array<T, 1>(num);
     for ( int i = 0; i < num; ++ i ) {
         vecDest[i]  = vecSrc[i];
     }
 
     return ( vecDest );
 }
+
+template <typename T>
+cli::array<T, 1>^
+copyVectorToManage(
+        const  std::vector<T> & vecSrc)
+{
+    const  int  num = static_cast<int>(vecSrc.size());
+
+    cli::array<T, 1>^   vecDest = gcnew cli::array<T, 1>(num);
+    for ( int i = 0; i < num; ++ i ) {
+        vecDest[i]  = vecSrc[i];
+    }
+
+    return ( vecDest );
+}
+
+//----------------------------------------------------------------
+/**   アンマネージ型をマネージ型に変換する。
+**
+**/
+
+ErrCode
+copyToManageType(
+        const  Score4Core::Common::WinsForBeatList &csSrc,
+        Score4Wrapper::Common::WinsForBeatList     ^csTrg);
 
 //----------------------------------------------------------------
 /**   アンマネージ型をマネージ型に変換する。
