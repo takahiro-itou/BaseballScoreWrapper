@@ -205,8 +205,9 @@ public:
     /**   現在の順位。              **/
     property    TeamIndex           currentRank;
 
-    property    GameCountList^      beatProbability;
-
+    /**
+    **    必要勝利数等、マジック関連の補助計算データ。
+    **/
     property    WinsForBeatList^    numWinsForBeat;
 
     /**   総得点。  **/

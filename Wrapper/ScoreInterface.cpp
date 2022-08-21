@@ -81,7 +81,6 @@ copyToManageType(
             = copyArrayToManage(csSrc.numTotalRestGames);
 
     csTrg->currentRank      = csSrc.currentRank;
-    csTrg->beatProbability  = copyVectorToManage(csSrc.beatProbability);
     csTrg->numWinsForBeat   = copyToManageType(csSrc.numWinsForBeat);
 
     csTrg->totalGotScores   = copyArrayToManage(csSrc.totalGotScores);
