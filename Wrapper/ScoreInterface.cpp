@@ -56,6 +56,23 @@ copyToManageType(
 }
 
 //----------------------------------------------------------------
+/**   アンマネージ型をマネージ型に変換する。
+**
+**/
+
+Score4Wrapper::Common::MagicInfo^
+copyToManageType(
+        const  Score4Core::Common::MagicInfo  & miSrc)
+{
+    Score4Wrapper::Common::MagicInfo^
+            miTrg   = gcnew Score4Wrapper::Common::MagicInfo;
+    miTrg->rankLow  = miSrc.rankLow;
+    miTrg->rankHigh = miSrc.rankHigh;
+
+    return ( miTrg );
+}
+
+//----------------------------------------------------------------
 //    アンマネージ型をマネージ型に変換する。
 //
 

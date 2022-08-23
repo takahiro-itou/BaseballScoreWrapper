@@ -303,10 +303,18 @@ copyVectorToManage(
 **
 **/
 
-ErrCode
+Score4Wrapper::Common::WinsForBeatList^
 copyToManageType(
-        const  Score4Core::Common::WinsForBeatList &csSrc,
-        Score4Wrapper::Common::WinsForBeatList     ^csTrg);
+        const  Score4Core::Common::WinsForBeatList &wbSrc);
+
+//----------------------------------------------------------------
+/**   アンマネージ型をマネージ型に変換する。
+**
+**/
+
+Score4Wrapper::Common::MagicInfo^
+copyToManageType(
+        const  Score4Core::Common::MagicInfo  & miSrc);
 
 //----------------------------------------------------------------
 /**   アンマネージ型をマネージ型に変換する。
