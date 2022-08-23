@@ -97,6 +97,7 @@ copyToManageType(
     csTrg->numTotalRestGames
             = copyArrayToManage(csSrc.numTotalRestGames);
 
+    csTrg->totalMagicInfo   = copyToManageType(csSrc.totalMagic);
     csTrg->currentRank      = csSrc.currentRank;
     csTrg->numWinsForBeat   = copyToManageType(csSrc.numWinsForBeat);
 

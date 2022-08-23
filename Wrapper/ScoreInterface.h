@@ -200,7 +200,7 @@ public:
     property    RestGamesArray^     numTotalRestGames;
 
     /**   マジック関連の集計結果。  **/
-    property    MagicInfo^          totalMagic;
+    property    MagicInfo^          totalMagicInfo;
 
     /**   現在の順位。              **/
     property    TeamIndex           currentRank;
