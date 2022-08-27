@@ -252,6 +252,19 @@ copyArrayToManage(
 }
 
 template <typename T, size_t N>
+cli::array<T, 1>^
+copyArrayToManage(
+        const  T (& arySrc)[N])
+{
+    cli::array<T, 1>^   aryDest = gcnew cli::array<T, 1>(N);
+    for ( int i = 0; i < N; ++ i ) {
+        aryDest[i]  = arySrc[i];
+    }
+
+    return ( aryDest );
+}
+
+template <typename T, size_t N>
 cli::array<T, 2>^
 copyTableToManage(
         const  std::vector< std::array<T, N> >  & tblSrc)
