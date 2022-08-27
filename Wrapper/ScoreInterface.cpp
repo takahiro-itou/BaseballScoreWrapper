@@ -69,6 +69,9 @@ copyToManageType(
     miTrg->rankLow  = miSrc.rankLow;
     miTrg->rankHigh = miSrc.rankHigh;
 
+    miTrg->magicFlags   = castArrayToManage<MagicInfoFlags>(miSrc.magicFlags);
+    miTrg->magicNumber  = copyArrayToManage(miSrc.magicNumber);
+
     return ( miTrg );
 }
 
