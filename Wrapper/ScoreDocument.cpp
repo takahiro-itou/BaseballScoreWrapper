@@ -180,6 +180,7 @@ ScoreDocument::countScores(
     for ( LeagueIndex i = 0; i < numLeagues; ++ i ) {
         this->m_ptrObj->computeCurrentRank(i, *(this->m_ptrBuf));
     }
+    this->m_ptrObj->computeRankRange(*(this->m_ptrBuf));
 
     this->m_csiBuf  = gcnew cli::array<CountedScores^, 1>(numTeams);
     for ( TeamIndex i = 0; i < numTeams; ++ i ) {

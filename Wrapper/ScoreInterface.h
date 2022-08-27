@@ -149,7 +149,7 @@ public:
     /**   可能性のある最高順位。    **/
     property    TeamIndex       rankHigh;
 
-    cli::array<Boolean>^        bMagic;
+    cli::array<MagicInfoFlags>^ magicFlags;
 
     /**   マジック。                **/
     cli::array<GamesCount>^     magicNumber;
@@ -200,13 +200,14 @@ public:
     property    RestGamesArray^     numTotalRestGames;
 
     /**   マジック関連の集計結果。  **/
-    property    MagicInfo^          totalMagic;
+    property    MagicInfo^          totalMagicInfo;
 
     /**   現在の順位。              **/
     property    TeamIndex           currentRank;
 
-    property    GameCountList^      beatProbability;
-
+    /**
+    **    必要勝利数等、マジック関連の補助計算データ。
+    **/
     property    WinsForBeatList^    numWinsForBeat;
 
     /**   総得点。  **/
@@ -233,7 +234,7 @@ typedef     cli::array<CountedScores^, 1>   CountedScoreList;
 //
 
 //----------------------------------------------------------------
-/**   アンマネージ型をマネージ型に変換する。
+/**   アンマネージ型静的配列をマネージ型配列に変換する。
 **
 **/
 
@@ -251,6 +252,37 @@ copyArrayToManage(
 }
 
 template <typename T, size_t N>
+cli::array<T, 1>^
+copyArrayToManage(
+        const  T (& arySrc)[N])
+{
+    cli::array<T, 1>^   aryDest = gcnew cli::array<T, 1>(N);
+    for ( int i = 0; i < N; ++ i ) {
+        aryDest[i]  = arySrc[i];
+    }
+
+    return ( aryDest );
+}
+
+template <typename TD, typename TS, size_t N>
+cli::array<TD, 1>^
+castArrayToManage(
+        const  TS (& arySrc)[N])
+{
+    cli::array<TD, 1>^  aryDest = gcnew cli::array<TD, 1>(N);
+    for ( int i = 0; i < N; ++ i ) {
+        aryDest[i]  = static_cast<TD>(arySrc[i]);
+    }
+
+    return ( aryDest );
+}
+
+//----------------------------------------------------------------
+/**   アンマネージ型テーブルをマネージ型配列に変換する。
+**
+**/
+
+template <typename T, size_t N>
 cli::array<T, 2>^
 copyTableToManage(
         const  std::vector< std::array<T, N> >  & tblSrc)
@@ -266,6 +298,11 @@ copyTableToManage(
 
     return ( tblDest );
 }
+
+//----------------------------------------------------------------
+/**   アンマネージ型動的配列をマネージ型配列に変換する。
+**
+**/
 
 template <typename T>
 cli::array<T, 1>^
@@ -302,10 +339,18 @@ copyVectorToManage(
 **
 **/
 
-ErrCode
+Score4Wrapper::Common::WinsForBeatList^
 copyToManageType(
-        const  Score4Core::Common::WinsForBeatList &csSrc,
-        Score4Wrapper::Common::WinsForBeatList     ^csTrg);
+        const  Score4Core::Common::WinsForBeatList &wbSrc);
+
+//----------------------------------------------------------------
+/**   アンマネージ型をマネージ型に変換する。
+**
+**/
+
+Score4Wrapper::Common::MagicInfo^
+copyToManageType(
+        const  Score4Core::Common::MagicInfo  & miSrc);
 
 //----------------------------------------------------------------
 /**   アンマネージ型をマネージ型に変換する。

@@ -25,6 +25,11 @@
 
 namespace  Score4Wrapper  {
 
+//----------------------------------------------------------------
+/**
+**    エラーコード。
+**/
+
 public enum  class  ErrCode
 {
     ERR_SUCCESS             = Score4Core::ERR_SUCCESS,
@@ -87,6 +92,26 @@ public enum  class  MagicFilter
     MF_CANNOT_BEAT_BY_SELF  = Score4Core::MF_CANNOT_BEAT_BY_SELF,
     MF_NEVER_BEAT           = Score4Core::MF_NEVER_BEAT
 };
+
+//----------------------------------------------------------------
+/**
+**    マジックの計算対象の種類を示す列挙型。
+**/
+
+public enum  class  MagicNumberMode
+{
+    MAGIC_VICTORY       = Score4Core::MAGIC_VICTORY,
+    MAGIC_PLAYOFF       = Score4Core::MAGIC_PLAYOFF,
+    NUM_MAGIC_MODES     = Score4Core::NUM_MAGIC_MODES
+};
+
+public enum  class  MagicInfoFlags
+{
+    MIF_WINS_DIFF       = Score4Core::MIF_WINS_DIFF,
+    MIF_ON_MAGIC        = Score4Core::MIF_ON_MAGIC
+};
+
+//========================================================================
 
 typedef     Score4Core::DateSerial      DateSerial;
 typedef     Score4Core::TeamIndex       TeamIndex;

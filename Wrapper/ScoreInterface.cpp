@@ -56,6 +56,26 @@ copyToManageType(
 }
 
 //----------------------------------------------------------------
+/**   アンマネージ型をマネージ型に変換する。
+**
+**/
+
+Score4Wrapper::Common::MagicInfo^
+copyToManageType(
+        const  Score4Core::Common::MagicInfo  & miSrc)
+{
+    Score4Wrapper::Common::MagicInfo^
+            miTrg   = gcnew Score4Wrapper::Common::MagicInfo;
+    miTrg->rankLow  = miSrc.rankLow;
+    miTrg->rankHigh = miSrc.rankHigh;
+
+    miTrg->magicFlags   = castArrayToManage<MagicInfoFlags>(miSrc.magicFlags);
+    miTrg->magicNumber  = copyArrayToManage(miSrc.magicNumber);
+
+    return ( miTrg );
+}
+
+//----------------------------------------------------------------
 //    アンマネージ型をマネージ型に変換する。
 //
 
@@ -80,8 +100,8 @@ copyToManageType(
     csTrg->numTotalRestGames
             = copyArrayToManage(csSrc.numTotalRestGames);
 
+    csTrg->totalMagicInfo   = copyToManageType(csSrc.totalMagic);
     csTrg->currentRank      = csSrc.currentRank;
-    csTrg->beatProbability  = copyVectorToManage(csSrc.beatProbability);
     csTrg->numWinsForBeat   = copyToManageType(csSrc.numWinsForBeat);
 
     csTrg->totalGotScores   = copyArrayToManage(csSrc.totalGotScores);
