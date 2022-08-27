@@ -149,7 +149,7 @@ public:
     /**   可能性のある最高順位。    **/
     property    TeamIndex       rankHigh;
 
-    cli::array<Boolean>^        bMagic;
+    cli::array<MagicInfoFlags>^ magicFlags;
 
     /**   マジック。                **/
     cli::array<GamesCount>^     magicNumber;
