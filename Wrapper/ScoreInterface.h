@@ -264,6 +264,19 @@ copyArrayToManage(
     return ( aryDest );
 }
 
+template <typename TD, typename TS, size_t N>
+cli::array<TD, 1>^
+castArrayToManage(
+        const  TS (& arySrc)[N])
+{
+    cli::array<TD, 1>^  aryDest = gcnew cli::array<TD, 1>(N);
+    for ( int i = 0; i < N; ++ i ) {
+        aryDest[i]  = static_cast<TD>(arySrc[i]);
+    }
+
+    return ( aryDest );
+}
+
 //----------------------------------------------------------------
 /**   アンマネージ型テーブルをマネージ型配列に変換する。
 **
