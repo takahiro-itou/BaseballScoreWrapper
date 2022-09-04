@@ -95,7 +95,7 @@ public:
 
     property    RecordFlag      eGameFlags;
     property    DateSerial      recordDate;
-    property    TeamIndex       visitorTeam;
+    property    TeamIndex       awayTeam;
     property    TeamIndex       homeTeam;
     property    ScoreValue      visitorScore;
     property    ScoreValue      homeScore;

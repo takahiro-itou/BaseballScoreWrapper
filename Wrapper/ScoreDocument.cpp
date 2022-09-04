@@ -235,7 +235,7 @@ ScoreDocument::getGameRecord(
 
     managedRecord->eGameFlags   = static_cast<RecordFlag>(umRecord.eGameFlags);
     managedRecord->recordDate   = umRecord.recordDate;
-    managedRecord->visitorTeam  = umRecord.visitorTeam;
+    managedRecord->awayTeam     = umRecord.visitorTeam;
     managedRecord->homeTeam     = umRecord.homeTeam;
     managedRecord->visitorScore = umRecord.visitorScore;
     managedRecord->homeScore    = umRecord.homeScore;
