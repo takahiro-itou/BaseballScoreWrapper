@@ -150,6 +150,23 @@ public:
     countScores(
             System::DateTime^   trgLastDate);
 
+    //----------------------------------------------------------------
+    /**   指定した条件の対戦カードを検索する。
+    **
+    **  @param [in] gameDate      試合日。
+    **  @param [in] homeTeam      ホームチームの番号。
+    **  @param [in] visitorTeam   ビジタチームの番号。
+    **  @param[out] bufRecord     結果を格納する変数。
+    **      見つかったレコードのインデックスを格納する。
+    **  @return     見つかったレコードの件数を返す。
+    **/
+    RecordIndex
+    findGameRecords(
+            const  System::DateTime^    gameDate,
+            const  TeamIndex            homeTeam,
+            const  TeamIndex            visitorTeam,
+            Common::RecordIndexList^    bufRecord);
+
 //========================================================================
 //
 //    Accessors.

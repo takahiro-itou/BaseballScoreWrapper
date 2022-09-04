@@ -192,6 +192,20 @@ ScoreDocument::countScores(
     return ( static_cast<ErrCode>(retVal) );
 }
 
+//----------------------------------------------------------------
+//    指定した条件の対戦カードを検索する。
+//
+
+RecordIndex
+ScoreDocument::findGameRecords(
+        const  System::DateTime^    gameDate,
+        const  TeamIndex            homeTeam,
+        const  TeamIndex            visitorTeam,
+        Common::RecordIndexList^    bufRecord)
+{
+    return ( 0 );
+}
+
 //========================================================================
 //
 //    Accessors.
