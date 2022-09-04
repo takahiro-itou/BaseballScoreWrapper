@@ -229,11 +229,18 @@ ScoreDocument::GameResult^
 ScoreDocument::getGameRecord(
         const  RecordIndex  idxRecord)
 {
-    const   Score4Core::Common::GameResult  &
-        record  = this->m_ptrObj->getGameRecord(idxRecord);
-    Common::GameResult^ result  = gcnew Common::GameResult;
+    const   Score4Core::Common::GameResult
+        & umRecord  = this->m_ptrObj->getGameRecord(idxRecord);
+    Common::GameResult^  managedRecord  = gcnew Common::GameResult;
 
-    return ( result );
+    managedRecord->eGameFlags   = static_cast<RecordFlag>(umRecord.eGameFlags);
+    managedRecord->recordDate   = umRecord.recordDate;
+    managedRecord->visitorTeam  = umRecord.visitorTeam;
+    managedRecord->homeTeam     = umRecord.homeTeam;
+    managedRecord->visitorScore = umRecord.visitorScore;
+    managedRecord->homeScore    = umRecord.homeScore;
+
+    return ( managedRecord );
 }
 
 //----------------------------------------------------------------
