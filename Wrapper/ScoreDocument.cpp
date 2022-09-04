@@ -198,9 +198,9 @@ ScoreDocument::countScores(
 
 RecordIndex
 ScoreDocument::findGameRecords(
-        const  System::DateTime^    gameDate,
-        const  TeamIndex            homeTeam,
-        const  TeamIndex            visitorTeam,
+        System::DateTime^           gameDate,
+        const   TeamIndex           homeTeam,
+        const   TeamIndex           visitorTeam,
         Common::RecordIndexList^    bufRecord)
 {
     DateSerial  targetDate  = getDateSerial(gameDate);
