@@ -201,17 +201,17 @@ ScoreDocument::findGameRecords(
         System::DateTime^           gameDate,
         const   TeamIndex           homeTeam,
         const   TeamIndex           visitorTeam,
-        Common::RecordIndexList^    bufRecord)
+        Common::RecordIndexList^%   bufRecord)
 {
     DateSerial  targetDate  = getDateSerial(gameDate);
     RecordIndex numRecords;
 
-    WrapTarget::RecordIndexList buffer;
+    WrapTarget::RecordIndexList umBuffer;
     numRecords  = this->m_ptrObj->findGameRecords(
-                        targetDate, homeTeam, visitorTeam, buffer);
+                        targetDate, homeTeam, visitorTeam, umBuffer);
 
     System::Array::Resize(bufRecord, numRecords);
-    copyVectorToManage(buffer, bufRecord);
+    copyVectorToManage(umBuffer, bufRecord);
 
     return ( numRecords );
 }

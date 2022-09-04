@@ -165,7 +165,7 @@ public:
             System::DateTime^           gameDate,
             const   TeamIndex           homeTeam,
             const   TeamIndex           visitorTeam,
-            Common::RecordIndexList^    bufRecord);
+            Common::RecordIndexList^%   bufRecord);
 
 //========================================================================
 //
