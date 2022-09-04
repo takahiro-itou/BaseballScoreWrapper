@@ -203,6 +203,16 @@ ScoreDocument::findGameRecords(
         const  TeamIndex            visitorTeam,
         Common::RecordIndexList^    bufRecord)
 {
+    DateSerial  targetDate  = getDateSerial(gameDate);
+    RecordIndex numRecords;
+
+    WrapTarget::RecordIndexList buffer;
+    numRecords  = this->m_ptrObj->findGameRecords(
+                        targetDate, homeTeam, visitorTeam, buffer);
+
+    System::Array::Resize(bufRecord, numRecords);
+    copyVectorToManage(buffer, bufRecord);
+
     return ( 0 );
 }
 
