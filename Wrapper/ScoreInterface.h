@@ -97,7 +97,7 @@ public:
     property    DateSerial      recordDate;
     property    TeamIndex       awayTeam;
     property    TeamIndex       homeTeam;
-    property    ScoreValue      visitorScore;
+    property    ScoreValue      awayScore;
     property    ScoreValue      homeScore;
 };
 

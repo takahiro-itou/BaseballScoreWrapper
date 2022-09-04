@@ -237,7 +237,7 @@ ScoreDocument::getGameRecord(
     managedRecord->recordDate   = umRecord.recordDate;
     managedRecord->awayTeam     = umRecord.visitorTeam;
     managedRecord->homeTeam     = umRecord.homeTeam;
-    managedRecord->visitorScore = umRecord.visitorScore;
+    managedRecord->awayScore    = umRecord.visitorScore;
     managedRecord->homeScore    = umRecord.homeScore;
 
     return ( managedRecord );
