@@ -222,6 +222,21 @@ ScoreDocument::findGameRecords(
 //
 
 //----------------------------------------------------------------
+//    ゲームレコードを取得する。
+//
+
+ScoreDocument::GameResult^
+ScoreDocument::getGameRecord(
+        const  RecordIndex  idxRecord)
+{
+    const   Score4Core::Common::GameResult  &
+        record  = this->m_ptrObj->getGameRecord(idxRecord);
+    Common::GameResult^ result  = gcnew Common::GameResult;
+
+    return ( result );
+}
+
+//----------------------------------------------------------------
 //    ネイティブのインスタンスを取得する。
 //
 
@@ -369,7 +384,7 @@ ScoreDocument::leagueInfo::set(
 }
 
 //----------------------------------------------------------------
-//    プロパティ  lastRecordDate
+//    プロパティ  teamInfo
 //
 
 //----------------------------------------------------------------
