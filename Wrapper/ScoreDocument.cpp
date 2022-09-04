@@ -213,7 +213,7 @@ ScoreDocument::findGameRecords(
     System::Array::Resize(bufRecord, numRecords);
     copyVectorToManage(buffer, bufRecord);
 
-    return ( 0 );
+    return ( numRecords );
 }
 
 //========================================================================
