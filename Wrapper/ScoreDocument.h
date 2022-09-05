@@ -182,6 +182,21 @@ public:
             const  RecordIndex  idxRecord);
 
     //----------------------------------------------------------------
+    /**   ゲームレコードを設定する。
+    **
+    **  @param [in] idxRecrod     上書きするレコード番号。
+    **  @param [in] gameRecord    上書きするレコード内容。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
+    **/
+    ErrCode
+    setGameRecord(
+            const  RecordIndex  idxRecord,
+            GameResult^         gameRecord);
+
+    //----------------------------------------------------------------
     /**   ネイティブのインスタンスを取得する。
     **
     **  @return     アンマネージド型の参照。
