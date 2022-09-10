@@ -192,10 +192,81 @@ ScoreDocument::countScores(
     return ( static_cast<ErrCode>(retVal) );
 }
 
+//----------------------------------------------------------------
+//    指定した条件の対戦カードを検索する。
+//
+
+RecordIndex
+ScoreDocument::findGameRecords(
+        System::DateTime^           gameDate,
+        const   TeamIndex           homeTeam,
+        const   TeamIndex           visitorTeam,
+        Common::RecordIndexList^%   bufRecord)
+{
+    DateSerial  targetDate  = getDateSerial(gameDate);
+    RecordIndex numRecords;
+
+    WrapTarget::RecordIndexList umBuffer;
+    numRecords  = this->m_ptrObj->findGameRecords(
+                        targetDate, homeTeam, visitorTeam, umBuffer);
+
+    System::Array::Resize(bufRecord, numRecords);
+    copyVectorToManage(umBuffer, bufRecord);
+
+    return ( numRecords );
+}
+
 //========================================================================
 //
 //    Accessors.
 //
+
+//----------------------------------------------------------------
+//    ゲームレコードを取得する。
+//
+
+ScoreDocument::GameResult^
+ScoreDocument::getGameRecord(
+        const  RecordIndex  idxRecord)
+{
+    const   Score4Core::Common::GameResult
+        & umRecord  = this->m_ptrObj->getGameRecord(idxRecord);
+    Common::GameResult^  managedRecord  = gcnew Common::GameResult;
+
+    managedRecord->eGameFlags   = static_cast<RecordFlag>(umRecord.eGameFlags);
+    managedRecord->recordDate   = umRecord.recordDate;
+    managedRecord->awayTeam     = umRecord.visitorTeam;
+    managedRecord->homeTeam     = umRecord.homeTeam;
+    managedRecord->awayScore    = umRecord.visitorScore;
+    managedRecord->homeScore    = umRecord.homeScore;
+
+    return ( managedRecord );
+}
+
+//----------------------------------------------------------------
+//    ゲームレコードを設定する。
+//
+
+ErrCode
+ScoreDocument::setGameRecord(
+        const  RecordIndex  idxRecord,
+        GameResult^         gameRecord)
+{
+    Score4Core::Common::GameResult  umRecord;
+    Score4Core::ErrCode             retErr;
+
+    const   RecordFlag  flagRec = gameRecord->eGameFlags;
+
+    umRecord.eGameFlags     = static_cast<Score4Core::RecordFlag>(flagRec);
+    umRecord.recordDate     = gameRecord->recordDate;
+    umRecord.visitorTeam    = gameRecord->awayTeam;
+    umRecord.homeTeam       = gameRecord->homeTeam;
+    umRecord.visitorScore   = gameRecord->awayScore;
+    umRecord.homeScore      = gameRecord->homeScore;
+
+    retErr  = this->m_ptrObj->setGameRecord(idxRecord, umRecord);
+    return ( static_cast<ErrCode>(retErr) );
+}
 
 //----------------------------------------------------------------
 //    ネイティブのインスタンスを取得する。
@@ -345,7 +416,7 @@ ScoreDocument::leagueInfo::set(
 }
 
 //----------------------------------------------------------------
-//    プロパティ  lastRecordDate
+//    プロパティ  teamInfo
 //
 
 //----------------------------------------------------------------

@@ -46,6 +46,9 @@ typedef     cli::array<GamesCount, 1>       RestGamesArray;
 
 typedef     cli::array<GamesCount, 2>       RestGamesTable;
 
+/**   レコード番号の配列。      **/
+typedef     cli::array<RecordIndex, 1>      RecordIndexList;
+
 //----------------------------------------------------------------
 /**
 **    リーグ情報。
@@ -92,9 +95,9 @@ public:
 
     property    RecordFlag      eGameFlags;
     property    DateSerial      recordDate;
-    property    TeamIndex       visitorTeam;
+    property    TeamIndex       awayTeam;
     property    TeamIndex       homeTeam;
-    property    ScoreValue      visitorScore;
+    property    ScoreValue      awayScore;
     property    ScoreValue      homeScore;
 };
 

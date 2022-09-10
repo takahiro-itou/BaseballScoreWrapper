@@ -150,11 +150,51 @@ public:
     countScores(
             System::DateTime^   trgLastDate);
 
+    //----------------------------------------------------------------
+    /**   指定した条件の対戦カードを検索する。
+    **
+    **  @param [in] gameDate      試合日。
+    **  @param [in] homeTeam      ホームチームの番号。
+    **  @param [in] visitorTeam   ビジタチームの番号。
+    **  @param[out] bufRecord     結果を格納する変数。
+    **      見つかったレコードのインデックスを格納する。
+    **  @return     見つかったレコードの件数を返す。
+    **/
+    RecordIndex
+    findGameRecords(
+            System::DateTime^           gameDate,
+            const   TeamIndex           homeTeam,
+            const   TeamIndex           visitorTeam,
+            Common::RecordIndexList^%   bufRecord);
+
 //========================================================================
 //
 //    Accessors.
 //
 public:
+
+    //----------------------------------------------------------------
+    /**   ゲームレコードを取得する。
+    **
+    **/
+    GameResult^
+    getGameRecord(
+            const  RecordIndex  idxRecord);
+
+    //----------------------------------------------------------------
+    /**   ゲームレコードを設定する。
+    **
+    **  @param [in] idxRecrod     上書きするレコード番号。
+    **  @param [in] gameRecord    上書きするレコード内容。
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
+    **/
+    ErrCode
+    setGameRecord(
+            const  RecordIndex  idxRecord,
+            GameResult^         gameRecord);
 
     //----------------------------------------------------------------
     /**   ネイティブのインスタンスを取得する。
@@ -253,7 +293,6 @@ public:
         TeamInfo^  get(int  idxTeam);
         void  set(int  idxTeam,  TeamInfo^  teamInfo);
     }
-
 
 //========================================================================
 //
