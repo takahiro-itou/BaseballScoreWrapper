@@ -93,12 +93,12 @@ public ref  class   GameResult
 {
 public:
 
-    property    RecordFlag      eGameFlags;
-    property    DateSerial      recordDate;
-    property    TeamIndex       awayTeam;
-    property    TeamIndex       homeTeam;
-    property    ScoreValue      awayScore;
-    property    ScoreValue      homeScore;
+    property    RecordFlag          eGameFlags;
+    property    System::DateTime^   recordDate;
+    property    TeamIndex           awayTeam;
+    property    TeamIndex           homeTeam;
+    property    ScoreValue          awayScore;
+    property    ScoreValue          homeScore;
 };
 
 //----------------------------------------------------------------

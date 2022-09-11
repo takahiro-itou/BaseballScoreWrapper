@@ -234,7 +234,7 @@ ScoreDocument::getGameRecord(
     Common::GameResult^  managedRecord  = gcnew Common::GameResult;
 
     managedRecord->eGameFlags   = static_cast<RecordFlag>(umRecord.eGameFlags);
-    managedRecord->recordDate   = umRecord.recordDate;
+    managedRecord->recordDate   = getDateTime(umRecord.recordDate);
     managedRecord->awayTeam     = umRecord.visitorTeam;
     managedRecord->homeTeam     = umRecord.homeTeam;
     managedRecord->awayScore    = umRecord.visitorScore;
@@ -258,7 +258,7 @@ ScoreDocument::setGameRecord(
     const   RecordFlag  flagRec = gameRecord->eGameFlags;
 
     umRecord.eGameFlags     = static_cast<Score4Core::RecordFlag>(flagRec);
-    umRecord.recordDate     = gameRecord->recordDate;
+    umRecord.recordDate     = getDateSerial(gameRecord->recordDate);
     umRecord.visitorTeam    = gameRecord->awayTeam;
     umRecord.homeTeam       = gameRecord->homeTeam;
     umRecord.visitorScore   = gameRecord->awayScore;
