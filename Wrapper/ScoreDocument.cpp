@@ -157,6 +157,18 @@ ScoreDocument::computeRankOrder(
 }
 
 //----------------------------------------------------------------
+//    指定したデータのコピーを作成する。
+//
+
+ScoreDocument^
+ScoreDocument::copyFrom(
+        ScoreDocument^  src)
+{
+    this->m_ptrObj->copyFrom(*(src->m_ptrObj));
+    return ( this );
+}
+
+//----------------------------------------------------------------
 //    試合結果を集計する。
 //
 
