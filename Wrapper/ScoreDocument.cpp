@@ -218,6 +218,24 @@ ScoreDocument::findGameRecords(
 
 //========================================================================
 //
+//    Public Member Functions (Static).
+//
+
+//----------------------------------------------------------------
+//    指定したデータのコピーを作成する。
+//
+
+ScoreDocument^
+ScoreDocument::createCopy(
+        ScoreDocument^  src)
+{
+    ScoreDocument^  dst = gcnew ScoreDocument;
+    dst->m_ptrObj->copyFrom(*(src->m_ptrObj));
+    return ( dst );
+}
+
+//========================================================================
+//
 //    Accessors.
 //
 
