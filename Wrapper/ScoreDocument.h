@@ -189,6 +189,17 @@ public:
             const   TeamIndex           visitorTeam,
             Common::RecordIndexList^%   bufRecord);
 
+    //----------------------------------------------------------------
+    /**   ゲームレコードを最適化する。
+    **
+    **  @return     エラーコードを返す。
+    **      -   異常終了の場合は、
+    **          エラーの種類を示す非ゼロ値を返す。
+    **      -   正常終了の場合は、ゼロを返す。
+    **/
+    ErrCode
+    optimizeGameRecords();
+
 //========================================================================
 //
 //    Public Member Functions (Static).

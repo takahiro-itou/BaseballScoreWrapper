@@ -138,7 +138,7 @@ ScoreDocument::appendGameRecord(
         GameResult^     gameRecord)
 {
     Score4Core::Common::GameResult  umRecord;
-    Score4Core::ErrCode             retErr;
+    Score4Core::ErrCode             retVal;
 
     const   RecordFlag  flagRec = gameRecord->eGameFlags;
 
@@ -149,8 +149,8 @@ ScoreDocument::appendGameRecord(
     umRecord.visitorScore   = gameRecord->awayScore;
     umRecord.homeScore      = gameRecord->homeScore;
 
-    retErr  = this->m_ptrObj->appendGameRecord(umRecord);
-    return ( static_cast<ErrCode>(retErr) );
+    retVal  = this->m_ptrObj->appendGameRecord(umRecord);
+    return ( static_cast<ErrCode>(retVal) );
 }
 
 //----------------------------------------------------------------
@@ -252,6 +252,19 @@ ScoreDocument::findGameRecords(
     return ( numRecords );
 }
 
+//----------------------------------------------------------------
+//    ゲームレコードを最適化する。
+//
+
+ErrCode
+ScoreDocument::optimizeGameRecords()
+{
+    Score4Core::ErrCode  retVal;
+
+    retVal  = this->m_ptrObj->optimizeGameRecords();
+    return ( static_cast<ErrCode>(retVal) );
+}
+
 //========================================================================
 //
 //    Public Member Functions (Static).
@@ -307,7 +320,7 @@ ScoreDocument::setGameRecord(
         GameResult^         gameRecord)
 {
     Score4Core::Common::GameResult  umRecord;
-    Score4Core::ErrCode             retErr;
+    Score4Core::ErrCode             retVal;
 
     const   RecordFlag  flagRec = gameRecord->eGameFlags;
 
@@ -318,8 +331,8 @@ ScoreDocument::setGameRecord(
     umRecord.visitorScore   = gameRecord->awayScore;
     umRecord.homeScore      = gameRecord->homeScore;
 
-    retErr  = this->m_ptrObj->setGameRecord(idxRecord, umRecord);
-    return ( static_cast<ErrCode>(retErr) );
+    retVal  = this->m_ptrObj->setGameRecord(idxRecord, umRecord);
+    return ( static_cast<ErrCode>(retVal) );
 }
 
 //----------------------------------------------------------------
