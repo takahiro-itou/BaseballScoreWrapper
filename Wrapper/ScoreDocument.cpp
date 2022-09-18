@@ -130,6 +130,30 @@ ScoreDocument::!ScoreDocument()
 //
 
 //----------------------------------------------------------------
+//    ゲームレコードを追加登録する。
+//
+
+ErrCode
+ScoreDocument::appendGameRecord(
+        GameResult^     gameRecord)
+{
+    Score4Core::Common::GameResult  umRecord;
+    Score4Core::ErrCode             retVal;
+
+    const   RecordFlag  flagRec = gameRecord->eGameFlags;
+
+    umRecord.eGameFlags     = static_cast<Score4Core::RecordFlag>(flagRec);
+    umRecord.recordDate     = getDateSerial(gameRecord->recordDate);
+    umRecord.visitorTeam    = gameRecord->awayTeam;
+    umRecord.homeTeam       = gameRecord->homeTeam;
+    umRecord.visitorScore   = gameRecord->awayScore;
+    umRecord.homeScore      = gameRecord->homeScore;
+
+    retVal  = this->m_ptrObj->appendGameRecord(umRecord);
+    return ( static_cast<ErrCode>(retVal) );
+}
+
+//----------------------------------------------------------------
 //    ドキュメントの内容をクリアする。
 //
 
@@ -154,6 +178,18 @@ ScoreDocument::computeRankOrder(
     copyVectorToManage(bufNatv, bufIndex);
 
     return ( retVal );
+}
+
+//----------------------------------------------------------------
+//    指定したデータのコピーを作成する。
+//
+
+ScoreDocument^
+ScoreDocument::copyFrom(
+        ScoreDocument^  src)
+{
+    this->m_ptrObj->copyFrom(*(src->m_ptrObj));
+    return ( this );
 }
 
 //----------------------------------------------------------------
@@ -216,6 +252,37 @@ ScoreDocument::findGameRecords(
     return ( numRecords );
 }
 
+//----------------------------------------------------------------
+//    ゲームレコードを最適化する。
+//
+
+ErrCode
+ScoreDocument::optimizeGameRecords()
+{
+    Score4Core::ErrCode  retVal;
+
+    retVal  = this->m_ptrObj->optimizeGameRecords();
+    return ( static_cast<ErrCode>(retVal) );
+}
+
+//========================================================================
+//
+//    Public Member Functions (Static).
+//
+
+//----------------------------------------------------------------
+//    指定したデータのコピーを作成する。
+//
+
+ScoreDocument^
+ScoreDocument::createCopy(
+        ScoreDocument^  src)
+{
+    ScoreDocument^  dst = gcnew ScoreDocument;
+    dst->m_ptrObj->copyFrom(*(src->m_ptrObj));
+    return ( dst );
+}
+
 //========================================================================
 //
 //    Accessors.
@@ -234,7 +301,7 @@ ScoreDocument::getGameRecord(
     Common::GameResult^  managedRecord  = gcnew Common::GameResult;
 
     managedRecord->eGameFlags   = static_cast<RecordFlag>(umRecord.eGameFlags);
-    managedRecord->recordDate   = umRecord.recordDate;
+    managedRecord->recordDate   = getDateTime(umRecord.recordDate);
     managedRecord->awayTeam     = umRecord.visitorTeam;
     managedRecord->homeTeam     = umRecord.homeTeam;
     managedRecord->awayScore    = umRecord.visitorScore;
@@ -253,19 +320,19 @@ ScoreDocument::setGameRecord(
         GameResult^         gameRecord)
 {
     Score4Core::Common::GameResult  umRecord;
-    Score4Core::ErrCode             retErr;
+    Score4Core::ErrCode             retVal;
 
     const   RecordFlag  flagRec = gameRecord->eGameFlags;
 
     umRecord.eGameFlags     = static_cast<Score4Core::RecordFlag>(flagRec);
-    umRecord.recordDate     = gameRecord->recordDate;
+    umRecord.recordDate     = getDateSerial(gameRecord->recordDate);
     umRecord.visitorTeam    = gameRecord->awayTeam;
     umRecord.homeTeam       = gameRecord->homeTeam;
     umRecord.visitorScore   = gameRecord->awayScore;
     umRecord.homeScore      = gameRecord->homeScore;
 
-    retErr  = this->m_ptrObj->setGameRecord(idxRecord, umRecord);
-    return ( static_cast<ErrCode>(retErr) );
+    retVal  = this->m_ptrObj->setGameRecord(idxRecord, umRecord);
+    return ( static_cast<ErrCode>(retVal) );
 }
 
 //----------------------------------------------------------------

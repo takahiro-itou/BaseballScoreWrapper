@@ -93,12 +93,12 @@ public ref  class   GameResult
 {
 public:
 
-    property    RecordFlag      eGameFlags;
-    property    DateSerial      recordDate;
-    property    TeamIndex       awayTeam;
-    property    TeamIndex       homeTeam;
-    property    ScoreValue      awayScore;
-    property    ScoreValue      homeScore;
+    property    RecordFlag          eGameFlags;
+    property    System::DateTime^   recordDate;
+    property    TeamIndex           awayTeam;
+    property    TeamIndex           homeTeam;
+    property    ScoreValue          awayScore;
+    property    ScoreValue          homeScore;
 };
 
 //----------------------------------------------------------------
@@ -230,6 +230,18 @@ typedef     cli::array<CountedScores^, 1>   CountedScoreList;
 
 }   //  End of namespace  Common
 
+//----------------------------------------------------------------
+/**
+**    その他の定数。
+**/
+
+public enum  class  Consts
+{
+    MAGIC_NO_PROBABILITY_WONS
+        = Score4Core::Common::MAGIC_NO_PROBABILITY_WONS,
+    MAGICLIST_NO_DATA_ENTRY
+        = Score4Core::Common::MAGICLIST_NO_DATA_ENTRY
+};
 
 //========================================================================
 //
