@@ -130,6 +130,30 @@ ScoreDocument::!ScoreDocument()
 //
 
 //----------------------------------------------------------------
+//    ゲームレコードを追加登録する。
+//
+
+ErrCode
+ScoreDocument::appendGameRecord(
+        GameResult^     gameRecord)
+{
+    Score4Core::Common::GameResult  umRecord;
+    Score4Core::ErrCode             retErr;
+
+    const   RecordFlag  flagRec = gameRecord->eGameFlags;
+
+    umRecord.eGameFlags     = static_cast<Score4Core::RecordFlag>(flagRec);
+    umRecord.recordDate     = getDateSerial(gameRecord->recordDate);
+    umRecord.visitorTeam    = gameRecord->awayTeam;
+    umRecord.homeTeam       = gameRecord->homeTeam;
+    umRecord.visitorScore   = gameRecord->awayScore;
+    umRecord.homeScore      = gameRecord->homeScore;
+
+    retErr  = this->m_ptrObj->appendGameRecord(umRecord);
+    return ( static_cast<ErrCode>(retErr) );
+}
+
+//----------------------------------------------------------------
 //    ドキュメントの内容をクリアする。
 //
 
