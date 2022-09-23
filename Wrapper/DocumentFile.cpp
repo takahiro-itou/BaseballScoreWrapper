@@ -160,6 +160,20 @@ DocumentFile::saveToBinaryFile(
     return ( static_cast<ErrCode>(retVal) );
 }
 
+//----------------------------------------------------------------
+//    データをテキストファイルに書き込む。
+//
+
+ErrCode
+DocumentFile::saveToTextFile(
+        ScoreDocument^      objDoc,
+        System::String^     fileName)
+{
+    const   Score4Core::ErrCode
+        retVal  = Score4Core::ERR_FAILURE;
+    return ( static_cast<ErrCode>(retVal) );
+}
+
 //========================================================================
 //
 //    Accessors.
