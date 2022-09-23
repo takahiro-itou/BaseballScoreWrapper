@@ -265,6 +265,20 @@ ScoreDocument::optimizeGameRecords()
     return ( static_cast<ErrCode>(retVal) );
 }
 
+//----------------------------------------------------------------
+//    最終日付を更新する。
+//
+
+ErrCode
+ScoreDocument::updateLastDate(
+        System::Boolean     flgRecordOnly,
+        System::DateTime^   lastDate)
+{
+    Score4Core::ErrCode  retVal;
+
+    return ( static_cast<ErrCode>(retVal) );
+}
+
 //========================================================================
 //
 //    Public Member Functions (Static).
