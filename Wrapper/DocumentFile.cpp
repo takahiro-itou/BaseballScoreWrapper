@@ -173,7 +173,9 @@ DocumentFile::saveToTextFile(
         System::String^     fileName)
 {
     const   Score4Core::ErrCode
-        retVal  = Score4Core::ERR_FAILURE;
+        retVal = WrapTarget::saveToTextFile(
+                    objDoc->toNativeInstance(),
+                    marshal_as<std::string>(fileName));
     return ( static_cast<ErrCode>(retVal) );
 }
 
