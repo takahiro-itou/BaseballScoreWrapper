@@ -131,6 +131,20 @@ DocumentFile::readFromBinaryFile(
 }
 
 //----------------------------------------------------------------
+//    データをテキストファイルから読み込む。
+//
+
+ErrCode
+DocumentFile::readFromTextFile(
+        System::String^     fileName,
+        ScoreDocument^      ptrDoc)
+{
+    const   Score4Core::ErrCode
+        retVal  = Score4Core::ERR_FAILURE;
+    return ( static_cast<ErrCode>(retVal) );
+}
+
+//----------------------------------------------------------------
 //    データをバイナリファイルに書き込む。
 //
 
