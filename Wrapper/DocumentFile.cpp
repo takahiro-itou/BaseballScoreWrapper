@@ -139,8 +139,9 @@ DocumentFile::readFromTextFile(
         System::String^     fileName,
         ScoreDocument^      ptrDoc)
 {
+    WrapTarget  tmpWrap = WrapTarget();
     const   Score4Core::ErrCode
-        retVal = WrapTarget::readFromTextFile(
+        retVal = tmpWrap.readFromTextFile(
                     marshal_as<std::string>(fileName),
                     ptrDoc->toNativePointer());
     return ( static_cast<ErrCode>(retVal) );
