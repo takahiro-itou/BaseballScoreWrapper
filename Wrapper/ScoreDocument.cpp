@@ -154,6 +154,17 @@ ScoreDocument::appendGameRecord(
 }
 
 //----------------------------------------------------------------
+//    全てのレコードを検査して最終日付を設定する。
+//
+
+System::DateTime^
+ScoreDocument::checkLastDate()
+{
+    DateSerial  retDate = 0;
+    return ( getDateTime(retDate) );
+}
+
+//----------------------------------------------------------------
 //    ドキュメントの内容をクリアする。
 //
 
