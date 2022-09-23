@@ -140,7 +140,9 @@ DocumentFile::readFromTextFile(
         ScoreDocument^      ptrDoc)
 {
     const   Score4Core::ErrCode
-        retVal  = Score4Core::ERR_FAILURE;
+        retVal = WrapTarget::readFromTextFile(
+                    marshal_as<std::string>(fileName),
+                    ptrDoc->toNativePointer());
     return ( static_cast<ErrCode>(retVal) );
 }
 
