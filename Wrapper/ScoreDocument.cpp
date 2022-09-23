@@ -275,7 +275,12 @@ ScoreDocument::updateLastDate(
         System::DateTime^   lastDate)
 {
     Score4Core::ErrCode  retVal;
+    const   DateSerial  dsLast  = getDateSerial(lastDate);
+    const   Boolean     blnFlag = (flgRecordOnly
+                                   ? Score4Core::BOOL_TRUE
+                                   : Score4Core::BOOL_FALSE);
 
+    retVal  = this->m_ptrObj->updateLastDate(blnFlag, dsLast);
     return ( static_cast<ErrCode>(retVal) );
 }
 
