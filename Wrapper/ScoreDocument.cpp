@@ -408,10 +408,11 @@ ScoreDocument::getNumTeams()
 //    最適化済みフラグを取得する。
 //
 
-Boolean
+System::Boolean
 ScoreDocument::getOptimizedFlag()
 {
-    return ( static_cast<Boolean>(this->m_ptrObj->getOptimizedFlag()) );
+    Score4Core::Boolean retVal  = this->m_ptrObj->getOptimizedFlag();
+    return ( retVal != Score4Core::BOOL_FALSE );
 }
 
 //========================================================================
