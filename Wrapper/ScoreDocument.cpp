@@ -160,7 +160,7 @@ ScoreDocument::appendGameRecord(
 System::DateTime^
 ScoreDocument::checkLastDate()
 {
-    DateSerial  retDate = 0;
+    DateSerial  retDate = this->m_ptrObj->checkLastDate();
     return ( getDateTime(retDate) );
 }
 
