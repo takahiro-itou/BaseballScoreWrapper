@@ -131,6 +131,23 @@ DocumentFile::readFromBinaryFile(
 }
 
 //----------------------------------------------------------------
+//    データをテキストファイルから読み込む。
+//
+
+ErrCode
+DocumentFile::readFromTextFile(
+        System::String^     fileName,
+        ScoreDocument^      ptrDoc)
+{
+    WrapTarget  tmpWrap = WrapTarget();
+    const   Score4Core::ErrCode
+        retVal = tmpWrap.readFromTextFile(
+                    marshal_as<std::string>(fileName),
+                    ptrDoc->toNativePointer());
+    return ( static_cast<ErrCode>(retVal) );
+}
+
+//----------------------------------------------------------------
 //    データをバイナリファイルに書き込む。
 //
 
@@ -141,6 +158,22 @@ DocumentFile::saveToBinaryFile(
 {
     const   Score4Core::ErrCode
         retVal = WrapTarget::saveToBinaryFile(
+                    objDoc->toNativeInstance(),
+                    marshal_as<std::string>(fileName));
+    return ( static_cast<ErrCode>(retVal) );
+}
+
+//----------------------------------------------------------------
+//    データをテキストファイルに書き込む。
+//
+
+ErrCode
+DocumentFile::saveToTextFile(
+        ScoreDocument^      objDoc,
+        System::String^     fileName)
+{
+    const   Score4Core::ErrCode
+        retVal = WrapTarget::saveToTextFile(
                     objDoc->toNativeInstance(),
                     marshal_as<std::string>(fileName));
     return ( static_cast<ErrCode>(retVal) );

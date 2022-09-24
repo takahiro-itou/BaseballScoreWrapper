@@ -154,6 +154,17 @@ ScoreDocument::appendGameRecord(
 }
 
 //----------------------------------------------------------------
+//    全てのレコードを検査して最終日付を設定する。
+//
+
+System::DateTime^
+ScoreDocument::checkLastDate()
+{
+    DateSerial  retDate = this->m_ptrObj->checkLastDate();
+    return ( getDateTime(retDate) );
+}
+
+//----------------------------------------------------------------
 //    ドキュメントの内容をクリアする。
 //
 
@@ -207,7 +218,6 @@ ScoreDocument::countScores(
     this->m_ptrBuf->clear();
     this->m_ptrBuf->resize(getNumTeams());
 
-    this->m_trgDate = getDateSerial(trgLastDate);
     retVal  = this->m_ptrObj->countScores(dsLast, *(this->m_ptrBuf));
 
     const  LeagueIndex  numLeagues  = getNumLeagues();
@@ -262,6 +272,25 @@ ScoreDocument::optimizeGameRecords()
     Score4Core::ErrCode  retVal;
 
     retVal  = this->m_ptrObj->optimizeGameRecords();
+    return ( static_cast<ErrCode>(retVal) );
+}
+
+//----------------------------------------------------------------
+//    最終日付を更新する。
+//
+
+ErrCode
+ScoreDocument::updateLastDate(
+        System::Boolean     flgRecordOnly,
+        System::DateTime^   lastDate)
+{
+    Score4Core::ErrCode  retVal;
+    const   DateSerial  dsLast  = getDateSerial(lastDate);
+    const   Boolean     blnFlag = (flgRecordOnly
+                                   ? Score4Core::BOOL_TRUE
+                                   : Score4Core::BOOL_FALSE);
+
+    retVal  = this->m_ptrObj->updateLastDate(blnFlag, dsLast);
     return ( static_cast<ErrCode>(retVal) );
 }
 
@@ -389,10 +418,11 @@ ScoreDocument::getNumTeams()
 //    最適化済みフラグを取得する。
 //
 
-Boolean
+System::Boolean
 ScoreDocument::getOptimizedFlag()
 {
-    return ( static_cast<Boolean>(this->m_ptrObj->getOptimizedFlag()) );
+    Score4Core::Boolean retVal  = this->m_ptrObj->getOptimizedFlag();
+    return ( retVal != Score4Core::BOOL_FALSE );
 }
 
 //========================================================================
