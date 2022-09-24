@@ -218,7 +218,6 @@ ScoreDocument::countScores(
     this->m_ptrBuf->clear();
     this->m_ptrBuf->resize(getNumTeams());
 
-    this->m_trgDate = dsLast;
     retVal  = this->m_ptrObj->countScores(dsLast, *(this->m_ptrBuf));
 
     const  LeagueIndex  numLeagues  = getNumLeagues();
