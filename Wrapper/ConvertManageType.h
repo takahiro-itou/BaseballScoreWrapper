@@ -147,7 +147,7 @@ copyVectorToManage(
 
 template <typename T>
 inline  void
-toUnmanageFromArray(
+copyManageArray1ToUnmanageVector(
         cli::array<T, 1> ^  arraySrc,
         std::vector<T>   &  vecDest)
 {
@@ -167,7 +167,7 @@ toUnmanageFromArray(
 
 template <typename T>
 inline  void
-toUnmanageFromTable(
+copyManageArray2ToUnmanageTable(
         cli::array<T, 2> ^              arraySrc,
         std::vector< std::vector<T> > & tblDest)
 {
