@@ -21,6 +21,9 @@
 #include    "StdAfx.h"
 
 #include    "ScoreDocument.h"
+
+#include    "ConvertManageType.h"
+
 #include    "Score4Core/Common/DateTimeFormat.h"
 
 #include    <msclr/marshal_cppstd.h>

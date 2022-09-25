@@ -21,6 +21,8 @@
 #include    "StdAfx.h"
 
 #include    "ScoreInterface.h"
+
+#include    "ConvertManageType.h"
 #include    "Score4Types.h"
 
 namespace  Score4Wrapper  {
