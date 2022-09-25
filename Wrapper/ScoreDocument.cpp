@@ -342,7 +342,7 @@ ScoreDocument::makeDigitsList(
     copyManageArray1ToUnmanageVector(rateList, workRate);
     const   NumOfDigits
         retVal  = WrapTarget::makeDigitsList(workRate, workDigits);
-    digitsList  = copyVectorToManage(workDigits);
+    digitsList  = toManageFromVector(workDigits);
 
     return ( retVal );
 }

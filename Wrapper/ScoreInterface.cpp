@@ -90,10 +90,10 @@ copyToManageType(
     csTrg->numLost      = copyArrayToManage(csSrc.numLost);
     csTrg->numDraw      = copyArrayToManage(csSrc.numDraw);
     csTrg->numGames     = copyArrayToManage(csSrc.numGames);
-    csTrg->vsWons       = copyTableToManage(csSrc.vsWons);
-    csTrg->vsLost       = copyTableToManage(csSrc.vsLost);
-    csTrg->vsDraw       = copyTableToManage(csSrc.vsDraw);
-    csTrg->restGames    = copyTableToManage(csSrc.restGames);
+    csTrg->vsWons       = toManageFromTable(csSrc.vsWons);
+    csTrg->vsLost       = toManageFromTable(csSrc.vsLost);
+    csTrg->vsDraw       = toManageFromTable(csSrc.vsDraw);
+    csTrg->restGames    = toManageFromTable(csSrc.restGames);
 
     csTrg->numLeagueRestGames
             = copyArrayToManage(csSrc.numLeagueRestGames);
@@ -108,8 +108,8 @@ copyToManageType(
 
     csTrg->totalGotScores   = copyArrayToManage(csSrc.totalGotScores);
     csTrg->totalLostScores  = copyArrayToManage(csSrc.totalLostScores);
-    csTrg->vsGotScores      = copyTableToManage(csSrc.vsGotScores);
-    csTrg->vsLostScores     = copyTableToManage(csSrc.vsLostScores);
+    csTrg->vsGotScores      = toManageFromTable(csSrc.vsGotScores);
+    csTrg->vsLostScores     = toManageFromTable(csSrc.vsLostScores);
 
     return ( ErrCode::ERR_SUCCESS );
 }

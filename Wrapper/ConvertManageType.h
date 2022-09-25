@@ -90,7 +90,7 @@ castArrayToManage(
 
 template <typename T, size_t N>
 cli::array<T, 2>^
-copyTableToManage(
+toManageFromTable(
         const  std::vector< std::array<T, N> >  & tblSrc)
 {
     const  int  num = static_cast<int>(tblSrc.size());
@@ -127,7 +127,7 @@ copyVectorToManage(
 
 template <typename T>
 cli::array<T, 1>^
-copyVectorToManage(
+toManageFromVector(
         const  std::vector<T> & vecSrc)
 {
     const  int  num = static_cast<int>(vecSrc.size());
