@@ -38,9 +38,15 @@ typedef     cli::array<GamesCount, 2>       GameCountTable;
 
 typedef     cli::array<GamesCount, 1>       GameCountList;
 
+typedef     cli::array<WinningRate, 1>      WinningRateList;
+typedef     cli::array<WinningRate, 2>      WinningRateTable;
+
 typedef     cli::array<ScoreValue, 1>       ScoreArray;
 
 typedef     cli::array<ScoreValue, 2>       ScoreTable;
+
+typedef     cli::array<NumOfDigits, 1>      NumOfDigitsList;
+typedef     cli::array<NumOfDigits, 2>      NumOfDigitsTable;
 
 typedef     cli::array<GamesCount, 1>       RestGamesArray;
 

@@ -117,8 +117,10 @@ typedef     Score4Core::DateSerial      DateSerial;
 typedef     Score4Core::TeamIndex       TeamIndex;
 typedef     Score4Core::LeagueIndex     LeagueIndex;
 typedef     Score4Core::GamesCount      GamesCount;
+typedef     Score4Core::WinningRate     WinningRate;
 typedef     Score4Core::RecordIndex     RecordIndex;
 typedef     Score4Core::ScoreValue      ScoreValue;
+typedef     Score4Core::NumOfDigits     NumOfDigits;
 typedef     Score4Core::FileLength      FileLength;
 
 }   //  End of namespace  Score4Wrapper
