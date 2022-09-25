@@ -47,6 +47,11 @@ copyArrayToManage(
     return ( aryDest );
 }
 
+//----------------------------------------------------------------
+/**   アンマネージ型静的配列をマネージ型配列に変換する。
+**
+**/
+
 template <typename T, size_t N>
 cli::array<T, 1>^
 copyArrayToManage(
@@ -59,6 +64,11 @@ copyArrayToManage(
 
     return ( aryDest );
 }
+
+//----------------------------------------------------------------
+/**   アンマネージ型静的配列をマネージ型配列に変換する。
+**
+**/
 
 template <typename TD, typename TS, size_t N>
 cli::array<TD, 1>^
@@ -128,6 +138,26 @@ copyVectorToManage(
     }
 
     return ( vecDest );
+}
+
+//----------------------------------------------------------------
+/**   マネージ型配列をアンマネージ型動的配列に変換する。
+**
+**/
+
+template <typename T>
+inline  void
+toUnmanageFromArray(
+        cli::array<T, 1> ^  arraySrc,
+        std::vector<T>   &  vecDest)
+{
+    const  int  num = arraySrc.Length;
+    vecDest.clear();
+    vecDest.resize(num);
+    for ( int i = 0; i < num; ++ i ) {
+        vecDest[i]  = arraySrc[i];
+    }
+    return;
 }
 
 }   //  End of namespace  Score4Wrapper
