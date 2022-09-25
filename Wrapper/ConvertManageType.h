@@ -160,4 +160,31 @@ toUnmanageFromArray(
     return;
 }
 
+//----------------------------------------------------------------
+/**   マネージ型配列をアンマネージ型テーブルに変換する。
+**
+**/
+
+template <typename T>
+inline  void
+toUnmanageFromTable(
+        cli::array<T, 2> ^              arraySrc,
+        std::vector< std::vector<T> > & tblDest)
+{
+    const  int  numRows = arraySrc.GetLength(0);
+    const  int  numCols = arraySrc.GetLength(1);
+
+    tblDest.clear();
+    tblDest.resize(numRows);
+    for ( int r = 0; r < numRows; ++ r ) {
+        std::vector<T> & tblRow = tblDest[r];
+        tblRow.clear();
+        tblRow.resize(numCols);
+        for ( int c = 0; c < numCols; ++ c ) {
+            tblRow[c] = arraySrc[r][c];
+        }
+    }
+    return;
+}
+
 }   //  End of namespace  Score4Wrapper
