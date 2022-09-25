@@ -151,7 +151,7 @@ copyManageArray1ToUnmanageVector(
         cli::array<T, 1> ^  arraySrc,
         std::vector<T>   &  vecDest)
 {
-    const  int  num = arraySrc.Length;
+    const  int  num = arraySrc->Length;
     vecDest.clear();
     vecDest.resize(num);
     for ( int i = 0; i < num; ++ i ) {
@@ -171,8 +171,8 @@ copyManageArray2ToUnmanageTable(
         cli::array<T, 2> ^              arraySrc,
         std::vector< std::vector<T> > & tblDest)
 {
-    const  int  numRows = arraySrc.GetLength(0);
-    const  int  numCols = arraySrc.GetLength(1);
+    const  int  numRows = arraySrc->GetLength(0);
+    const  int  numCols = arraySrc->GetLength(1);
 
     tblDest.clear();
     tblDest.resize(numRows);
