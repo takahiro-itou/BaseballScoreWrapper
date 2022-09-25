@@ -336,7 +336,15 @@ ScoreDocument::makeDigitsList(
         WinningRateList^    rateList,
         NumOfDigitsList^%   digitsList)
 {
-    return ( 0 );
+    WrapTarget::WinningRateList workRate;
+    WrapTarget::NumOfDigitsList workDigits;
+
+    copyManageArray1ToUnmanageVector(rateList, workRate);
+    const   NumOfDigits
+        retVal  = WrapTarget::makeDigitsList(workRate, workDigits);
+    digitsList  = copyVectorToManage(workDigits);
+
+    return ( retVal );
 }
 
 //----------------------------------------------------------------
