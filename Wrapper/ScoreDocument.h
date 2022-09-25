@@ -49,13 +49,19 @@ private:
 public:
 
     /**   リーグ情報。  **/
-    typedef     Common::LeagueInfo      LeagueInfo;
+    typedef     Common::LeagueInfo          LeagueInfo;
 
     /**   チーム情報。  **/
-    typedef     Common::TeamInfo        TeamInfo;
+    typedef     Common::TeamInfo            TeamInfo;
 
     /**   ゲーム結果のレコード。    **/
-    typedef     Common::GameResult      GameResult;
+    typedef     Common::GameResult          GameResult;
+
+    typedef     Common::WinningRateList     WinningRateList;
+    typedef     Common::WinningRateTable    WinningRateTable;
+
+    typedef     Common::NumOfDigitsList     NumOfDigitsList;
+    typedef     Common::NumOfDigitsTable    NumOfDigitsTable;
 
 //========================================================================
 //
