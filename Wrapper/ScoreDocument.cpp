@@ -263,6 +263,18 @@ ScoreDocument::findGameRecords(
 }
 
 //----------------------------------------------------------------
+//    勝率テーブルを作成する。
+//
+
+GamesCount
+ScoreDocument::makeWinningRateTable(
+        const  LeagueIndex  leagueIndex,
+        WinningRateTable^%  rateTable)
+{
+    return ( 0 );
+}
+
+//----------------------------------------------------------------
 //    ゲームレコードを最適化する。
 //
 
@@ -310,6 +322,30 @@ ScoreDocument::createCopy(
     ScoreDocument^  dst = gcnew ScoreDocument;
     dst->m_ptrObj->copyFrom(*(src->m_ptrObj));
     return ( dst );
+}
+
+//----------------------------------------------------------------
+//    表示桁数リストを作成する。
+//
+
+NumOfDigits
+ScoreDocument::makeDigitsList(
+        WinningRateList^    rateList,
+        NumOfDigitsList^%   digitsList)
+{
+    return ( 0 );
+}
+
+//----------------------------------------------------------------
+//    表示桁数テーブルを作成する。
+//
+
+NumOfDigits
+ScoreDocument::makeDigitsTable(
+        WinningRateTable^   rateTable,
+        NumOfDigitsTable^%  digitsTable)
+{
+    return ( 0 );
 }
 
 //========================================================================

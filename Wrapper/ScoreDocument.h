@@ -204,6 +204,19 @@ public:
             Common::RecordIndexList^%   bufRecord);
 
     //----------------------------------------------------------------
+    /**   勝率テーブルを作成する。
+    **
+    **  @param [in] leagueIndex   桁数テーブルを作成するリーグ。
+    **  @param[out] rateTable     勝率テーブルを格納する変数。
+    **  @return     残り試合数の最大値を返す。
+    **      最も多くの試合を残しているチームの、その残り試合数。
+    **/
+    GamesCount
+    makeWinningRateTable(
+            const  LeagueIndex  leagueIndex,
+            WinningRateTable^%  rateTable);
+
+    //----------------------------------------------------------------
     /**   ゲームレコードを最適化する。
     **
     **  @return     エラーコードを返す。
@@ -246,6 +259,34 @@ public:
     static  ScoreDocument^
     createCopy(
             ScoreDocument^  src);
+
+    //----------------------------------------------------------------
+    /**   表示桁数リストを作成する。
+    **
+    **  @param [in] rateList      勝率リスト。
+    **  @param[out] digitsList    桁数リストを格納する変数。
+    **          勝率リストの対応するセルを表示するのに
+    **          最低限必要な桁数を格納する。
+    **  @return     桁数リスト内の最大値を返す。
+    **/
+    static  NumOfDigits
+    makeDigitsList(
+            WinningRateList^    rateList,
+            NumOfDigitsList^%   digitsList);
+
+    //----------------------------------------------------------------
+    /**   表示桁数テーブルを作成する。
+    **
+    **  @param [in] rateTable     勝率テーブル。
+    **  @param[out] digitsTable   桁数テーブルを格納する変数。
+    **          勝率テーブルの対応するセルを表示するのに
+    **          最低限必要な桁数を格納する。
+    **  @return     桁数テーブル内の最大値を返す。
+    **/
+    static  NumOfDigits
+    makeDigitsTable(
+            WinningRateTable^   rateTable,
+            NumOfDigitsTable^%  digitsTable);
 
 //========================================================================
 //
