@@ -181,7 +181,7 @@ copyManageArray2ToUnmanageTable(
         tblRow.clear();
         tblRow.resize(numCols);
         for ( int c = 0; c < numCols; ++ c ) {
-            tblRow[c] = arraySrc[r][c];
+            tblRow[c] = arraySrc[r, c];
         }
     }
     return;
