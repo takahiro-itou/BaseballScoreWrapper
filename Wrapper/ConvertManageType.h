@@ -140,6 +140,31 @@ toManageFromVector(
     return ( vecDest );
 }
 
+template <typename T>
+cli::array<T, 2>^
+toManageFromTable(
+        const   std::vector< std::vector<T> > & tblSrc)
+{
+    const  int  numRows = static_cast<int>(tblSrc);
+    int maxCols = 0;
+    for ( int i = 0; i < numRows; ++ i ) {
+        const  int  numCols = static_cast<int>(tblSrc[i].size());
+        if ( maxCols < numCols ) {
+            maxCols = numCols;
+        }
+    }
+
+    cli::array<T, 2>^   tblDest = gcnew cli::array<T, 2>(numRows, maxCols);
+    for ( int i = 0; i < numRows; ++ i ) {
+        const  int  numCols = static_cast<int>(tblSrc[i].size());
+        for ( int j = 0; j < numCols; ++ j ) {
+            tblDest[i, j] = tblSrc[i][j];
+        }
+    }
+
+    return ( tblDest );
+}
+
 //----------------------------------------------------------------
 /**   マネージ型配列をアンマネージ型動的配列に変換する。
 **
