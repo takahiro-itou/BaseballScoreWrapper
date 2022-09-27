@@ -362,6 +362,7 @@ ScoreDocument::makeDigitsTable(
     copyManageArray2ToUnmanageTable(rateTable, workRate);
     const   NumOfDigits
         retVal  = WrapTarget::makeDigitsTable(workRate, workDigits);
+    digitsTable = toManageFromTable(workDigits);
 
     return ( retVal );
 }

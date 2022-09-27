@@ -145,7 +145,7 @@ cli::array<T, 2>^
 toManageFromTable(
         const   std::vector< std::vector<T> > & tblSrc)
 {
-    const  int  numRows = static_cast<int>(tblSrc);
+    const  int  numRows = static_cast<int>(tblSrc.size());
     int maxCols = 0;
     for ( int i = 0; i < numRows; ++ i ) {
         const  int  numCols = static_cast<int>(tblSrc[i].size());
