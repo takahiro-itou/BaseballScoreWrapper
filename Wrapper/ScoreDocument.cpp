@@ -356,7 +356,14 @@ ScoreDocument::makeDigitsTable(
         WinningRateTable^   rateTable,
         NumOfDigitsTable^%  digitsTable)
 {
-    return ( 0 );
+    WrapTarget::WinningRateTable    workRate;
+    WrapTarget::NumOfDigitsTable    workDigits;
+
+    copyManageArray2ToUnmanageTable(rateTable, workRate);
+    const   NumOfDigits
+        retVal  = WrapTarget::makeDigitsTable(workRate, workDigits);
+
+    return ( retVal );
 }
 
 //========================================================================
