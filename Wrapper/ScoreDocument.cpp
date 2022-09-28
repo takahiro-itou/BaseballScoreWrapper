@@ -274,7 +274,14 @@ ScoreDocument::makeWinningRateTable(
         const  LeagueIndex  leagueIndex,
         WinningRateTable^%  rateTable)
 {
-    return ( 0 );
+    WrapTarget::WinningRateTable    workRate;
+
+    const   GamesCount
+    retVal  = this->m_ptrObj->makeWinningRateTable(
+                    *m_ptrBuf, leagueIndex, workRate);
+    rateTable = toManageFromTable(workRate);
+
+    return ( retVal );
 }
 
 //----------------------------------------------------------------
