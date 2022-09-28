@@ -159,6 +159,7 @@ public:
     TeamIndex
     computeRankOrder(
             LeagueIndex         idxLeague,
+        [System::Runtime::InteropServices::Out]
             array<TeamIndex>^   bufIndex);
 
     //----------------------------------------------------------------
@@ -184,6 +185,7 @@ public:
     **/
     ErrCode
     countScores(
+        [System::Runtime::InteropServices::Out]
             System::DateTime^   trgLastDate);
 
     //----------------------------------------------------------------
@@ -201,6 +203,7 @@ public:
             System::DateTime^           gameDate,
             const   TeamIndex           homeTeam,
             const   TeamIndex           visitorTeam,
+        [System::Runtime::InteropServices::Out]
             Common::RecordIndexList^%   bufRecord);
 
     //----------------------------------------------------------------
@@ -214,6 +217,7 @@ public:
     GamesCount
     makeWinningRateTable(
             const  LeagueIndex  leagueIndex,
+        [System::Runtime::InteropServices::Out]
             WinningRateTable^%  rateTable);
 
     //----------------------------------------------------------------
@@ -272,6 +276,7 @@ public:
     static  NumOfDigits
     makeDigitsList(
             WinningRateList^    rateList,
+        [System::Runtime::InteropServices::Out]
             NumOfDigitsList^%   digitsList);
 
     //----------------------------------------------------------------
@@ -286,6 +291,7 @@ public:
     static  NumOfDigits
     makeDigitsTable(
             WinningRateTable^   rateTable,
+        [System::Runtime::InteropServices::Out]
             NumOfDigitsTable^%  digitsTable);
 
 //========================================================================
