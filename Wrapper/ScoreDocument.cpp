@@ -21,6 +21,9 @@
 #include    "StdAfx.h"
 
 #include    "ScoreDocument.h"
+
+#include    "ConvertManageType.h"
+
 #include    "Score4Core/Common/DateTimeFormat.h"
 
 #include    <msclr/marshal_cppstd.h>
@@ -263,6 +266,25 @@ ScoreDocument::findGameRecords(
 }
 
 //----------------------------------------------------------------
+//    勝率テーブルを作成する。
+//
+
+GamesCount
+ScoreDocument::makeWinningRateTable(
+        const  LeagueIndex  leagueIndex,
+        WinningRateTable^%  rateTable)
+{
+    WrapTarget::WinningRateTable    workRate;
+
+    const   GamesCount
+    retVal  = this->m_ptrObj->makeWinningRateTable(
+                    *m_ptrBuf, leagueIndex, workRate);
+    rateTable = toManageFromTable(workRate);
+
+    return ( retVal );
+}
+
+//----------------------------------------------------------------
 //    ゲームレコードを最適化する。
 //
 
@@ -310,6 +332,46 @@ ScoreDocument::createCopy(
     ScoreDocument^  dst = gcnew ScoreDocument;
     dst->m_ptrObj->copyFrom(*(src->m_ptrObj));
     return ( dst );
+}
+
+//----------------------------------------------------------------
+//    表示桁数リストを作成する。
+//
+
+NumOfDigits
+ScoreDocument::makeDigitsList(
+        WinningRateList^    rateList,
+        NumOfDigitsList^%   digitsList)
+{
+    WrapTarget::WinningRateList workRate;
+    WrapTarget::NumOfDigitsList workDigits;
+
+    copyManageArray1ToUnmanageVector(rateList, workRate);
+    const   NumOfDigits
+        retVal  = WrapTarget::makeDigitsList(workRate, workDigits);
+    digitsList  = toManageFromVector(workDigits);
+
+    return ( retVal );
+}
+
+//----------------------------------------------------------------
+//    表示桁数テーブルを作成する。
+//
+
+NumOfDigits
+ScoreDocument::makeDigitsTable(
+        WinningRateTable^   rateTable,
+        NumOfDigitsTable^%  digitsTable)
+{
+    WrapTarget::WinningRateTable    workRate;
+    WrapTarget::NumOfDigitsTable    workDigits;
+
+    copyManageArray2ToUnmanageTable(rateTable, workRate);
+    const   NumOfDigits
+        retVal  = WrapTarget::makeDigitsTable(workRate, workDigits);
+    digitsTable = toManageFromTable(workDigits);
+
+    return ( retVal );
 }
 
 //========================================================================

@@ -49,13 +49,19 @@ private:
 public:
 
     /**   リーグ情報。  **/
-    typedef     Common::LeagueInfo      LeagueInfo;
+    typedef     Common::LeagueInfo          LeagueInfo;
 
     /**   チーム情報。  **/
-    typedef     Common::TeamInfo        TeamInfo;
+    typedef     Common::TeamInfo            TeamInfo;
 
     /**   ゲーム結果のレコード。    **/
-    typedef     Common::GameResult      GameResult;
+    typedef     Common::GameResult          GameResult;
+
+    typedef     Common::WinningRateList     WinningRateList;
+    typedef     Common::WinningRateTable    WinningRateTable;
+
+    typedef     Common::NumOfDigitsList     NumOfDigitsList;
+    typedef     Common::NumOfDigitsTable    NumOfDigitsTable;
 
 //========================================================================
 //
@@ -153,6 +159,7 @@ public:
     TeamIndex
     computeRankOrder(
             LeagueIndex         idxLeague,
+        [System::Runtime::InteropServices::Out]
             array<TeamIndex>^   bufIndex);
 
     //----------------------------------------------------------------
@@ -178,6 +185,7 @@ public:
     **/
     ErrCode
     countScores(
+        [System::Runtime::InteropServices::Out]
             System::DateTime^   trgLastDate);
 
     //----------------------------------------------------------------
@@ -195,7 +203,22 @@ public:
             System::DateTime^           gameDate,
             const   TeamIndex           homeTeam,
             const   TeamIndex           visitorTeam,
+        [System::Runtime::InteropServices::Out]
             Common::RecordIndexList^%   bufRecord);
+
+    //----------------------------------------------------------------
+    /**   勝率テーブルを作成する。
+    **
+    **  @param [in] leagueIndex   桁数テーブルを作成するリーグ。
+    **  @param[out] rateTable     勝率テーブルを格納する変数。
+    **  @return     残り試合数の最大値を返す。
+    **      最も多くの試合を残しているチームの、その残り試合数。
+    **/
+    GamesCount
+    makeWinningRateTable(
+            const  LeagueIndex  leagueIndex,
+        [System::Runtime::InteropServices::Out]
+            WinningRateTable^%  rateTable);
 
     //----------------------------------------------------------------
     /**   ゲームレコードを最適化する。
@@ -240,6 +263,36 @@ public:
     static  ScoreDocument^
     createCopy(
             ScoreDocument^  src);
+
+    //----------------------------------------------------------------
+    /**   表示桁数リストを作成する。
+    **
+    **  @param [in] rateList      勝率リスト。
+    **  @param[out] digitsList    桁数リストを格納する変数。
+    **          勝率リストの対応する要素を表示するのに
+    **          最低限必要な桁数を格納する。
+    **  @return     桁数リスト内の最大値を返す。
+    **/
+    static  NumOfDigits
+    makeDigitsList(
+            WinningRateList^    rateList,
+        [System::Runtime::InteropServices::Out]
+            NumOfDigitsList^%   digitsList);
+
+    //----------------------------------------------------------------
+    /**   表示桁数テーブルを作成する。
+    **
+    **  @param [in] rateTable     勝率テーブル。
+    **  @param[out] digitsTable   桁数テーブルを格納する変数。
+    **          勝率テーブルの対応するセルを表示するのに
+    **          最低限必要な桁数を格納する。
+    **  @return     桁数テーブル内の最大値を返す。
+    **/
+    static  NumOfDigits
+    makeDigitsTable(
+            WinningRateTable^   rateTable,
+        [System::Runtime::InteropServices::Out]
+            NumOfDigitsTable^%  digitsTable);
 
 //========================================================================
 //

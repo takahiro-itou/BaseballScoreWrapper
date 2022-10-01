@@ -142,7 +142,7 @@ public:
     static  ErrCode
     readFromBinaryFile(
             System::String^     fileName,
-            ScoreDocument^      ptrDoc);
+            ScoreDocument^%     ptrDoc);
 
     //----------------------------------------------------------------
     /**   データをテキストファイルから読み込む。
@@ -157,7 +157,7 @@ public:
     static  ErrCode
     readFromTextFile(
             System::String^     fileName,
-            ScoreDocument^      ptrDoc);
+            ScoreDocument^%     ptrDoc);
 
     //----------------------------------------------------------------
     /**   データをバイナリファイルに書き込む。

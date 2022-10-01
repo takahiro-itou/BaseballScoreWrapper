@@ -121,7 +121,7 @@ DocumentFile::computeImageSize(
 ErrCode
 DocumentFile::readFromBinaryFile(
         System::String^     fileName,
-        ScoreDocument^      ptrDoc)
+        ScoreDocument^%     ptrDoc)
 {
     const   Score4Core::ErrCode
         retVal = WrapTarget::readFromBinaryFile(
@@ -137,7 +137,7 @@ DocumentFile::readFromBinaryFile(
 ErrCode
 DocumentFile::readFromTextFile(
         System::String^     fileName,
-        ScoreDocument^      ptrDoc)
+        ScoreDocument^%     ptrDoc)
 {
     WrapTarget  tmpWrap = WrapTarget();
     const   Score4Core::ErrCode
