@@ -1,13 +1,13 @@
-﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
+﻿//  -*-  coding: utf-8-with-signature;  mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
-**                  ---  Score4 Wrapper  Library.  ---                  **
+**                  ---  Baseball  Score  Wrapper  ---                  **
 **                                                                      **
-**          Copyright (C), 2017-2022, Takahiro Itou                     **
+**          Copyright (C), 2017-2026, Takahiro Itou                     **
 **          All Rights Reserved.                                        **
 **                                                                      **
-**          License: (See COPYING and LICENSE files)                    **
-**          GNU General Public License (GPL) version 3,                 **
+**          License: (See COPYING or LICENSE files)                     **
+**          GNU Affero General Public License (AGPL) version 3,         **
 **          or (at your option) any later version.                      **
 **                                                                      **
 *************************************************************************/
@@ -18,13 +18,14 @@
 **      @file       ScoreDocument.cpp
 **/
 
-#include    "StdAfx.h"
+#include    "PreCompile.h"
 
 #include    "ScoreDocument.h"
 
 #include    "ConvertManageType.h"
 
-#include    "Score4Core/Common/DateTimeFormat.h"
+#include    "BaseballScore/Common/DateTimeFormat.h"
+
 
 #include    <msclr/marshal_cppstd.h>
 using       namespace   msclr::interop;
