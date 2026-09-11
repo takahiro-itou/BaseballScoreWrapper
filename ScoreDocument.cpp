@@ -428,6 +428,47 @@ ScoreDocument::setGameRecord(
 }
 
 //----------------------------------------------------------------
+//    リーグ情報を取得する。
+//
+
+ScoreDocument::LeagueInfo^
+ScoreDocument::getLeagueInfo(
+        const  LeagueIndex  idxLeague)
+{
+    const  WrapTarget::LeagueInfo  &
+        leagueInfo  = this->m_ptrObj->getLeagueInfo(idxLeague);
+
+    LeagueInfo^     retVal  = gcnew LeagueInfo;
+
+    retVal->LeagueName  = marshal_as<System::String^>(leagueInfo.leagueName);
+    retVal->NumPlayOff  = leagueInfo.numPlayOff;
+
+    return ( retVal );
+}
+
+//----------------------------------------------------------------
+//    リーグ情報を設定する。
+//
+
+ErrCode
+ScoreDocument::setLeagueInfo(
+        const  LeagueIndex  idxLeague,
+        LeagueInfo^         leagueInfo)
+{
+    WrapTarget::LeagueInfo  natvVal;
+    Score4Core::ErrCode     retVal;
+
+    System::String^     leagueName  = leagueInfo->LeagueName;
+
+    natvVal.leagueName  = marshal_as<std::string>(leagueName);
+    natvVal.numPlayOff  = leagueInfo->NumPlayOff;
+
+    retVal  = this->m_ptrObj->setLeagueInfo(idxLeague, natvVal);
+    return ( static_cast<ErrCode>(retVal) );
+}
+
+
+//----------------------------------------------------------------
 //    ネイティブのインスタンスを取得する。
 //
 
@@ -544,36 +585,6 @@ ScoreDocument::lastRecordDate::set(
     this->m_ptrObj->setLastRecordDate(getDateSerial(dtVal));
 }
 
-//----------------------------------------------------------------
-
-Common::LeagueInfo^
-ScoreDocument::leagueInfo::get(
-        int  idxLeague)
-{
-    const  WrapTarget::LeagueInfo  &
-        leagueInfo  = this->m_ptrObj->getLeagueInfo(idxLeague);
-
-    LeagueInfo^     retVal  = gcnew LeagueInfo;
-
-    retVal->leagueName  = marshal_as<System::String^>(leagueInfo.leagueName);
-    retVal->numPlayOff  = leagueInfo.numPlayOff;
-
-    return ( retVal );
-}
-
-void
-ScoreDocument::leagueInfo::set(
-        int  idxLeague,  LeagueInfo^  leagueInfo)
-{
-    WrapTarget::LeagueInfo  natvVal;
-
-    System::String^     leagueName  = leagueInfo->leagueName;
-
-    natvVal.leagueName  = marshal_as<std::string>(leagueName);
-    natvVal.numPlayOff  = leagueInfo->numPlayOff;
-
-    this->m_ptrObj->setLeagueInfo(idxLeague, natvVal);
-}
 
 //----------------------------------------------------------------
 //    プロパティ  teamInfo

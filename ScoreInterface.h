@@ -65,10 +65,10 @@ public ref  class   LeagueInfo
 public:
 
     /**   リーグ名。    **/
-    property    System::String^     leagueName;
+    property    System::String^     LeagueName;
 
     /**   プレーオフに進出できるチーム数。  **/
-    property    TeamIndex           numPlayOff;
+    property    TeamIndex           NumPlayOff;
 };
 
 //----------------------------------------------------------------

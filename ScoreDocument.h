@@ -324,6 +324,23 @@ public:
             GameResult^         gameRecord);
 
     //----------------------------------------------------------------
+    /**   リーグ情報を取得する。
+    **
+    **/
+    LeagueInfo^
+    getLeagueInfo(
+            const  LeagueIndex  idxLeague);
+
+    //----------------------------------------------------------------
+    /**   リーグ情報を設定する。
+    **
+    **/
+    ErrCode
+    setLeagueInfo(
+            const  LeagueIndex  idxLeague,
+            LeagueInfo^         leagueInfo);
+
+    //----------------------------------------------------------------
     /**   ネイティブのインスタンスを取得する。
     **
     **  @return     アンマネージド型の参照。
@@ -395,10 +412,20 @@ public:
         void  set(System::DateTime^  dtVal);
     }
 
-    property    LeagueInfo^     leagueInfo[int]
+    //----------------------------------------------------------------
+    /**   プロパティ  LeagueInfos
+    **
+    **    なお C# では、引数付きプロパティを使えないので
+    **  代わりに getLeagueInfo, setLeagueInfo を使うこと
+    **/
+    property    LeagueInfo^     LeagueInfos[int]
     {
-        LeagueInfo^  get(int  idxLeague);
-        void  set(int  idxLeague,  LeagueInfo^  leagueInfo);
+        LeagueInfo^  get(int  idxLeague) {
+            return  this->getLeagueInfo(idxLeague);
+        }
+        void  set(int  idxLeague,  LeagueInfo^  leagueInfo) {
+            this->setLeagueInfo(idxLeague, leagueInfo);
+        }
     }
 
     property    CountedScores^  scoreInfo[int]
