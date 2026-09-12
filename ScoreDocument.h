@@ -394,19 +394,19 @@ public:
 //
 public:
 
-    property    System::DateTime^   lastActiveDate
+    property    System::DateTime^   LastActiveDate
     {
         System::DateTime^   get();
         void  set(System::DateTime^  dtVal);
     }
 
-    property    System::DateTime^   lastImportDate
+    property    System::DateTime^   LastImportDate
     {
         System::DateTime^  get();
         void  set(System::DateTime^  dtVal);
     }
 
-    property    System::DateTime^   lastRecordDate
+    property    System::DateTime^   LastRecordDate
     {
         System::DateTime^  get();
         void  set(System::DateTime^  dtVal);
@@ -435,7 +435,7 @@ public:
         }
     }
 
-    property    DateSerial  targetLastDate
+    property    DateSerial  TargetLastDate
     {
         DateSerial  get()  {
             return ( this->m_trgDate );

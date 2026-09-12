@@ -539,13 +539,13 @@ ScoreDocument::getOptimizedFlag()
 //
 
 System::DateTime^
-ScoreDocument::lastActiveDate::get()
+ScoreDocument::LastActiveDate::get()
 {
     return ( getDateTime(this->m_ptrObj->getLastActiveDate()) );
 }
 
 void
-ScoreDocument::lastActiveDate::set(
+ScoreDocument::LastActiveDate::set(
         System::DateTime^  dtVal)
 {
     this->m_ptrObj->setLastActiveDate(getDateSerial(dtVal));
@@ -556,13 +556,13 @@ ScoreDocument::lastActiveDate::set(
 //
 
 System::DateTime^
-ScoreDocument::lastImportDate::get()
+ScoreDocument::LastImportDate::get()
 {
     return ( getDateTime(this->m_ptrObj->getLastImportDate()) );
 }
 
 void
-ScoreDocument::lastImportDate::set(
+ScoreDocument::LastImportDate::set(
         System::DateTime^  dtVal)
 {
     this->m_ptrObj->setLastImportDate(getDateSerial(dtVal));
@@ -573,13 +573,13 @@ ScoreDocument::lastImportDate::set(
 //
 
 System::DateTime^
-ScoreDocument::lastRecordDate::get()
+ScoreDocument::LastRecordDate::get()
 {
     return ( getDateTime(this->m_ptrObj->getLastRecordDate()) );
 }
 
 void
-ScoreDocument::lastRecordDate::set(
+ScoreDocument::LastRecordDate::set(
         System::DateTime^  dtVal)
 {
     this->m_ptrObj->setLastRecordDate(getDateSerial(dtVal));
