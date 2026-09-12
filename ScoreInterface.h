@@ -70,11 +70,26 @@ public ref  class   LeagueInfo
 {
 public:
 
+    LeagueInfo(
+            const  LeagueIndex  idxLeague)
+        : m_leagueIndex(idxLeague)
+    { }
+
     /**   リーグ名。    **/
     property    System::String^     LeagueName;
 
     /**   プレーオフに進出できるチーム数。  **/
     property    TeamIndex           NumPlayOff;
+
+    /**   リーグ番号。  **/
+    property    LeagueIndex         LeagueID
+    {
+        LeagueIndex get() { return  this->m_leagueIndex; }
+    }
+
+private:
+    LeagueIndex     m_leagueIndex;
+
 };
 
 //----------------------------------------------------------------
@@ -93,7 +108,7 @@ public:
     property    System::String^     TeamName;
 
     /**   試合数のリスト。      **/
-    property    cli::array<GamesCount>^         GameCounts;
+    property    GameCountArray^     GameCounts;
 };
 
 //----------------------------------------------------------------

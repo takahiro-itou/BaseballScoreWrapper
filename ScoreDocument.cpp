@@ -438,7 +438,7 @@ ScoreDocument::getLeagueInfo(
     const  WrapTarget::LeagueInfo  &
         leagueInfo  = this->m_ptrObj->getLeagueInfo(idxLeague);
 
-    LeagueInfo^     retVal  = gcnew LeagueInfo;
+    LeagueInfo^     retVal  = gcnew LeagueInfo(idxLeague);
 
     retVal->LeagueName  = marshal_as<System::String^>(leagueInfo.leagueName);
     retVal->NumPlayOff  = leagueInfo.numPlayOff;
