@@ -529,6 +529,48 @@ ScoreDocument::getOptimizedFlag()
     return ( retVal != Score4Core::BOOL_FALSE );
 }
 
+//----------------------------------------------------------------
+//    チーム情報を取得する。
+//
+
+ScoreDocument::TeamInfo^
+ScoreDocument::getTeamInfo(
+        const   TeamIndex   idxTeam)
+{
+    const  WrapTarget::TeamInfo  &
+        teamInfo    = this->m_ptrObj->getTeamInfo(idxTeam);
+
+    TeamInfo^   retVal  = gcnew TeamInfo;
+
+    retVal->LeagueID    = teamInfo.leagueID;
+    retVal->TeamName    = marshal_as<System::String^>(teamInfo.teamName);
+
+    return ( retVal );
+
+}
+
+//----------------------------------------------------------------
+//    チーム情報を設定する。
+//
+
+ErrCode
+ScoreDocument::setTeamInfo(
+        const   TeamIndex   idxTeam,
+        TeamInfo^           teamInfo)
+{
+    WrapTarget::TeamInfo    natvVal;
+    Score4Core::ErrCode     retVal;
+
+    System::String^     teamName    = teamInfo->TeamName;
+
+    natvVal.leagueID    = teamInfo->LeagueID;
+    natvVal.teamName    = marshal_as<std::string>(teamName);
+
+    retVal  = this->m_ptrObj->setTeamInfo(idxTeam, natvVal);
+    return ( static_cast<ErrCode>(retVal) );
+}
+
+
 //========================================================================
 //
 //    Properties.
@@ -585,41 +627,6 @@ ScoreDocument::LastRecordDate::set(
     this->m_ptrObj->setLastRecordDate(getDateSerial(dtVal));
 }
 
-
-//----------------------------------------------------------------
-//    プロパティ  teamInfo
-//
-
-//----------------------------------------------------------------
-
-Common::TeamInfo^
-ScoreDocument::teamInfo::get(
-        int  idxTeam)
-{
-    const  WrapTarget::TeamInfo  &
-        teamInfo    = this->m_ptrObj->getTeamInfo(idxTeam);
-
-    TeamInfo^   retVal  = gcnew TeamInfo;
-
-    retVal->LeagueID    = teamInfo.leagueID;
-    retVal->TeamName    = marshal_as<System::String^>(teamInfo.teamName);
-
-    return ( retVal );
-}
-
-void
-ScoreDocument::teamInfo::set(
-        int  idxTeam,  TeamInfo^  teamInfo)
-{
-    WrapTarget::TeamInfo    natvVal;
-
-    System::String^     teamName    = teamInfo->TeamName;
-
-    natvVal.leagueID    = teamInfo->LeagueID;
-    natvVal.teamName    = marshal_as<std::string>(teamName);
-
-    this->m_ptrObj->setTeamInfo(idxTeam, natvVal);
-}
 
 //========================================================================
 //

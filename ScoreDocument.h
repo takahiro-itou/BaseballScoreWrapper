@@ -388,6 +388,24 @@ public:
     System::Boolean
     getOptimizedFlag();
 
+    //----------------------------------------------------------------
+    /**   チーム情報を取得する。
+    **
+    **/
+    TeamInfo^
+    getTeamInfo(
+            const   TeamIndex   idxTeam);
+
+    //----------------------------------------------------------------
+    /**   チーム情報を設定する。
+    **
+    **/
+    ErrCode
+    setTeamInfo(
+            const   TeamIndex   idxTeam,
+            TeamInfo^           teamInfo);
+
+
 //========================================================================
 //
 //    Properties.
@@ -428,7 +446,13 @@ public:
         }
     }
 
-    property    CountedScores^  scoreInfo[int]
+    //----------------------------------------------------------------
+    /**   プロパティ  ScoreInfos
+    **
+    **    なお C# では、引数付きプロパティを使えないので
+    **  代わりに getScoreInfo を使うこと
+    **/
+    property    CountedScores^  ScoreInfos[int]
     {
         CountedScores^  get(int  idxTeam)  {
             return ( this->m_csiBuf[idxTeam] );
@@ -442,11 +466,22 @@ public:
         }
     }
 
-    property    TeamInfo^   teamInfo[int]
+    //----------------------------------------------------------------
+    /**   プロパティ  TeamInfos
+    **
+    **    なお C# では、引数付きプロパティを使えないので
+    **  代わりに getTeamInfo, setTeamInfo を使うこと
+    **/
+    property    TeamInfo^   TeamInfos[int]
     {
-        TeamInfo^  get(int  idxTeam);
-        void  set(int  idxTeam,  TeamInfo^  teamInfo);
+        TeamInfo^  get(int  idxTeam) {
+            return  this->getTeamInfo(idxTeam);
+        }
+        void  set(int  idxTeam,  TeamInfo^  teamInfo) {
+            this->setTeamInfo(idxTeam, teamInfo);
+        }
     }
+
 
 //========================================================================
 //
