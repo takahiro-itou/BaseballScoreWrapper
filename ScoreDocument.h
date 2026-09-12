@@ -389,6 +389,17 @@ public:
     getOptimizedFlag();
 
     //----------------------------------------------------------------
+    /**   集計済みの成績情報を取得する。
+    **
+    **/
+    CountedScores^
+    getScoreInfo(
+            const   TeamIndex   idxTeam)
+    {
+        return ( this->m_csiBuf[idxTeam] );
+    }
+
+    //----------------------------------------------------------------
     /**   チーム情報を取得する。
     **
     **/
@@ -455,7 +466,7 @@ public:
     property    CountedScores^  ScoreInfos[int]
     {
         CountedScores^  get(int  idxTeam)  {
-            return ( this->m_csiBuf[idxTeam] );
+            return  this->getScoreInfo(idxTeam);
         }
     }
 
