@@ -144,14 +144,14 @@ ScoreDocument::appendGameRecord(
     Score4Core::Common::GameResult  umRecord;
     Score4Core::ErrCode             retVal;
 
-    const   RecordFlag  flagRec = gameRecord->eGameFlags;
+    const   RecordFlag  flagRec = gameRecord->GameFlags;
 
     umRecord.eGameFlags     = static_cast<Score4Core::RecordFlag>(flagRec);
-    umRecord.recordDate     = getDateSerial(gameRecord->recordDate);
-    umRecord.visitorTeam    = gameRecord->awayTeam;
-    umRecord.homeTeam       = gameRecord->homeTeam;
-    umRecord.visitorScore   = gameRecord->awayScore;
-    umRecord.homeScore      = gameRecord->homeScore;
+    umRecord.recordDate     = getDateSerial(gameRecord->RecordDate);
+    umRecord.visitorTeam    = gameRecord->AwayTeam;
+    umRecord.homeTeam       = gameRecord->HomeTeam;
+    umRecord.visitorScore   = gameRecord->AwayScore;
+    umRecord.homeScore      = gameRecord->HomeScore;
 
     retVal  = this->m_ptrObj->appendGameRecord(umRecord);
     return ( static_cast<ErrCode>(retVal) );
@@ -392,12 +392,12 @@ ScoreDocument::getGameRecord(
         & umRecord  = this->m_ptrObj->getGameRecord(idxRecord);
     Common::GameResult^  managedRecord  = gcnew Common::GameResult;
 
-    managedRecord->eGameFlags   = static_cast<RecordFlag>(umRecord.eGameFlags);
-    managedRecord->recordDate   = getDateTime(umRecord.recordDate);
-    managedRecord->awayTeam     = umRecord.visitorTeam;
-    managedRecord->homeTeam     = umRecord.homeTeam;
-    managedRecord->awayScore    = umRecord.visitorScore;
-    managedRecord->homeScore    = umRecord.homeScore;
+    managedRecord->GameFlags    = static_cast<RecordFlag>(umRecord.eGameFlags);
+    managedRecord->RecordDate   = getDateTime(umRecord.recordDate);
+    managedRecord->AwayTeam     = umRecord.visitorTeam;
+    managedRecord->HomeTeam     = umRecord.homeTeam;
+    managedRecord->AwayScore    = umRecord.visitorScore;
+    managedRecord->HomeScore    = umRecord.homeScore;
 
     return ( managedRecord );
 }
@@ -414,14 +414,14 @@ ScoreDocument::setGameRecord(
     Score4Core::Common::GameResult  umRecord;
     Score4Core::ErrCode             retVal;
 
-    const   RecordFlag  flagRec = gameRecord->eGameFlags;
+    const   RecordFlag  flagRec = gameRecord->GameFlags;
 
     umRecord.eGameFlags     = static_cast<Score4Core::RecordFlag>(flagRec);
-    umRecord.recordDate     = getDateSerial(gameRecord->recordDate);
-    umRecord.visitorTeam    = gameRecord->awayTeam;
-    umRecord.homeTeam       = gameRecord->homeTeam;
-    umRecord.visitorScore   = gameRecord->awayScore;
-    umRecord.homeScore      = gameRecord->homeScore;
+    umRecord.recordDate     = getDateSerial(gameRecord->RecordDate);
+    umRecord.visitorTeam    = gameRecord->AwayTeam;
+    umRecord.homeTeam       = gameRecord->HomeTeam;
+    umRecord.visitorScore   = gameRecord->AwayScore;
+    umRecord.homeScore      = gameRecord->HomeScore;
 
     retVal  = this->m_ptrObj->setGameRecord(idxRecord, umRecord);
     return ( static_cast<ErrCode>(retVal) );
