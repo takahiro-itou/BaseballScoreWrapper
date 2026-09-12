@@ -56,6 +56,11 @@ typedef     cli::array<GamesCount, 2>       RestGamesTable;
 /**   レコード番号の配列。      **/
 typedef     cli::array<RecordIndex, 1>      RecordIndexList;
 
+typedef     cli::array<MagicInfoFlags>      MagicInfoArray;
+
+typedef     cli::array<GamesCount>          MagicNumberArray;
+
+
 //----------------------------------------------------------------
 /**
 **    リーグ情報。
@@ -154,15 +159,15 @@ public ref  class   MagicInfo
 public:
 
     /**   可能性のある最低順位。    **/
-    property    TeamIndex       RankLow;
+    property    TeamIndex           RankLow;
 
     /**   可能性のある最高順位。    **/
-    property    TeamIndex       RankHigh;
+    property    TeamIndex           RankHigh;
 
-    cli::array<MagicInfoFlags>^ MagicFlags;
+    property    MagicInfoArray^     MagicFlags;
 
     /**   マジック。                **/
-    cli::array<GamesCount>^     MagicNumber;
+    property    MagicNumberArray^   MagicNumber;
 };
 
 //----------------------------------------------------------------
