@@ -174,62 +174,62 @@ public ref  class   CountedScores
 public:
 
     /**   勝ち数。      **/
-    property    GameCountArray^     numWons;
+    property    GameCountArray^     NumWons;
 
     /**   負け数。      **/
-    property    GameCountArray^     numLost;
+    property    GameCountArray^     NumLost;
 
     /**   引分け。      **/
-    property    GameCountArray^     numDraw;
+    property    GameCountArray^     NumDraw;
 
     /**   消化試合数。  **/
-    property    RestGamesArray^     numGames;
+    property    RestGamesArray^     NumGames;
 
     /**   対チーム毎の勝ち数。  **/
-    property    GameCountTable^     vsWons;
+    property    GameCountTable^     VsWons;
 
     /**   対チーム毎の負け数。  **/
-    property    GameCountTable^     vsLost;
+    property    GameCountTable^     VsLost;
 
     /**   対チーム毎の引分け。  **/
-    property    GameCountTable^     vsDraw;
+    property    GameCountTable^     VsDraw;
 
     /**   各チームとの残り試合数。      **/
-    property    RestGamesTable^     restGames;
+    property    RestGamesTable^     RestGames;
 
     /**   所属リーグ内での残り試合数。  **/
-    property    RestGamesArray^     numLeagueRestGames;
+    property    RestGamesArray^     NumLeagueRestGames;
 
     /**   交流戦の残り試合数。          **/
-    property    RestGamesArray^     numInterRestGames;
+    property    RestGamesArray^     NumInterRestGames;
 
     /**
     **    リーグ内と交流戦を合わせた残り試合数。
     **/
-    property    RestGamesArray^     numTotalRestGames;
+    property    RestGamesArray^     NumTotalRestGames;
 
     /**   マジック関連の集計結果。  **/
-    property    MagicInfo^          totalMagicInfo;
+    property    MagicInfo^          TotalMagicInfo;
 
     /**   現在の順位。              **/
-    property    TeamIndex           currentRank;
+    property    TeamIndex           CurrentRank;
 
     /**
     **    必要勝利数等、マジック関連の補助計算データ。
     **/
-    property    WinsForBeatList^    numWinsForBeat;
+    property    WinsForBeatList^    NumWinsForBeat;
 
     /**   総得点。  **/
-    property    ScoreArray^         totalGotScores;
+    property    ScoreArray^         TotalGotScores;
 
     /**   総失点。  **/
-    property    ScoreArray^         totalLostScores;
+    property    ScoreArray^         TotalLostScores;
 
     /**  対チーム毎の得点。 **/
-    property    ScoreTable^         vsGotScores;
+    property    ScoreTable^         VsGotScores;
 
     /**  対チーム毎の失点。 **/
-    property    ScoreTable^         vsLostScores;
+    property    ScoreTable^         VsLostScores;
 };
 
 typedef     cli::array<CountedScores^, 1>   CountedScoreList;
