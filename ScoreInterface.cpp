@@ -46,12 +46,12 @@ copyToManageType(
 
     for ( int i = 0; i < num; ++ i ) {
         wbDest[i]   = gcnew Score4Wrapper::Common::NumWinsForBeat;
-        wbDest[i]->filterType   =
+        wbDest[i]->FilterType   =
                 static_cast<Score4Wrapper::MagicFilter>(wbSrc[i].filterType);
-        wbDest[i]->numNeedWins  = wbSrc[i].numNeedWins;
-        wbDest[i]->numRestGame  = wbSrc[i].numRestGame;
-        wbDest[i]->numWinsSelf  = wbSrc[i].numWinsSelf;
-        wbDest[i]->numWinsDiff  = wbSrc[i].numWinsDiff;
+        wbDest[i]->NumNeedWins  = wbSrc[i].numNeedWins;
+        wbDest[i]->NumRestGame  = wbSrc[i].numRestGame;
+        wbDest[i]->NumWinsSelf  = wbSrc[i].numWinsSelf;
+        wbDest[i]->NumWinsDiff  = wbSrc[i].numWinsDiff;
     }
 
     return ( wbDest );
@@ -68,11 +68,11 @@ copyToManageType(
 {
     Score4Wrapper::Common::MagicInfo^
             miTrg   = gcnew Score4Wrapper::Common::MagicInfo;
-    miTrg->rankLow  = miSrc.rankLow;
-    miTrg->rankHigh = miSrc.rankHigh;
+    miTrg->RankLow  = miSrc.rankLow;
+    miTrg->RankHigh = miSrc.rankHigh;
 
-    miTrg->magicFlags   = castArrayToManage<MagicInfoFlags>(miSrc.magicFlags);
-    miTrg->magicNumber  = copyArrayToManage(miSrc.magicNumber);
+    miTrg->MagicFlags   = castArrayToManage<MagicInfoFlags>(miSrc.magicFlags);
+    miTrg->MagicNumber  = copyArrayToManage(miSrc.magicNumber);
 
     return ( miTrg );
 }

@@ -117,27 +117,27 @@ public ref  class   NumWinsForBeat
 public:
 
     /**   必要勝利数が示している情報の種類。    **/
-    property    MagicFilter     filterType;
+    property    MagicFilter     FilterType;
 
     /**
     **    対象チームを上回るのに必要な勝利数。
     **/
-    property    GamesCount      numNeedWins;
+    property    GamesCount      NumNeedWins;
 
     /**
     **    残り試合数。ただし、マジックが点灯している時は、直接対決を除く。
     **/
-    property    GamesCount      numRestGame;
+    property    GamesCount      NumRestGame;
 
     /**
     **    対象チームを自力で上回るのに必要な勝利数。
     **/
-    property    GamesCount      numWinsSelf;
+    property    GamesCount      NumWinsSelf;
 
     /**
     **    対象チームを自力で上回る可能性ギリギリのラインとのゲーム差。
     **/
-    property    GamesCount      numWinsDiff;
+    property    GamesCount      NumWinsDiff;
 
 };
 
@@ -153,15 +153,15 @@ public ref  class   MagicInfo
 public:
 
     /**   可能性のある最低順位。    **/
-    property    TeamIndex       rankLow;
+    property    TeamIndex       RankLow;
 
     /**   可能性のある最高順位。    **/
-    property    TeamIndex       rankHigh;
+    property    TeamIndex       RankHigh;
 
-    cli::array<MagicInfoFlags>^ magicFlags;
+    cli::array<MagicInfoFlags>^ MagicFlags;
 
     /**   マジック。                **/
-    cli::array<GamesCount>^     magicNumber;
+    cli::array<GamesCount>^     MagicNumber;
 };
 
 //----------------------------------------------------------------
