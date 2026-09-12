@@ -22,7 +22,8 @@
 
 #include    "BaseballScore/Document/ScoreDocument.h"
 
-#include    "Score4Types.h"
+#include    "BaseballScoreTypes.h"
+
 
 namespace  Score4Wrapper  {
 namespace  Common  {

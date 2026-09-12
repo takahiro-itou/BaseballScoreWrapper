@@ -15,7 +15,7 @@
 /**
 **      Type Definitions.
 **
-**      @file       Score4Types.h
+**      @file       BaseballScoreTypes.h
 **/
 
 #pragma     once
