@@ -23,7 +23,7 @@
 #include    "ScoreInterface.h"
 
 #include    "ConvertManageType.h"
-#include    "Score4Types.h"
+
 
 namespace  Score4Wrapper  {
 namespace  Common  {
@@ -46,12 +46,12 @@ copyToManageType(
 
     for ( int i = 0; i < num; ++ i ) {
         wbDest[i]   = gcnew Score4Wrapper::Common::NumWinsForBeat;
-        wbDest[i]->filterType   =
+        wbDest[i]->FilterType   =
                 static_cast<Score4Wrapper::MagicFilter>(wbSrc[i].filterType);
-        wbDest[i]->numNeedWins  = wbSrc[i].numNeedWins;
-        wbDest[i]->numRestGame  = wbSrc[i].numRestGame;
-        wbDest[i]->numWinsSelf  = wbSrc[i].numWinsSelf;
-        wbDest[i]->numWinsDiff  = wbSrc[i].numWinsDiff;
+        wbDest[i]->NumNeedWins  = wbSrc[i].numNeedWins;
+        wbDest[i]->NumRestGame  = wbSrc[i].numRestGame;
+        wbDest[i]->NumWinsSelf  = wbSrc[i].numWinsSelf;
+        wbDest[i]->NumWinsDiff  = wbSrc[i].numWinsDiff;
     }
 
     return ( wbDest );
@@ -68,11 +68,11 @@ copyToManageType(
 {
     Score4Wrapper::Common::MagicInfo^
             miTrg   = gcnew Score4Wrapper::Common::MagicInfo;
-    miTrg->rankLow  = miSrc.rankLow;
-    miTrg->rankHigh = miSrc.rankHigh;
+    miTrg->RankLow  = miSrc.rankLow;
+    miTrg->RankHigh = miSrc.rankHigh;
 
-    miTrg->magicFlags   = castArrayToManage<MagicInfoFlags>(miSrc.magicFlags);
-    miTrg->magicNumber  = copyArrayToManage(miSrc.magicNumber);
+    miTrg->MagicFlags   = castArrayToManage<MagicInfoFlags>(miSrc.magicFlags);
+    miTrg->MagicNumber  = copyArrayToManage(miSrc.magicNumber);
 
     return ( miTrg );
 }
@@ -86,30 +86,30 @@ copyToManageType(
         const  Score4Core::Common::CountedScores  & csSrc,
         Score4Wrapper::Common::CountedScores      ^ csTrg)
 {
-    csTrg->numWons      = copyArrayToManage(csSrc.numWons);
-    csTrg->numLost      = copyArrayToManage(csSrc.numLost);
-    csTrg->numDraw      = copyArrayToManage(csSrc.numDraw);
-    csTrg->numGames     = copyArrayToManage(csSrc.numGames);
-    csTrg->vsWons       = toManageFromTable(csSrc.vsWons);
-    csTrg->vsLost       = toManageFromTable(csSrc.vsLost);
-    csTrg->vsDraw       = toManageFromTable(csSrc.vsDraw);
-    csTrg->restGames    = toManageFromTable(csSrc.restGames);
+    csTrg->NumWons      = copyArrayToManage(csSrc.numWons);
+    csTrg->NumLost      = copyArrayToManage(csSrc.numLost);
+    csTrg->NumDraw      = copyArrayToManage(csSrc.numDraw);
+    csTrg->NumGames     = copyArrayToManage(csSrc.numGames);
+    csTrg->VsWons       = toManageFromTable(csSrc.vsWons);
+    csTrg->VsLost       = toManageFromTable(csSrc.vsLost);
+    csTrg->VsDraw       = toManageFromTable(csSrc.vsDraw);
+    csTrg->RestGames    = toManageFromTable(csSrc.restGames);
 
-    csTrg->numLeagueRestGames
+    csTrg->NumLeagueRestGames
             = copyArrayToManage(csSrc.numLeagueRestGames);
-    csTrg->numInterRestGames
+    csTrg->NumInterRestGames
             = copyArrayToManage(csSrc.numInterRestGames);
-    csTrg->numTotalRestGames
+    csTrg->NumTotalRestGames
             = copyArrayToManage(csSrc.numTotalRestGames);
 
-    csTrg->totalMagicInfo   = copyToManageType(csSrc.totalMagic);
-    csTrg->currentRank      = csSrc.currentRank;
-    csTrg->numWinsForBeat   = copyToManageType(csSrc.numWinsForBeat);
+    csTrg->TotalMagicInfo   = copyToManageType(csSrc.totalMagic);
+    csTrg->CurrentRank      = csSrc.currentRank;
+    csTrg->NumWinsForBeat   = copyToManageType(csSrc.numWinsForBeat);
 
-    csTrg->totalGotScores   = copyArrayToManage(csSrc.totalGotScores);
-    csTrg->totalLostScores  = copyArrayToManage(csSrc.totalLostScores);
-    csTrg->vsGotScores      = toManageFromTable(csSrc.vsGotScores);
-    csTrg->vsLostScores     = toManageFromTable(csSrc.vsLostScores);
+    csTrg->TotalGotScores   = copyArrayToManage(csSrc.totalGotScores);
+    csTrg->TotalLostScores  = copyArrayToManage(csSrc.totalLostScores);
+    csTrg->VsGotScores      = toManageFromTable(csSrc.vsGotScores);
+    csTrg->VsLostScores     = toManageFromTable(csSrc.vsLostScores);
 
     return ( ErrCode::ERR_SUCCESS );
 }

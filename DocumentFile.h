@@ -22,7 +22,7 @@
 
 #include    "BaseballScore/Document/DocumentFile.h"
 
-#include    "Score4Types.h"
+#include    "BaseballScoreTypes.h"
 #include    "ScoreDocument.h"
 
 

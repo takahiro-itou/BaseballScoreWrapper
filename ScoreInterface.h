@@ -22,7 +22,8 @@
 
 #include    "BaseballScore/Document/ScoreDocument.h"
 
-#include    "Score4Types.h"
+#include    "BaseballScoreTypes.h"
+
 
 namespace  Score4Wrapper  {
 namespace  Common  {
@@ -55,6 +56,11 @@ typedef     cli::array<GamesCount, 2>       RestGamesTable;
 /**   レコード番号の配列。      **/
 typedef     cli::array<RecordIndex, 1>      RecordIndexList;
 
+typedef     cli::array<MagicInfoFlags>      MagicInfoArray;
+
+typedef     cli::array<GamesCount>          MagicNumberArray;
+
+
 //----------------------------------------------------------------
 /**
 **    リーグ情報。
@@ -65,10 +71,10 @@ public ref  class   LeagueInfo
 public:
 
     /**   リーグ名。    **/
-    property    System::String^     leagueName;
+    property    System::String^     LeagueName;
 
     /**   プレーオフに進出できるチーム数。  **/
-    property    TeamIndex           numPlayOff;
+    property    TeamIndex           NumPlayOff;
 };
 
 //----------------------------------------------------------------
@@ -81,13 +87,13 @@ public ref  class   TeamInfo
 public:
 
     /**   所属リーグ。          **/
-    property    LeagueIndex         leagueID;
+    property    LeagueIndex         LeagueID;
 
     /**   チーム名。            **/
-    property    System::String^     teamName;
+    property    System::String^     TeamName;
 
     /**   試合数のリスト。      **/
-    property    cli::array<GamesCount>^         gameCounts;
+    property    cli::array<GamesCount>^         GameCounts;
 };
 
 //----------------------------------------------------------------
@@ -99,12 +105,12 @@ public ref  class   GameResult
 {
 public:
 
-    property    RecordFlag          eGameFlags;
-    property    System::DateTime^   recordDate;
-    property    TeamIndex           awayTeam;
-    property    TeamIndex           homeTeam;
-    property    ScoreValue          awayScore;
-    property    ScoreValue          homeScore;
+    property    RecordFlag          GameFlags;
+    property    System::DateTime^   RecordDate;
+    property    TeamIndex           AwayTeam;
+    property    TeamIndex           HomeTeam;
+    property    ScoreValue          AwayScore;
+    property    ScoreValue          HomeScore;
 };
 
 //----------------------------------------------------------------
@@ -117,27 +123,27 @@ public ref  class   NumWinsForBeat
 public:
 
     /**   必要勝利数が示している情報の種類。    **/
-    property    MagicFilter     filterType;
+    property    MagicFilter     FilterType;
 
     /**
     **    対象チームを上回るのに必要な勝利数。
     **/
-    property    GamesCount      numNeedWins;
+    property    GamesCount      NumNeedWins;
 
     /**
     **    残り試合数。ただし、マジックが点灯している時は、直接対決を除く。
     **/
-    property    GamesCount      numRestGame;
+    property    GamesCount      NumRestGame;
 
     /**
     **    対象チームを自力で上回るのに必要な勝利数。
     **/
-    property    GamesCount      numWinsSelf;
+    property    GamesCount      NumWinsSelf;
 
     /**
     **    対象チームを自力で上回る可能性ギリギリのラインとのゲーム差。
     **/
-    property    GamesCount      numWinsDiff;
+    property    GamesCount      NumWinsDiff;
 
 };
 
@@ -153,15 +159,15 @@ public ref  class   MagicInfo
 public:
 
     /**   可能性のある最低順位。    **/
-    property    TeamIndex       rankLow;
+    property    TeamIndex           RankLow;
 
     /**   可能性のある最高順位。    **/
-    property    TeamIndex       rankHigh;
+    property    TeamIndex           RankHigh;
 
-    cli::array<MagicInfoFlags>^ magicFlags;
+    property    MagicInfoArray^     MagicFlags;
 
     /**   マジック。                **/
-    cli::array<GamesCount>^     magicNumber;
+    property    MagicNumberArray^   MagicNumber;
 };
 
 //----------------------------------------------------------------
@@ -174,62 +180,62 @@ public ref  class   CountedScores
 public:
 
     /**   勝ち数。      **/
-    property    GameCountArray^     numWons;
+    property    GameCountArray^     NumWons;
 
     /**   負け数。      **/
-    property    GameCountArray^     numLost;
+    property    GameCountArray^     NumLost;
 
     /**   引分け。      **/
-    property    GameCountArray^     numDraw;
+    property    GameCountArray^     NumDraw;
 
     /**   消化試合数。  **/
-    property    RestGamesArray^     numGames;
+    property    RestGamesArray^     NumGames;
 
     /**   対チーム毎の勝ち数。  **/
-    property    GameCountTable^     vsWons;
+    property    GameCountTable^     VsWons;
 
     /**   対チーム毎の負け数。  **/
-    property    GameCountTable^     vsLost;
+    property    GameCountTable^     VsLost;
 
     /**   対チーム毎の引分け。  **/
-    property    GameCountTable^     vsDraw;
+    property    GameCountTable^     VsDraw;
 
     /**   各チームとの残り試合数。      **/
-    property    RestGamesTable^     restGames;
+    property    RestGamesTable^     RestGames;
 
     /**   所属リーグ内での残り試合数。  **/
-    property    RestGamesArray^     numLeagueRestGames;
+    property    RestGamesArray^     NumLeagueRestGames;
 
     /**   交流戦の残り試合数。          **/
-    property    RestGamesArray^     numInterRestGames;
+    property    RestGamesArray^     NumInterRestGames;
 
     /**
     **    リーグ内と交流戦を合わせた残り試合数。
     **/
-    property    RestGamesArray^     numTotalRestGames;
+    property    RestGamesArray^     NumTotalRestGames;
 
     /**   マジック関連の集計結果。  **/
-    property    MagicInfo^          totalMagicInfo;
+    property    MagicInfo^          TotalMagicInfo;
 
     /**   現在の順位。              **/
-    property    TeamIndex           currentRank;
+    property    TeamIndex           CurrentRank;
 
     /**
     **    必要勝利数等、マジック関連の補助計算データ。
     **/
-    property    WinsForBeatList^    numWinsForBeat;
+    property    WinsForBeatList^    NumWinsForBeat;
 
     /**   総得点。  **/
-    property    ScoreArray^         totalGotScores;
+    property    ScoreArray^         TotalGotScores;
 
     /**   総失点。  **/
-    property    ScoreArray^         totalLostScores;
+    property    ScoreArray^         TotalLostScores;
 
     /**  対チーム毎の得点。 **/
-    property    ScoreTable^         vsGotScores;
+    property    ScoreTable^         VsGotScores;
 
     /**  対チーム毎の失点。 **/
-    property    ScoreTable^         vsLostScores;
+    property    ScoreTable^         VsLostScores;
 };
 
 typedef     cli::array<CountedScores^, 1>   CountedScoreList;

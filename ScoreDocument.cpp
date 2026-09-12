@@ -144,14 +144,14 @@ ScoreDocument::appendGameRecord(
     Score4Core::Common::GameResult  umRecord;
     Score4Core::ErrCode             retVal;
 
-    const   RecordFlag  flagRec = gameRecord->eGameFlags;
+    const   RecordFlag  flagRec = gameRecord->GameFlags;
 
     umRecord.eGameFlags     = static_cast<Score4Core::RecordFlag>(flagRec);
-    umRecord.recordDate     = getDateSerial(gameRecord->recordDate);
-    umRecord.visitorTeam    = gameRecord->awayTeam;
-    umRecord.homeTeam       = gameRecord->homeTeam;
-    umRecord.visitorScore   = gameRecord->awayScore;
-    umRecord.homeScore      = gameRecord->homeScore;
+    umRecord.recordDate     = getDateSerial(gameRecord->RecordDate);
+    umRecord.visitorTeam    = gameRecord->AwayTeam;
+    umRecord.homeTeam       = gameRecord->HomeTeam;
+    umRecord.visitorScore   = gameRecord->AwayScore;
+    umRecord.homeScore      = gameRecord->HomeScore;
 
     retVal  = this->m_ptrObj->appendGameRecord(umRecord);
     return ( static_cast<ErrCode>(retVal) );
@@ -392,12 +392,12 @@ ScoreDocument::getGameRecord(
         & umRecord  = this->m_ptrObj->getGameRecord(idxRecord);
     Common::GameResult^  managedRecord  = gcnew Common::GameResult;
 
-    managedRecord->eGameFlags   = static_cast<RecordFlag>(umRecord.eGameFlags);
-    managedRecord->recordDate   = getDateTime(umRecord.recordDate);
-    managedRecord->awayTeam     = umRecord.visitorTeam;
-    managedRecord->homeTeam     = umRecord.homeTeam;
-    managedRecord->awayScore    = umRecord.visitorScore;
-    managedRecord->homeScore    = umRecord.homeScore;
+    managedRecord->GameFlags    = static_cast<RecordFlag>(umRecord.eGameFlags);
+    managedRecord->RecordDate   = getDateTime(umRecord.recordDate);
+    managedRecord->AwayTeam     = umRecord.visitorTeam;
+    managedRecord->HomeTeam     = umRecord.homeTeam;
+    managedRecord->AwayScore    = umRecord.visitorScore;
+    managedRecord->HomeScore    = umRecord.homeScore;
 
     return ( managedRecord );
 }
@@ -414,18 +414,59 @@ ScoreDocument::setGameRecord(
     Score4Core::Common::GameResult  umRecord;
     Score4Core::ErrCode             retVal;
 
-    const   RecordFlag  flagRec = gameRecord->eGameFlags;
+    const   RecordFlag  flagRec = gameRecord->GameFlags;
 
     umRecord.eGameFlags     = static_cast<Score4Core::RecordFlag>(flagRec);
-    umRecord.recordDate     = getDateSerial(gameRecord->recordDate);
-    umRecord.visitorTeam    = gameRecord->awayTeam;
-    umRecord.homeTeam       = gameRecord->homeTeam;
-    umRecord.visitorScore   = gameRecord->awayScore;
-    umRecord.homeScore      = gameRecord->homeScore;
+    umRecord.recordDate     = getDateSerial(gameRecord->RecordDate);
+    umRecord.visitorTeam    = gameRecord->AwayTeam;
+    umRecord.homeTeam       = gameRecord->HomeTeam;
+    umRecord.visitorScore   = gameRecord->AwayScore;
+    umRecord.homeScore      = gameRecord->HomeScore;
 
     retVal  = this->m_ptrObj->setGameRecord(idxRecord, umRecord);
     return ( static_cast<ErrCode>(retVal) );
 }
+
+//----------------------------------------------------------------
+//    リーグ情報を取得する。
+//
+
+ScoreDocument::LeagueInfo^
+ScoreDocument::getLeagueInfo(
+        const  LeagueIndex  idxLeague)
+{
+    const  WrapTarget::LeagueInfo  &
+        leagueInfo  = this->m_ptrObj->getLeagueInfo(idxLeague);
+
+    LeagueInfo^     retVal  = gcnew LeagueInfo;
+
+    retVal->LeagueName  = marshal_as<System::String^>(leagueInfo.leagueName);
+    retVal->NumPlayOff  = leagueInfo.numPlayOff;
+
+    return ( retVal );
+}
+
+//----------------------------------------------------------------
+//    リーグ情報を設定する。
+//
+
+ErrCode
+ScoreDocument::setLeagueInfo(
+        const  LeagueIndex  idxLeague,
+        LeagueInfo^         leagueInfo)
+{
+    WrapTarget::LeagueInfo  natvVal;
+    Score4Core::ErrCode     retVal;
+
+    System::String^     leagueName  = leagueInfo->LeagueName;
+
+    natvVal.leagueName  = marshal_as<std::string>(leagueName);
+    natvVal.numPlayOff  = leagueInfo->NumPlayOff;
+
+    retVal  = this->m_ptrObj->setLeagueInfo(idxLeague, natvVal);
+    return ( static_cast<ErrCode>(retVal) );
+}
+
 
 //----------------------------------------------------------------
 //    ネイティブのインスタンスを取得する。
@@ -488,6 +529,48 @@ ScoreDocument::getOptimizedFlag()
     return ( retVal != Score4Core::BOOL_FALSE );
 }
 
+//----------------------------------------------------------------
+//    チーム情報を取得する。
+//
+
+ScoreDocument::TeamInfo^
+ScoreDocument::getTeamInfo(
+        const   TeamIndex   idxTeam)
+{
+    const  WrapTarget::TeamInfo  &
+        teamInfo    = this->m_ptrObj->getTeamInfo(idxTeam);
+
+    TeamInfo^   retVal  = gcnew TeamInfo;
+
+    retVal->LeagueID    = teamInfo.leagueID;
+    retVal->TeamName    = marshal_as<System::String^>(teamInfo.teamName);
+
+    return ( retVal );
+
+}
+
+//----------------------------------------------------------------
+//    チーム情報を設定する。
+//
+
+ErrCode
+ScoreDocument::setTeamInfo(
+        const   TeamIndex   idxTeam,
+        TeamInfo^           teamInfo)
+{
+    WrapTarget::TeamInfo    natvVal;
+    Score4Core::ErrCode     retVal;
+
+    System::String^     teamName    = teamInfo->TeamName;
+
+    natvVal.leagueID    = teamInfo->LeagueID;
+    natvVal.teamName    = marshal_as<std::string>(teamName);
+
+    retVal  = this->m_ptrObj->setTeamInfo(idxTeam, natvVal);
+    return ( static_cast<ErrCode>(retVal) );
+}
+
+
 //========================================================================
 //
 //    Properties.
@@ -498,13 +581,13 @@ ScoreDocument::getOptimizedFlag()
 //
 
 System::DateTime^
-ScoreDocument::lastActiveDate::get()
+ScoreDocument::LastActiveDate::get()
 {
     return ( getDateTime(this->m_ptrObj->getLastActiveDate()) );
 }
 
 void
-ScoreDocument::lastActiveDate::set(
+ScoreDocument::LastActiveDate::set(
         System::DateTime^  dtVal)
 {
     this->m_ptrObj->setLastActiveDate(getDateSerial(dtVal));
@@ -515,13 +598,13 @@ ScoreDocument::lastActiveDate::set(
 //
 
 System::DateTime^
-ScoreDocument::lastImportDate::get()
+ScoreDocument::LastImportDate::get()
 {
     return ( getDateTime(this->m_ptrObj->getLastImportDate()) );
 }
 
 void
-ScoreDocument::lastImportDate::set(
+ScoreDocument::LastImportDate::set(
         System::DateTime^  dtVal)
 {
     this->m_ptrObj->setLastImportDate(getDateSerial(dtVal));
@@ -532,83 +615,18 @@ ScoreDocument::lastImportDate::set(
 //
 
 System::DateTime^
-ScoreDocument::lastRecordDate::get()
+ScoreDocument::LastRecordDate::get()
 {
     return ( getDateTime(this->m_ptrObj->getLastRecordDate()) );
 }
 
 void
-ScoreDocument::lastRecordDate::set(
+ScoreDocument::LastRecordDate::set(
         System::DateTime^  dtVal)
 {
     this->m_ptrObj->setLastRecordDate(getDateSerial(dtVal));
 }
 
-//----------------------------------------------------------------
-
-Common::LeagueInfo^
-ScoreDocument::leagueInfo::get(
-        int  idxLeague)
-{
-    const  WrapTarget::LeagueInfo  &
-        leagueInfo  = this->m_ptrObj->getLeagueInfo(idxLeague);
-
-    LeagueInfo^     retVal  = gcnew LeagueInfo;
-
-    retVal->leagueName  = marshal_as<System::String^>(leagueInfo.leagueName);
-    retVal->numPlayOff  = leagueInfo.numPlayOff;
-
-    return ( retVal );
-}
-
-void
-ScoreDocument::leagueInfo::set(
-        int  idxLeague,  LeagueInfo^  leagueInfo)
-{
-    WrapTarget::LeagueInfo  natvVal;
-
-    System::String^     leagueName  = leagueInfo->leagueName;
-
-    natvVal.leagueName  = marshal_as<std::string>(leagueName);
-    natvVal.numPlayOff  = leagueInfo->numPlayOff;
-
-    this->m_ptrObj->setLeagueInfo(idxLeague, natvVal);
-}
-
-//----------------------------------------------------------------
-//    プロパティ  teamInfo
-//
-
-//----------------------------------------------------------------
-
-Common::TeamInfo^
-ScoreDocument::teamInfo::get(
-        int  idxTeam)
-{
-    const  WrapTarget::TeamInfo  &
-        teamInfo    = this->m_ptrObj->getTeamInfo(idxTeam);
-
-    TeamInfo^   retVal  = gcnew TeamInfo;
-
-    retVal->leagueID    = teamInfo.leagueID;
-    retVal->teamName    = marshal_as<System::String^>(teamInfo.teamName);
-
-    return ( retVal );
-}
-
-void
-ScoreDocument::teamInfo::set(
-        int  idxTeam,  TeamInfo^  teamInfo)
-{
-    WrapTarget::TeamInfo    natvVal;
-
-    System::String^     teamName    = teamInfo->teamName;
-
-    natvVal.leagueID    = teamInfo->leagueID;
-    natvVal.teamName    = marshal_as<std::string>(teamName);
-
-    this->m_ptrObj->setTeamInfo(idxTeam, natvVal);
-}
 
 //========================================================================
 //
