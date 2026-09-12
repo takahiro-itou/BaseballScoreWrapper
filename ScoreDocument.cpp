@@ -601,8 +601,8 @@ ScoreDocument::teamInfo::get(
 
     TeamInfo^   retVal  = gcnew TeamInfo;
 
-    retVal->leagueID    = teamInfo.leagueID;
-    retVal->teamName    = marshal_as<System::String^>(teamInfo.teamName);
+    retVal->LeagueID    = teamInfo.leagueID;
+    retVal->TeamName    = marshal_as<System::String^>(teamInfo.teamName);
 
     return ( retVal );
 }
@@ -613,9 +613,9 @@ ScoreDocument::teamInfo::set(
 {
     WrapTarget::TeamInfo    natvVal;
 
-    System::String^     teamName    = teamInfo->teamName;
+    System::String^     teamName    = teamInfo->TeamName;
 
-    natvVal.leagueID    = teamInfo->leagueID;
+    natvVal.leagueID    = teamInfo->LeagueID;
     natvVal.teamName    = marshal_as<std::string>(teamName);
 
     this->m_ptrObj->setTeamInfo(idxTeam, natvVal);

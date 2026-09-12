@@ -81,13 +81,13 @@ public ref  class   TeamInfo
 public:
 
     /**   所属リーグ。          **/
-    property    LeagueIndex         leagueID;
+    property    LeagueIndex         LeagueID;
 
     /**   チーム名。            **/
-    property    System::String^     teamName;
+    property    System::String^     TeamName;
 
     /**   試合数のリスト。      **/
-    property    cli::array<GamesCount>^         gameCounts;
+    property    cli::array<GamesCount>^         GameCounts;
 };
 
 //----------------------------------------------------------------
