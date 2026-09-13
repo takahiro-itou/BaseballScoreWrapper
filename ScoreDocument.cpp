@@ -53,7 +53,8 @@ getDateSerial(
         System::DateTime    dtVal)
 {
     return ( DateTimeFormat::getSerialFromDate(
-                     dtVal->Year, dtVal->Month, dtVal->Day) );
+                     dtVal.Year, dtVal.Month, dtVal.Day)
+    );
 }
 
 }   //  End of (Unnamed) namespace
