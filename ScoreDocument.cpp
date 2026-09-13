@@ -37,21 +37,20 @@ namespace  {
 
 using       Score4Core::Common::DateTimeFormat;
 
-inline  System::DateTime^
+inline  System::DateTime
 getDateTime(
         const   DateSerial  dsVal)
 {
     DateTimeFormat::TDateTime   dtBuf;
     DateTimeFormat::getDateTimeFromSerial(dsVal, &dtBuf);
 
-    System::DateTime^   dtWork  = gcnew  System::DateTime(
-            dtBuf.year,  dtBuf.month,  dtBuf.day);
+    System::DateTime    dtWork(dtBuf.year,  dtBuf.month,  dtBuf.day);
     return ( dtWork );
 }
 
 inline  DateSerial
 getDateSerial(
-        System::DateTime^   dtVal)
+        System::DateTime    dtVal)
 {
     return ( DateTimeFormat::getSerialFromDate(
                      dtVal->Year, dtVal->Month, dtVal->Day) );
@@ -161,7 +160,7 @@ ScoreDocument::appendGameRecord(
 //    全てのレコードを検査して最終日付を設定する。
 //
 
-System::DateTime^
+System::DateTime
 ScoreDocument::checkLastDate()
 {
     DateSerial  retDate = this->m_ptrObj->checkLastDate();
@@ -213,7 +212,7 @@ ScoreDocument::copyFrom(
 
 ErrCode
 ScoreDocument::countScores(
-        System::DateTime^   trgLastDate)
+        System::DateTime    trgLastDate)
 {
     Score4Core::ErrCode  retVal;
 
@@ -248,7 +247,7 @@ ScoreDocument::countScores(
 
 RecordIndex
 ScoreDocument::findGameRecords(
-        System::DateTime^           gameDate,
+        System::DateTime            gameDate,
         const   TeamIndex           homeTeam,
         const   TeamIndex           visitorTeam,
         Common::RecordIndexList^%   bufRecord)
@@ -305,7 +304,7 @@ ScoreDocument::optimizeGameRecords()
 ErrCode
 ScoreDocument::updateLastDate(
         System::Boolean     flgRecordOnly,
-        System::DateTime^   lastDate)
+        System::DateTime    lastDate)
 {
     Score4Core::ErrCode  retVal;
     const   DateSerial  dsLast  = getDateSerial(lastDate);
@@ -580,7 +579,7 @@ ScoreDocument::setTeamInfo(
 //    プロパティ  lastActiveDate
 //
 
-System::DateTime^
+System::DateTime
 ScoreDocument::LastActiveDate::get()
 {
     return ( getDateTime(this->m_ptrObj->getLastActiveDate()) );
@@ -588,7 +587,7 @@ ScoreDocument::LastActiveDate::get()
 
 void
 ScoreDocument::LastActiveDate::set(
-        System::DateTime^  dtVal)
+        System::DateTime    dtVal)
 {
     this->m_ptrObj->setLastActiveDate(getDateSerial(dtVal));
 }
@@ -597,7 +596,7 @@ ScoreDocument::LastActiveDate::set(
 //    プロパティ  lastImportDate
 //
 
-System::DateTime^
+System::DateTime
 ScoreDocument::LastImportDate::get()
 {
     return ( getDateTime(this->m_ptrObj->getLastImportDate()) );
@@ -605,7 +604,7 @@ ScoreDocument::LastImportDate::get()
 
 void
 ScoreDocument::LastImportDate::set(
-        System::DateTime^  dtVal)
+        System::DateTime    dtVal)
 {
     this->m_ptrObj->setLastImportDate(getDateSerial(dtVal));
 }
@@ -614,7 +613,7 @@ ScoreDocument::LastImportDate::set(
 //    プロパティ  lastRecordDate
 //
 
-System::DateTime^
+System::DateTime
 ScoreDocument::LastRecordDate::get()
 {
     return ( getDateTime(this->m_ptrObj->getLastRecordDate()) );
@@ -622,7 +621,7 @@ ScoreDocument::LastRecordDate::get()
 
 void
 ScoreDocument::LastRecordDate::set(
-        System::DateTime^  dtVal)
+        System::DateTime    dtVal)
 {
     this->m_ptrObj->setLastRecordDate(getDateSerial(dtVal));
 }

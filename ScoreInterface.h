@@ -121,7 +121,7 @@ public ref  class   GameResult
 public:
 
     property    RecordFlag          GameFlags;
-    property    System::DateTime^   RecordDate;
+    property    System::DateTime    RecordDate;
     property    TeamIndex           AwayTeam;
     property    TeamIndex           HomeTeam;
     property    ScoreValue          AwayScore;
