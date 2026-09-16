@@ -134,7 +134,7 @@ public:
     **
     **  @return     チェックした最後の日付を返す。
     **/
-    System::DateTime^
+    System::DateTime
     checkLastDate();
 
     //----------------------------------------------------------------
@@ -186,7 +186,7 @@ public:
     ErrCode
     countScores(
         [System::Runtime::InteropServices::Out]
-            System::DateTime^   trgLastDate);
+            System::DateTime    trgLastDate);
 
     //----------------------------------------------------------------
     /**   指定した条件の対戦カードを検索する。
@@ -200,7 +200,7 @@ public:
     **/
     RecordIndex
     findGameRecords(
-            System::DateTime^           gameDate,
+            System::DateTime            gameDate,
             const   TeamIndex           homeTeam,
             const   TeamIndex           visitorTeam,
         [System::Runtime::InteropServices::Out]
@@ -246,7 +246,7 @@ public:
     ErrCode
     updateLastDate(
             System::Boolean     flgRecordOnly,
-            System::DateTime^   lastDate);
+            System::DateTime    lastDate);
 
 //========================================================================
 //
@@ -423,22 +423,22 @@ public:
 //
 public:
 
-    property    System::DateTime^   LastActiveDate
+    property    System::DateTime    LastActiveDate
     {
-        System::DateTime^   get();
-        void  set(System::DateTime^  dtVal);
+        System::DateTime    get();
+        void  set(System::DateTime  dtVal);
     }
 
-    property    System::DateTime^   LastImportDate
+    property    System::DateTime    LastImportDate
     {
-        System::DateTime^  get();
-        void  set(System::DateTime^  dtVal);
+        System::DateTime    get();
+        void  set(System::DateTime  dtVal);
     }
 
-    property    System::DateTime^   LastRecordDate
+    property    System::DateTime    LastRecordDate
     {
-        System::DateTime^  get();
-        void  set(System::DateTime^  dtVal);
+        System::DateTime   get();
+        void  set(System::DateTime  dtVal);
     }
 
     //----------------------------------------------------------------
