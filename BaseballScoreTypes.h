@@ -20,7 +20,9 @@
 
 #pragma     once
 
-#include    "BaseballScore/Common/Score4Types.h"
+#include    "BaseballScore/Common/BaseballScoreTypes.h"
+
+using   Score4Core  = BaseballScore;
 
 
 namespace  ScoreWrapper  {
