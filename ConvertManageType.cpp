@@ -24,11 +24,12 @@
 
 #include    "ScoreInterface.h"
 
-namespace  Score4Wrapper  {
+
+namespace  ScoreWrapper  {
 
 //========================================================================
 //
 //    Support Functions.
 //
 
-}   //  End of namespace  Score4Wrapper
+}   //  End of namespace  ScoreWrapper

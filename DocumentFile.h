@@ -26,7 +26,7 @@
 #include    "ScoreDocument.h"
 
 
-namespace  Score4Wrapper  {
+namespace  ScoreWrapper  {
 namespace  Document  {
 
 //========================================================================
@@ -217,4 +217,4 @@ private:
 };
 
 }   //  End of namespace  Document
-}   //  End of namespace  Score4Wrapper
+}   //  End of namespace  ScoreWrapper

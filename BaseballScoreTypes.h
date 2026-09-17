@@ -23,7 +23,7 @@
 #include    "BaseballScore/Common/Score4Types.h"
 
 
-namespace  Score4Wrapper  {
+namespace  ScoreWrapper  {
 
 //----------------------------------------------------------------
 /**
@@ -124,4 +124,4 @@ typedef     Score4Core::ScoreValue      ScoreValue;
 typedef     Score4Core::NumOfDigits     NumOfDigits;
 typedef     Score4Core::FileLength      FileLength;
 
-}   //  End of namespace  Score4Wrapper
+}   //  End of namespace  ScoreWrapper

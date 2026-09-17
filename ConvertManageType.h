@@ -23,7 +23,7 @@
 #include    "BaseballScoreTypes.h"
 
 
-namespace  Score4Wrapper  {
+namespace  ScoreWrapper  {
 
 //========================================================================
 //
@@ -213,4 +213,4 @@ copyManageArray2ToUnmanageTable(
     return;
 }
 
-}   //  End of namespace  Score4Wrapper
+}   //  End of namespace  ScoreWrapper

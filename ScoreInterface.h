@@ -25,7 +25,7 @@
 #include    "BaseballScoreTypes.h"
 
 
-namespace  Score4Wrapper  {
+namespace  ScoreWrapper  {
 namespace  Common  {
 
 //========================================================================
@@ -280,7 +280,7 @@ public enum  class  Consts
 **
 **/
 
-Score4Wrapper::Common::WinsForBeatList^
+Common::WinsForBeatList^
 copyToManageType(
         const  Score4Core::Common::WinsForBeatList &wbSrc);
 
@@ -289,7 +289,7 @@ copyToManageType(
 **
 **/
 
-Score4Wrapper::Common::MagicInfo^
+Common::MagicInfo^
 copyToManageType(
         const  Score4Core::Common::MagicInfo  & miSrc);
 
@@ -301,7 +301,7 @@ copyToManageType(
 ErrCode
 copyToManageType(
         const  Score4Core::Common::CountedScores  & csSrc,
-        Score4Wrapper::Common::CountedScores      ^ csTrg);
+        ScoreWrapper::Common::CountedScores       ^ csTrg);
 
 
-}   //  End of namespace  Score4Wrapper
+}   //  End of namespace  ScoreWrapper

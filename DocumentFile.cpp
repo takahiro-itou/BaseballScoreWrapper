@@ -26,7 +26,7 @@
 using       namespace   msclr::interop;
 
 
-namespace  Score4Wrapper  {
+namespace  ScoreWrapper  {
 namespace  Document  {
 
 //========================================================================
@@ -195,4 +195,4 @@ DocumentFile::saveToTextFile(
 //
 
 }   //  End of namespace  Document
-}   //  End of namespace  Score4Wrapper
+}   //  End of namespace  ScoreWrapper
