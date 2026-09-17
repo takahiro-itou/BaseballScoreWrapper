@@ -22,7 +22,7 @@
 
 #include    "BaseballScore/Common/BaseballScoreTypes.h"
 
-using   Score4Core  = BaseballScore;
+namespace   WrapCoreNs  = BaseballScore;
 
 
 namespace  ScoreWrapper  {
@@ -34,14 +34,14 @@ namespace  ScoreWrapper  {
 
 public enum  class  ErrCode
 {
-    ERR_SUCCESS             = Score4Core::ERR_SUCCESS,
-    ERR_FAILURE             = Score4Core::ERR_FAILURE,
-    ERR_FILE_OPEN_ERROR     = Score4Core::ERR_FILE_OPEN_ERROR,
-    ERR_FILE_IO_ERROR       = Score4Core::ERR_FILE_IO_ERROR,
-    ERR_INDEX_OUT_OF_RANGE  = Score4Core::ERR_INDEX_OUT_OF_RANGE
+    ERR_SUCCESS             = WrapCoreNs::ERR_SUCCESS,
+    ERR_FAILURE             = WrapCoreNs::ERR_FAILURE,
+    ERR_FILE_OPEN_ERROR     = WrapCoreNs::ERR_FILE_OPEN_ERROR,
+    ERR_FILE_IO_ERROR       = WrapCoreNs::ERR_FILE_IO_ERROR,
+    ERR_INDEX_OUT_OF_RANGE  = WrapCoreNs::ERR_INDEX_OUT_OF_RANGE
 };
 
-typedef     Score4Core::Boolean         Boolean;
+typedef     WrapCoreNs::Boolean         Boolean;
 
 //----------------------------------------------------------------
 /**
@@ -50,12 +50,12 @@ typedef     Score4Core::Boolean         Boolean;
 
 public enum  class  RecordFlag
 {
-    GAME_EMPTY          = Score4Core::GAME_EMPTY,
-    GAME_SCHEDULE       = Score4Core::GAME_SCHEDULE,
-    GAME_CANCEL         = Score4Core::GAME_CANCEL,
-    GAME_RESULT         = Score4Core::GAME_RESULT,
-    GAME_REGULAR        = Score4Core::GAME_REGULAR,
-    GAME_NOT_REGULAR    = Score4Core::GAME_NOT_REGULAR
+    GAME_EMPTY          = WrapCoreNs::GAME_EMPTY,
+    GAME_SCHEDULE       = WrapCoreNs::GAME_SCHEDULE,
+    GAME_CANCEL         = WrapCoreNs::GAME_CANCEL,
+    GAME_RESULT         = WrapCoreNs::GAME_RESULT,
+    GAME_REGULAR        = WrapCoreNs::GAME_REGULAR,
+    GAME_NOT_REGULAR    = WrapCoreNs::GAME_NOT_REGULAR
 };
 
 //----------------------------------------------------------------
@@ -66,19 +66,19 @@ public enum  class  RecordFlag
 [System::Flags]
 public enum  class  GameFilter : System::Int32
 {
-    FILTER_HOME_GAMES   = Score4Core::FILTER_HOME_GAMES,
-    FILTER_AWAY_GAMES   = Score4Core::FILTER_AWAY_GAMES,
-    FILTER_ALL_GAMES    = Score4Core::FILTER_ALL_GAMES,
+    FILTER_HOME_GAMES   = WrapCoreNs::FILTER_HOME_GAMES,
+    FILTER_AWAY_GAMES   = WrapCoreNs::FILTER_AWAY_GAMES,
+    FILTER_ALL_GAMES    = WrapCoreNs::FILTER_ALL_GAMES,
 
-    FILTER_SCHEDULE     = Score4Core::FILTER_SCHEDULE,
-    FILTER_SCDL_HOMES   = Score4Core::FILTER_SCDL_HOMES,
-    FILTER_SCDL_AWAYS   = Score4Core::FILTER_SCDL_AWAYS,
-    FILTER_SCDL_ALLS    = Score4Core::FILTER_SCDL_ALLS,
+    FILTER_SCHEDULE     = WrapCoreNs::FILTER_SCHEDULE,
+    FILTER_SCDL_HOMES   = WrapCoreNs::FILTER_SCDL_HOMES,
+    FILTER_SCDL_AWAYS   = WrapCoreNs::FILTER_SCDL_AWAYS,
+    FILTER_SCDL_ALLS    = WrapCoreNs::FILTER_SCDL_ALLS,
 
-    FILTER_GAMES_FIRST  = Score4Core::FILTER_GAMES_FIRST,
-    FILTER_GAMES_END    = Score4Core::FILTER_GAMES_END,
-    FILTER_SCDL_FIRST   = Score4Core::FILTER_SCDL_FIRST,
-    FILTER_SCDL_END     = Score4Core::FILTER_SCDL_END
+    FILTER_GAMES_FIRST  = WrapCoreNs::FILTER_GAMES_FIRST,
+    FILTER_GAMES_END    = WrapCoreNs::FILTER_GAMES_END,
+    FILTER_SCDL_FIRST   = WrapCoreNs::FILTER_SCDL_FIRST,
+    FILTER_SCDL_END     = WrapCoreNs::FILTER_SCDL_END
 };
 
 //----------------------------------------------------------------
@@ -88,12 +88,12 @@ public enum  class  GameFilter : System::Int32
 
 public enum  class  MagicFilter
 {
-    MF_DIFFERENT_LEAGUE     = Score4Core::MF_DIFFERENT_LEAGUE,
-    MF_ON_MAGIC             = Score4Core::MF_ON_MAGIC,
-    MF_MAGIC_IF_RIVAL_LOSE  = Score4Core::MF_MAGIC_IF_RIVAL_LOSE,
-    MF_BEAT_IF_WIN_DIRECT   = Score4Core::MF_BEAT_IF_WIN_DIRECT,
-    MF_CANNOT_BEAT_BY_SELF  = Score4Core::MF_CANNOT_BEAT_BY_SELF,
-    MF_NEVER_BEAT           = Score4Core::MF_NEVER_BEAT
+    MF_DIFFERENT_LEAGUE     = WrapCoreNs::MF_DIFFERENT_LEAGUE,
+    MF_ON_MAGIC             = WrapCoreNs::MF_ON_MAGIC,
+    MF_MAGIC_IF_RIVAL_LOSE  = WrapCoreNs::MF_MAGIC_IF_RIVAL_LOSE,
+    MF_BEAT_IF_WIN_DIRECT   = WrapCoreNs::MF_BEAT_IF_WIN_DIRECT,
+    MF_CANNOT_BEAT_BY_SELF  = WrapCoreNs::MF_CANNOT_BEAT_BY_SELF,
+    MF_NEVER_BEAT           = WrapCoreNs::MF_NEVER_BEAT
 };
 
 //----------------------------------------------------------------
@@ -103,27 +103,27 @@ public enum  class  MagicFilter
 
 public enum  class  MagicNumberMode
 {
-    MAGIC_VICTORY       = Score4Core::MAGIC_VICTORY,
-    MAGIC_PLAYOFF       = Score4Core::MAGIC_PLAYOFF,
-    NUM_MAGIC_MODES     = Score4Core::NUM_MAGIC_MODES
+    MAGIC_VICTORY       = WrapCoreNs::MAGIC_VICTORY,
+    MAGIC_PLAYOFF       = WrapCoreNs::MAGIC_PLAYOFF,
+    NUM_MAGIC_MODES     = WrapCoreNs::NUM_MAGIC_MODES
 };
 
 public enum  class  MagicInfoFlags
 {
-    MIF_WINS_DIFF       = Score4Core::MIF_WINS_DIFF,
-    MIF_ON_MAGIC        = Score4Core::MIF_ON_MAGIC
+    MIF_WINS_DIFF       = WrapCoreNs::MIF_WINS_DIFF,
+    MIF_ON_MAGIC        = WrapCoreNs::MIF_ON_MAGIC
 };
 
 //========================================================================
 
-typedef     Score4Core::DateSerial      DateSerial;
-typedef     Score4Core::TeamIndex       TeamIndex;
-typedef     Score4Core::LeagueIndex     LeagueIndex;
-typedef     Score4Core::GamesCount      GamesCount;
-typedef     Score4Core::WinningRate     WinningRate;
-typedef     Score4Core::RecordIndex     RecordIndex;
-typedef     Score4Core::ScoreValue      ScoreValue;
-typedef     Score4Core::NumOfDigits     NumOfDigits;
-typedef     Score4Core::FileLength      FileLength;
+typedef     WrapCoreNs::DateSerial      DateSerial;
+typedef     WrapCoreNs::TeamIndex       TeamIndex;
+typedef     WrapCoreNs::LeagueIndex     LeagueIndex;
+typedef     WrapCoreNs::GamesCount      GamesCount;
+typedef     WrapCoreNs::WinningRate     WinningRate;
+typedef     WrapCoreNs::RecordIndex     RecordIndex;
+typedef     WrapCoreNs::ScoreValue      ScoreValue;
+typedef     WrapCoreNs::NumOfDigits     NumOfDigits;
+typedef     WrapCoreNs::FileLength      FileLength;
 
 }   //  End of namespace  ScoreWrapper

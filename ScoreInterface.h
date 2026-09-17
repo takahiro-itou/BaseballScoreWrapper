@@ -257,6 +257,7 @@ typedef     cli::array<CountedScores^, 1>   CountedScoreList;
 
 }   //  End of namespace  Common
 
+
 //----------------------------------------------------------------
 /**
 **    その他の定数。
@@ -265,9 +266,9 @@ typedef     cli::array<CountedScores^, 1>   CountedScoreList;
 public enum  class  Consts
 {
     MAGIC_NO_PROBABILITY_WONS
-        = Score4Core::Common::MAGIC_NO_PROBABILITY_WONS,
+        = WrapCoreNs::Common::MAGIC_NO_PROBABILITY_WONS,
     MAGICLIST_NO_DATA_ENTRY
-        = Score4Core::Common::MAGICLIST_NO_DATA_ENTRY
+        = WrapCoreNs::Common::MAGICLIST_NO_DATA_ENTRY
 };
 
 //========================================================================
@@ -282,7 +283,7 @@ public enum  class  Consts
 
 Common::WinsForBeatList^
 copyToManageType(
-        const  Score4Core::Common::WinsForBeatList &wbSrc);
+        const  WrapCoreNs::Common::WinsForBeatList &wbSrc);
 
 //----------------------------------------------------------------
 /**   アンマネージ型をマネージ型に変換する。
@@ -291,7 +292,7 @@ copyToManageType(
 
 Common::MagicInfo^
 copyToManageType(
-        const  Score4Core::Common::MagicInfo  & miSrc);
+        const  WrapCoreNs::Common::MagicInfo  & miSrc);
 
 //----------------------------------------------------------------
 /**   アンマネージ型をマネージ型に変換する。
@@ -300,8 +301,8 @@ copyToManageType(
 
 ErrCode
 copyToManageType(
-        const  Score4Core::Common::CountedScores  & csSrc,
-        ScoreWrapper::Common::CountedScores       ^ csTrg);
+        const  WrapCorens::Common::CountedScores  & csSrc,
+        Common::CountedScores                     ^ csTrg);
 
 
 }   //  End of namespace  ScoreWrapper

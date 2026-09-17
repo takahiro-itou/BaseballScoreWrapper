@@ -35,13 +35,13 @@ namespace  Common  {
 //    アンマネージ型をマネージ型に変換する。
 //
 
-ScoreWrapper::Common::WinsForBeatList^
+Common::WinsForBeatList^
 copyToManageType(
-        const  Score4Core::Common::WinsForBeatList &wbSrc)
+        const  WrapCoreNs::Common::WinsForBeatList &wbSrc)
 {
     const  int  num = static_cast<int>(wbSrc.size());
 
-    WinsForBeatList^    wbDest  = gcnew WinsForBeatList(num);
+    Common::WinsForBeatList^    wbDest  = gcnew Common::WinsForBeatList(num);
 
     for ( int i = 0; i < num; ++ i ) {
         wbDest[i]   = gcnew NumWinsForBeat;
@@ -61,11 +61,11 @@ copyToManageType(
 **
 **/
 
-ScoreWrapper::Common::MagicInfo^
+Common::MagicInfo^
 copyToManageType(
-        const  Score4Core::Common::MagicInfo  & miSrc)
+        const  WrapCoreNs::Common::MagicInfo  & miSrc)
 {
-    MagicInfo^  miTrg   = gcnew MagicInfo;
+    Common::MagicInfo^  miTrg   = gcnew Common::MagicInfo;
     miTrg->RankLow  = miSrc.rankLow;
     miTrg->RankHigh = miSrc.rankHigh;
 
@@ -81,8 +81,8 @@ copyToManageType(
 
 ErrCode
 copyToManageType(
-        const  Score4Core::Common::CountedScores  & csSrc,
-        ScoreWrapper::Common::CountedScores       ^ csTrg)
+        const  WrapCoreNs::Common::CountedScores  & csSrc,
+        Common::CountedScores                     ^ csTrg)
 {
     csTrg->NumWons      = copyArrayToManage(csSrc.numWons);
     csTrg->NumLost      = copyArrayToManage(csSrc.numLost);
