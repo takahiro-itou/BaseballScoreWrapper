@@ -20,13 +20,19 @@
 
 #pragma     once
 
+#if !defined( BASEBALLSCORE_WRAPPER_INCLUDED_WRAPPER_NAMESPACE_H )
+#    define   BASEBALLSCORE_WRAPPER_INCLUDED_WRAPPER_NAMESPACE_H
+
 
 namespace  ScoreWrapper  {
 
-namespace   CoreNs  = Score4Core;
+namespace   CoreNs          = BaseballScore;
 
 namespace   CoreCommon      = CoreNs::Common;
 namespace   CoreDocument    = CoreNs::Document;
 
 
 }   //  End of namespace  ScoreWrapper
+
+
+#endif
