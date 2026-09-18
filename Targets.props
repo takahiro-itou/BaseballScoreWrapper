@@ -2,30 +2,30 @@
 <Project>
 
   <ItemGroup>
-    <ClInclude Include="..\Wrapper\PreCompile.h" />
-    <ClInclude Include="..\Wrapper\resource.h" />
+    <ClInclude Include="PreCompile.h" />
+    <ClInclude Include="resource.h" />
 
-    <ClInclude Include="..\Wrapper\BaseballScoreTypes.h" />
-    <ClInclude Include="..\Wrapper\DocumentFile.h" />
-    <ClInclude Include="..\Wrapper\ScoreDocument.h" />
-    <ClInclude Include="..\Wrapper\ScoreInterface.h" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ClCompile Include="..\Wrapper\AssemblyInfo.cpp" />
-    <ClCompile Include="..\Wrapper\DocumentFile.cpp" />
-    <ClCompile Include="..\Wrapper\ScoreDocument.cpp" />
-    <ClCompile Include="..\Wrapper\ScoreInterface.cpp" />
+    <ClInclude Include="BaseballScoreTypes.h" />
+    <ClInclude Include="DocumentFile.h" />
+    <ClInclude Include="ScoreDocument.h" />
+    <ClInclude Include="ScoreInterface.h" />
   </ItemGroup>
 
   <ItemGroup>
-    <Text Include="..\Wrapper\ReadMe.txt" />
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="DocumentFile.cpp" />
+    <ClCompile Include="ScoreDocument.cpp" />
+    <ClCompile Include="ScoreInterface.cpp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\Wrapper\app.rc" />
+    <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Wrapper\app.ico" />
+    <Image Include="app.ico" />
   </ItemGroup>
 
 </Project>
