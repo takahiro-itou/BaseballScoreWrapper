@@ -84,34 +84,13 @@
   </ItemDefinitionGroup>
 
   <ItemGroup>
-    <ClInclude Include="..\Wrapper\PreCompile.h" />
-    <ClInclude Include="..\Wrapper\resource.h" />
-
-    <ClInclude Include="..\Wrapper\BaseballScoreTypes.h" />
-    <ClInclude Include="..\Wrapper\DocumentFile.h" />
-    <ClInclude Include="..\Wrapper\ScoreDocument.h" />
-    <ClInclude Include="..\Wrapper\ScoreInterface.h" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ClCompile Include="..\Wrapper\AssemblyInfo.cpp" />
     <ClCompile Include="..\Wrapper\PreCompile.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\Wrapper\DocumentFile.cpp" />
-    <ClCompile Include="..\Wrapper\ScoreDocument.cpp" />
-    <ClCompile Include="..\Wrapper\ScoreInterface.cpp" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Text Include="..\Wrapper\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="..\Wrapper\app.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\Wrapper\app.ico" />
-  </ItemGroup>
+  <Import Project="$(MSBuildThisFileDirectory)Targets.props" />
+
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">
       <Project>{64d47941-c76a-4448-bae1-62de0b4c8ac5}</Project>
