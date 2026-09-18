@@ -20,9 +20,13 @@
 
 #pragma     once
 
-#include    "BaseballScore/Common/BaseballScoreTypes.h"
+#if !defined( BASEBALLSCORE_COMMON_INCLUDED_BASEBALL_SCORE_TYPES_H )
+#    include    "BaseballScore/Common/BaseballScoreTypes.h"
+#endif
 
-#include    "WrapperNameSpace.h"
+#if !defined( BASEBALLSCORE_WRAPPER_INCLUDED_WRAPPER_NAMESPACE_H )
+#    include    "WrapperNameSpace.h"
+#endif
 
 
 namespace  ScoreWrapper  {

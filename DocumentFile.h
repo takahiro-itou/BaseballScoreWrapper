@@ -20,9 +20,14 @@
 
 #pragma     once
 
-#include    "BaseballScore/Document/DocumentFile.h"
+#if !defined( BASEBALLSCORE_DOCUMENT_INCLUDED_DOCUMENT_FILE_H )
+#    include    "BaseballScore/Document/DocumentFile.h"
+#endif
 
-#include    "WrapperNameSpace.h"
+#if !defined( BASEBALLSCORE_WRAPPER_INCLUDED_WRAPPER_NAMESPACE_H )
+#    include    "WrapperNameSpace.h"
+#endif
+
 #include    "BaseballScoreTypes.h"
 #include    "ScoreDocument.h"
 
