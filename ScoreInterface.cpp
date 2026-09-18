@@ -44,7 +44,7 @@ copyToManageType(
     Common::WinsForBeatList^    wbDest  = gcnew Common::WinsForBeatList(num);
 
     for ( int i = 0; i < num; ++ i ) {
-        wbDest[i]   = gcnew NumWinsForBeat;
+        wbDest[i]   = gcnew  Common::NumWinsForBeat;
         wbDest[i]->FilterType   =
                 static_cast<ScoreWrapper::MagicFilter>(wbSrc[i].filterType);
         wbDest[i]->NumNeedWins  = wbSrc[i].numNeedWins;
