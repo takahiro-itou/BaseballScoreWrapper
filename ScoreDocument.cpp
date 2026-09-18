@@ -30,12 +30,13 @@
 #include    <msclr/marshal_cppstd.h>
 using       namespace   msclr::interop;
 
-namespace  Score4Wrapper  {
+
+namespace  ScoreWrapper  {
 namespace  Document  {
 
 namespace  {
 
-using       Score4Core::Common::DateTimeFormat;
+using       CoreCommon::DateTimeFormat;
 
 inline  System::DateTime
 getDateTime(
@@ -141,12 +142,12 @@ ErrCode
 ScoreDocument::appendGameRecord(
         GameResult^     gameRecord)
 {
-    Score4Core::Common::GameResult  umRecord;
-    Score4Core::ErrCode             retVal;
+    CoreCommon::GameResult  umRecord;
+    CoreNs::ErrCode         retVal;
 
     const   RecordFlag  flagRec = gameRecord->GameFlags;
 
-    umRecord.eGameFlags     = static_cast<Score4Core::RecordFlag>(flagRec);
+    umRecord.eGameFlags     = static_cast<CoreNs::RecordFlag>(flagRec);
     umRecord.recordDate     = getDateSerial(gameRecord->RecordDate);
     umRecord.visitorTeam    = gameRecord->AwayTeam;
     umRecord.homeTeam       = gameRecord->HomeTeam;
@@ -215,7 +216,7 @@ ErrCode
 ScoreDocument::countScores(
         System::DateTime    trgLastDate)
 {
-    Score4Core::ErrCode  retVal;
+    CoreNs::ErrCode  retVal;
 
     DateSerial  dsLast  = getDateSerial(trgLastDate);
 
@@ -292,7 +293,7 @@ ScoreDocument::makeWinningRateTable(
 ErrCode
 ScoreDocument::optimizeGameRecords()
 {
-    Score4Core::ErrCode  retVal;
+    CoreNs::ErrCode  retVal;
 
     retVal  = this->m_ptrObj->optimizeGameRecords();
     return ( static_cast<ErrCode>(retVal) );
@@ -307,11 +308,11 @@ ScoreDocument::updateLastDate(
         System::Boolean     flgRecordOnly,
         System::DateTime    lastDate)
 {
-    Score4Core::ErrCode  retVal;
+    CoreNs::ErrCode  retVal;
     const   DateSerial  dsLast  = getDateSerial(lastDate);
     const   Boolean     blnFlag = (flgRecordOnly
-                                   ? Score4Core::BOOL_TRUE
-                                   : Score4Core::BOOL_FALSE);
+                                   ? CoreNs::BOOL_TRUE
+                                   : CoreNs::BOOL_FALSE);
 
     retVal  = this->m_ptrObj->updateLastDate(blnFlag, dsLast);
     return ( static_cast<ErrCode>(retVal) );
@@ -388,7 +389,7 @@ ScoreDocument::GameResult^
 ScoreDocument::getGameRecord(
         const  RecordIndex  idxRecord)
 {
-    const   Score4Core::Common::GameResult
+    const   CoreCommon::GameResult
         & umRecord  = this->m_ptrObj->getGameRecord(idxRecord);
     Common::GameResult^  managedRecord  = gcnew Common::GameResult;
 
@@ -411,12 +412,12 @@ ScoreDocument::setGameRecord(
         const  RecordIndex  idxRecord,
         GameResult^         gameRecord)
 {
-    Score4Core::Common::GameResult  umRecord;
-    Score4Core::ErrCode             retVal;
+    CoreCommon::GameResult  umRecord;
+    CoreNs::ErrCode             retVal;
 
     const   RecordFlag  flagRec = gameRecord->GameFlags;
 
-    umRecord.eGameFlags     = static_cast<Score4Core::RecordFlag>(flagRec);
+    umRecord.eGameFlags     = static_cast<CoreNs::RecordFlag>(flagRec);
     umRecord.recordDate     = getDateSerial(gameRecord->RecordDate);
     umRecord.visitorTeam    = gameRecord->AwayTeam;
     umRecord.homeTeam       = gameRecord->HomeTeam;
@@ -456,7 +457,7 @@ ScoreDocument::setLeagueInfo(
         LeagueInfo^         leagueInfo)
 {
     WrapTarget::LeagueInfo  natvVal;
-    Score4Core::ErrCode     retVal;
+    CoreNs::ErrCode         retVal;
 
     System::String^     leagueName  = leagueInfo->LeagueName;
 
@@ -472,7 +473,7 @@ ScoreDocument::setLeagueInfo(
 //    ネイティブのインスタンスを取得する。
 //
 
-Score4Core::Document::ScoreDocument  &
+CoreDocument::ScoreDocument  &
 ScoreDocument::toNativeInstance()
 {
     return ( *(this->m_ptrObj) );
@@ -482,7 +483,7 @@ ScoreDocument::toNativeInstance()
 //    ネイティブのインスタンスを取得する。
 //
 
-Score4Core::Document::ScoreDocument  *
+CoreDocument::ScoreDocument  *
 ScoreDocument::toNativePointer()
 {
     return ( (this->m_ptrObj) );
@@ -525,8 +526,8 @@ ScoreDocument::getNumTeams()
 System::Boolean
 ScoreDocument::getOptimizedFlag()
 {
-    Score4Core::Boolean retVal  = this->m_ptrObj->getOptimizedFlag();
-    return ( retVal != Score4Core::BOOL_FALSE );
+    CoreNs::Boolean  retVal = this->m_ptrObj->getOptimizedFlag();
+    return ( retVal != CoreNs::BOOL_FALSE );
 }
 
 //----------------------------------------------------------------
@@ -559,7 +560,7 @@ ScoreDocument::setTeamInfo(
         TeamInfo^           teamInfo)
 {
     WrapTarget::TeamInfo    natvVal;
-    Score4Core::ErrCode     retVal;
+    CoreNs::ErrCode         retVal;
 
     System::String^     teamName    = teamInfo->TeamName;
 
@@ -639,4 +640,4 @@ ScoreDocument::LastRecordDate::set(
 //
 
 }   //  End of namespace  Document
-}   //  End of namespace  Score4Wrapper
+}   //  End of namespace  ScoreWrapper

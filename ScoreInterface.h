@@ -20,12 +20,18 @@
 
 #pragma     once
 
-#include    "BaseballScore/Document/ScoreDocument.h"
+#if !defined( BASEBALLSCORE_DOCUMENT_INCLUDED_SCORE_DOCUMENT_H )
+#    include    "BaseballScore/Document/ScoreDocument.h"
+#endif
+
+#if !defined( BASEBALLSCORE_WRAPPER_INCLUDED_WRAPPER_NAMESPACE_H )
+#    include    "WrapperNameSpace.h"
+#endif
 
 #include    "BaseballScoreTypes.h"
 
 
-namespace  Score4Wrapper  {
+namespace  ScoreWrapper  {
 namespace  Common  {
 
 //========================================================================
@@ -257,6 +263,7 @@ typedef     cli::array<CountedScores^, 1>   CountedScoreList;
 
 }   //  End of namespace  Common
 
+
 //----------------------------------------------------------------
 /**
 **    その他の定数。
@@ -265,9 +272,9 @@ typedef     cli::array<CountedScores^, 1>   CountedScoreList;
 public enum  class  Consts
 {
     MAGIC_NO_PROBABILITY_WONS
-        = Score4Core::Common::MAGIC_NO_PROBABILITY_WONS,
+        = CoreCommon::MAGIC_NO_PROBABILITY_WONS,
     MAGICLIST_NO_DATA_ENTRY
-        = Score4Core::Common::MAGICLIST_NO_DATA_ENTRY
+        = CoreCommon::MAGICLIST_NO_DATA_ENTRY
 };
 
 //========================================================================
@@ -280,18 +287,18 @@ public enum  class  Consts
 **
 **/
 
-Score4Wrapper::Common::WinsForBeatList^
+Common::WinsForBeatList^
 copyToManageType(
-        const  Score4Core::Common::WinsForBeatList &wbSrc);
+        const  CoreCommon::WinsForBeatList &wbSrc);
 
 //----------------------------------------------------------------
 /**   アンマネージ型をマネージ型に変換する。
 **
 **/
 
-Score4Wrapper::Common::MagicInfo^
+Common::MagicInfo^
 copyToManageType(
-        const  Score4Core::Common::MagicInfo  & miSrc);
+        const  CoreCommon::MagicInfo  & miSrc);
 
 //----------------------------------------------------------------
 /**   アンマネージ型をマネージ型に変換する。
@@ -300,8 +307,8 @@ copyToManageType(
 
 ErrCode
 copyToManageType(
-        const  Score4Core::Common::CountedScores  & csSrc,
-        Score4Wrapper::Common::CountedScores      ^ csTrg);
+        const  CoreCommon::CountedScores  & csSrc,
+        Common::CountedScores             ^ csTrg);
 
 
-}   //  End of namespace  Score4Wrapper
+}   //  End of namespace  ScoreWrapper

@@ -26,7 +26,7 @@
 using       namespace   msclr::interop;
 
 
-namespace  Score4Wrapper  {
+namespace  ScoreWrapper  {
 namespace  Document  {
 
 //========================================================================
@@ -123,7 +123,7 @@ DocumentFile::readFromBinaryFile(
         System::String^     fileName,
         ScoreDocument^%     ptrDoc)
 {
-    const   Score4Core::ErrCode
+    const   CoreNs::ErrCode
         retVal = WrapTarget::readFromBinaryFile(
                     marshal_as<std::string>(fileName),
                     ptrDoc->toNativePointer());
@@ -140,7 +140,7 @@ DocumentFile::readFromTextFile(
         ScoreDocument^%     ptrDoc)
 {
     WrapTarget  tmpWrap = WrapTarget();
-    const   Score4Core::ErrCode
+    const   CoreNs::ErrCode
         retVal = tmpWrap.readFromTextFile(
                     marshal_as<std::string>(fileName),
                     ptrDoc->toNativePointer());
@@ -156,7 +156,7 @@ DocumentFile::saveToBinaryFile(
         ScoreDocument^      objDoc,
         System::String^     fileName)
 {
-    const   Score4Core::ErrCode
+    const   CoreNs::ErrCode
         retVal = WrapTarget::saveToBinaryFile(
                     objDoc->toNativeInstance(),
                     marshal_as<std::string>(fileName));
@@ -172,7 +172,7 @@ DocumentFile::saveToTextFile(
         ScoreDocument^      objDoc,
         System::String^     fileName)
 {
-    const   Score4Core::ErrCode
+    const   CoreNs::ErrCode
         retVal = WrapTarget::saveToTextFile(
                     objDoc->toNativeInstance(),
                     marshal_as<std::string>(fileName));
@@ -195,4 +195,4 @@ DocumentFile::saveToTextFile(
 //
 
 }   //  End of namespace  Document
-}   //  End of namespace  Score4Wrapper
+}   //  End of namespace  ScoreWrapper

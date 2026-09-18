@@ -20,12 +20,19 @@
 
 #pragma     once
 
-#include    "BaseballScore/Document/ScoreDocument.h"
+#if !defined( BASEBALLSCORE_DOCUMENT_INCLUDED_SCORE_DOCUMENT_H )
+#    include    "BaseballScore/Document/ScoreDocument.h"
+#endif
+
+#if !defined( BASEBALLSCORE_WRAPPER_INCLUDED_WRAPPER_NAMESPACE_H )
+#    include    "WrapperNameSpace.h"
+#endif
 
 #include    "BaseballScoreTypes.h"
 #include    "ScoreInterface.h"
 
-namespace  Score4Wrapper  {
+
+namespace  ScoreWrapper  {
 namespace  Document  {
 
 //========================================================================
@@ -345,7 +352,7 @@ public:
     **
     **  @return     アンマネージド型の参照。
     **/
-    Score4Core::Document::ScoreDocument  &
+    CoreDocument::ScoreDocument  &
     toNativeInstance();
 
     //----------------------------------------------------------------
@@ -353,7 +360,7 @@ public:
     **
     **  @return     アンマネージド型の参照。
     **/
-    Score4Core::Document::ScoreDocument  *
+    CoreDocument::ScoreDocument  *
     toNativePointer();
 
     //----------------------------------------------------------------
@@ -510,9 +517,9 @@ public:
 //
 private:
 
-    typedef     Score4Core::Document::ScoreDocument     WrapTarget;
+    typedef     CoreDocument::ScoreDocument     WrapTarget;
 
-    typedef     std::vector<Score4Core::Common::CountedScores>
+    typedef     std::vector<CoreCommon::CountedScores>
     WrapCountedScoreList;
 
     WrapTarget  *                   m_ptrObj;
@@ -525,4 +532,4 @@ private:
 };
 
 }   //  End of namespace  Document
-}   //  End of namespace  Score4Wrapper
+}   //  End of namespace  ScoreWrapper

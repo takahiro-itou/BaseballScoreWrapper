@@ -1,4 +1,4 @@
-﻿//  -*-  coding: utf-8-with-signature-unix; mode: c++  -*-  //
+﻿//  -*-  coding: utf-8-with-signature;  mode: c++  -*-  //
 /*************************************************************************
 **                                                                      **
 **                  ---  Baseball  Score  Wrapper  ---                  **
@@ -12,4 +12,27 @@
 **                                                                      **
 *************************************************************************/
 
-#pragma once
+/**
+**      Wrapper Internal Namespace.
+**
+**      @file       WrapperNamespace.h
+**/
+
+#pragma     once
+
+#if !defined( BASEBALLSCORE_WRAPPER_INCLUDED_WRAPPER_NAMESPACE_H )
+#    define   BASEBALLSCORE_WRAPPER_INCLUDED_WRAPPER_NAMESPACE_H
+
+
+namespace  ScoreWrapper  {
+
+namespace   CoreNs          = BaseballScore;
+
+namespace   CoreCommon      = CoreNs::Common;
+namespace   CoreDocument    = CoreNs::Document;
+
+
+}   //  End of namespace  ScoreWrapper
+
+
+#endif

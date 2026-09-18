@@ -20,13 +20,19 @@
 
 #pragma     once
 
-#include    "BaseballScore/Document/DocumentFile.h"
+#if !defined( BASEBALLSCORE_DOCUMENT_INCLUDED_DOCUMENT_FILE_H )
+#    include    "BaseballScore/Document/DocumentFile.h"
+#endif
+
+#if !defined( BASEBALLSCORE_WRAPPER_INCLUDED_WRAPPER_NAMESPACE_H )
+#    include    "WrapperNameSpace.h"
+#endif
 
 #include    "BaseballScoreTypes.h"
 #include    "ScoreDocument.h"
 
 
-namespace  Score4Wrapper  {
+namespace  ScoreWrapper  {
 namespace  Document  {
 
 //========================================================================
@@ -210,11 +216,11 @@ public:
 //
 private:
 
-    typedef     Score4Core::Document::DocumentFile      WrapTarget;
+    typedef     CoreDocument::DocumentFile      WrapTarget;
 
     WrapTarget  *       m_ptrObj;
 
 };
 
 }   //  End of namespace  Document
-}   //  End of namespace  Score4Wrapper
+}   //  End of namespace  ScoreWrapper
