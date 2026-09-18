@@ -45,7 +45,7 @@ public enum  class  ErrCode
     ERR_INDEX_OUT_OF_RANGE  = CoreNs::ERR_INDEX_OUT_OF_RANGE
 };
 
-typedef     WrapCoreNs::Boolean         Boolean;
+typedef     CoreNs::Boolean         Boolean;
 
 //----------------------------------------------------------------
 /**

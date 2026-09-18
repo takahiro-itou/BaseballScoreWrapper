@@ -272,9 +272,9 @@ typedef     cli::array<CountedScores^, 1>   CountedScoreList;
 public enum  class  Consts
 {
     MAGIC_NO_PROBABILITY_WONS
-        = CoreNsCommon::MAGIC_NO_PROBABILITY_WONS,
+        = CoreCommon::MAGIC_NO_PROBABILITY_WONS,
     MAGICLIST_NO_DATA_ENTRY
-        = CoreNsCommon::MAGICLIST_NO_DATA_ENTRY
+        = CoreCommon::MAGICLIST_NO_DATA_ENTRY
 };
 
 //========================================================================
