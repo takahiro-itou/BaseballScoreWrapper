@@ -37,7 +37,7 @@ namespace  Common  {
 
 Common::WinsForBeatList^
 copyToManageType(
-        const  WrapCoreNs::Common::WinsForBeatList &wbSrc)
+        const  CoreCommon::WinsForBeatList &wbSrc)
 {
     const  int  num = static_cast<int>(wbSrc.size());
 
@@ -63,7 +63,7 @@ copyToManageType(
 
 Common::MagicInfo^
 copyToManageType(
-        const  WrapCoreNs::Common::MagicInfo  & miSrc)
+        const  CoreCommon::MagicInfo  & miSrc)
 {
     Common::MagicInfo^  miTrg   = gcnew Common::MagicInfo;
     miTrg->RankLow  = miSrc.rankLow;
@@ -81,8 +81,8 @@ copyToManageType(
 
 ErrCode
 copyToManageType(
-        const  WrapCoreNs::Common::CountedScores  & csSrc,
-        Common::CountedScores                     ^ csTrg)
+        const  CoreCommon::CountedScores  & csSrc,
+        Common::CountedScores             ^ csTrg)
 {
     csTrg->NumWons      = copyArrayToManage(csSrc.numWons);
     csTrg->NumLost      = copyArrayToManage(csSrc.numLost);

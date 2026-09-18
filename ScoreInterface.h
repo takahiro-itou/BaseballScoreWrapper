@@ -22,6 +22,7 @@
 
 #include    "BaseballScore/Document/ScoreDocument.h"
 
+#include    "WrapperNameSpace.h"
 #include    "BaseballScoreTypes.h"
 
 
@@ -266,9 +267,9 @@ typedef     cli::array<CountedScores^, 1>   CountedScoreList;
 public enum  class  Consts
 {
     MAGIC_NO_PROBABILITY_WONS
-        = WrapCoreNs::Common::MAGIC_NO_PROBABILITY_WONS,
+        = CoreNsCommon::MAGIC_NO_PROBABILITY_WONS,
     MAGICLIST_NO_DATA_ENTRY
-        = WrapCoreNs::Common::MAGICLIST_NO_DATA_ENTRY
+        = CoreNsCommon::MAGICLIST_NO_DATA_ENTRY
 };
 
 //========================================================================
@@ -283,7 +284,7 @@ public enum  class  Consts
 
 Common::WinsForBeatList^
 copyToManageType(
-        const  WrapCoreNs::Common::WinsForBeatList &wbSrc);
+        const  CoreCommon::WinsForBeatList &wbSrc);
 
 //----------------------------------------------------------------
 /**   アンマネージ型をマネージ型に変換する。
@@ -292,7 +293,7 @@ copyToManageType(
 
 Common::MagicInfo^
 copyToManageType(
-        const  WrapCoreNs::Common::MagicInfo  & miSrc);
+        const  CoreCommon::MagicInfo  & miSrc);
 
 //----------------------------------------------------------------
 /**   アンマネージ型をマネージ型に変換する。
@@ -301,8 +302,8 @@ copyToManageType(
 
 ErrCode
 copyToManageType(
-        const  WrapCorens::Common::CountedScores  & csSrc,
-        Common::CountedScores                     ^ csTrg);
+        const  CoreCommon::CountedScores  & csSrc,
+        Common::CountedScores             ^ csTrg);
 
 
 }   //  End of namespace  ScoreWrapper
