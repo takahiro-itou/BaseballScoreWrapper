@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
 
+  <ItemGroup>
+    <ClInclude Include="PreCompile.h" />
+    <ClInclude Include="resource.h" />
+
+    <ClInclude Include="BaseballScoreTypes.h" />
+    <ClInclude Include="DocumentFile.h" />
+    <ClInclude Include="ScoreDocument.h" />
+    <ClInclude Include="ScoreInterface.h" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="DocumentFile.cpp" />
+    <ClCompile Include="ScoreDocument.cpp" />
+    <ClCompile Include="ScoreInterface.cpp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
 
 </Project>
