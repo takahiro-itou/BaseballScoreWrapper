@@ -22,6 +22,7 @@
 
 #include    "BaseballScore/Document/DocumentFile.h"
 
+#include    "WrapperNameSpace.h"
 #include    "BaseballScoreTypes.h"
 #include    "ScoreDocument.h"
 
@@ -210,7 +211,7 @@ public:
 //
 private:
 
-    typedef     Score4Core::Document::DocumentFile      WrapTarget;
+    typedef     CoreDocument::DocumentFile      WrapTarget;
 
     WrapTarget  *       m_ptrObj;
 

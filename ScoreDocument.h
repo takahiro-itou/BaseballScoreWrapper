@@ -22,6 +22,7 @@
 
 #include    "BaseballScore/Document/ScoreDocument.h"
 
+#include    "WrapperNameSpace.h"
 #include    "BaseballScoreTypes.h"
 #include    "ScoreInterface.h"
 
@@ -346,7 +347,7 @@ public:
     **
     **  @return     アンマネージド型の参照。
     **/
-    Score4Core::Document::ScoreDocument  &
+    CoreDocument::ScoreDocument  &
     toNativeInstance();
 
     //----------------------------------------------------------------
@@ -354,7 +355,7 @@ public:
     **
     **  @return     アンマネージド型の参照。
     **/
-    Score4Core::Document::ScoreDocument  *
+    CoreDocument::ScoreDocument  *
     toNativePointer();
 
     //----------------------------------------------------------------
@@ -511,9 +512,9 @@ public:
 //
 private:
 
-    typedef     Score4Core::Document::ScoreDocument     WrapTarget;
+    typedef     CoreDocument::ScoreDocument     WrapTarget;
 
-    typedef     std::vector<Score4Core::Common::CountedScores>
+    typedef     std::vector<CoreCommon::CountedScores>
     WrapCountedScoreList;
 
     WrapTarget  *                   m_ptrObj;
